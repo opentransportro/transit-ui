@@ -76,6 +76,7 @@ export default configMerger(walttiConfig, {
   
   // Navbar logo
   logo: 'opentransport/opentransport-logo.svg',
+  favicon: './app/configurations/images/opentransport/opentransport-favicon.svg',
 
   defaultMapCenter: {
     lat: 45.76567,

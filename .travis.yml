@@ -35,6 +35,7 @@ jobs:
       script:
         - yarn install
         - test/flow.sh
+      if: branch != opentransport
     - stage: test
       env: UNIT=1
       node_js: '10'
@@ -42,23 +43,27 @@ jobs:
         - yarn install
         - yarn run test-coverage
         - yarn run test-report
-
+      if: branch != opentransport
     - stage: visual
       env: VISUAL=chrome
       node_js: '10'
       script: test/visual.sh
+      if: branch != opentransport
     - stage: visual
       env: VISUAL=firefox
       node_js: '10'
       script: test/visual.sh
+      if: branch != opentransport
     - stage: visual
       env: VISUAL=safari
       node_js: '10'
       script: test/visual.sh
+      if: branch != opentransport
     - stage: visual
       env: VISUAL=edge
       node_js: '10'
       script: test/visual.sh
+      if: branch != opentransport
 
     - stage: build and deploy container
       node_js: '10'
