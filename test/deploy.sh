@@ -1,7 +1,7 @@
 #/bin/bash
 set -e
-ORG=${ORG:-hsldevcom}
-DOCKER_IMAGE=$ORG/digitransit-ui
+ORG=${ORG:-opentransport}
+DOCKER_IMAGE=$ORG/map-ui
 LATEST_IMAGE=$DOCKER_IMAGE:latest
 PROD_IMAGE=$DOCKER_IMAGE:prod
 
@@ -20,7 +20,7 @@ if [[ -n "$TRAVIS_TAG" || ( "$TRAVIS_PULL_REQUEST" = "false") ]]; then
       echo Not Pushing :prod tag to Docker Hub
       exit 0
     fi
-    if [ "$TRAVIS_BRANCH" = "master" ]; then
+    if [ "$TRAVIS_BRANCH" = "opentransport" ]; then
       BRANCH_IMAGE=$LATEST_IMAGE
     else
       BRANCH_IMAGE=$DOCKER_IMAGE:$TRAVIS_BRANCH

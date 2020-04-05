@@ -1,0 +1,14 @@
+version: "1"
+rules:
+  - base: master
+    upstream: hsldevcom:master    # change `wei` to the owner of upstream repo
+    mergeMethod: hardreset
+  - base: opentransport
+    upstream: master        # Required. Can be a branch in the same forked repo.
+    mergeMethod: merge
+    assignees:              # Optional
+      - vesavlad
+    reviewers:              # Optional
+      - vesavlad
+    conflictReviewers:      # Optional, on merge conflict assign a reviewer
+      - vesavlad
