@@ -68,6 +68,7 @@ class ModeFilter extends React.Component {
         className="btn-bar mode-filter no-select"
       >
         <ModeToggleButton type="bus" />
+        <ModeToggleButton type="trolleybus" />
         <ModeToggleButton type="tram" />
         <ModeToggleButton type="rail" />
         <ModeToggleButton type="subway" />
@@ -89,10 +90,11 @@ pureModeFilter.description = () => (
     </p>
     <ComponentUsageExample>
       <ModeFilter
-        selectedModes={['BUS', 'TRAM']}
+        selectedModes={['BUS', 'TRAM', 'TROLLEYBUS']}
         action={{
           toggleBusState: () => {},
           toggleTramState: () => {},
+          toggleTrolleybusState: () => {},
         }}
         buttonClass=""
       />
@@ -102,10 +104,11 @@ pureModeFilter.description = () => (
     <div className="nearby-routes">
       <ComponentUsageExample>
         <ModeFilter
-          selectedModes={['BUS', 'TRAM']}
+          selectedModes={['BUS', 'TRAM', 'TROLLEYBUS']}
           action={{
             toggleBusState: () => {},
             toggleTramState: () => {},
+            toggleTrolleybusState: () => {},
           }}
           buttonClass="btn mode-nearby"
         />

@@ -137,6 +137,7 @@ $btn-highlight-opacity: 0.9;
 
 $btn-inactive-background-color: $dark-gray;
 $btn-bus-active-background-color: $bus-color;
+$btn-trolleybus-active-background-color: $trolleybus-color;
 $btn-tram-active-background-color: $tram-color;
 $btn-rail-active-background-color: $rail-color;
 $btn-subway-active-background-color: $metro-color;
@@ -167,6 +168,14 @@ $btn-heigth: 17px;
     &:active,
     &:focus {
       background-color: $btn-bus-active-background-color;
+    }
+  }
+  &.trolleybus {
+    background-color: $btn-trolleybus-active-background-color;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $btn-trolleybus-active-background-color;
     }
   }
   &.tram {
@@ -233,6 +242,7 @@ $btn-heigth: 17px;
     }
   }
   &.bus,
+  &.trolleybus,
   &.tram,
   &.rail,
   &.subway,

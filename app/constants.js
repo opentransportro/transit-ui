@@ -30,6 +30,8 @@ export const TransportMode = {
   Subway: 'Subway',
   /** Taking the tram */
   Tram: 'TRAM',
+  /** Taking the trolleybus */
+  Trolleybus: 'TROLLEYBUS',
 };
 
 /**
