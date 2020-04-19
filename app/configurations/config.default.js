@@ -758,6 +758,7 @@ export default {
     jyvaskyla: 'jyvaskyla',
     lahti: 'lahti',
     kuopio: 'kuopio',
+    opentransport: 'opentransport',
   },
 
   minutesToDepartureLimit: 9,
