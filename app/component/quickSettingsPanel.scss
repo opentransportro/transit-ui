@@ -20,6 +20,14 @@
             background-color: $btn-bus-active-background-color;
           }
         }
+        &.trolleybus {
+          background-color: $btn-trolleybus-active-background-color;
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: $btn-trolleybus-active-background-color;
+          }
+        }
         &.tram {
           background-color: $btn-tram-active-background-color;
           &:hover,

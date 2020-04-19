@@ -348,6 +348,7 @@ export default {
 
   modeToOTP: {
     bus: 'BUS',
+    trolleybus: 'BUS',
     tram: 'TRAM',
     rail: 'RAIL',
     subway: 'SUBWAY',
@@ -365,6 +366,11 @@ export default {
   // and whether the transport mode is used in trip planning by default.
   transportModes: {
     bus: {
+      availableForSelection: true,
+      defaultValue: true,
+    },
+
+    trolleybus: {
       availableForSelection: true,
       defaultValue: true,
     },

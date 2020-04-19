@@ -16,6 +16,9 @@ $itinerary-tab-switch-height: 48px;
   &.bus {
     @include getCircleSvg($bus-color, $fill);
   }
+  &.trolleybus {
+    @include getCircleSvg($trolleybus-color, $fill);
+  }
   &.airplane {
     @include getCircleSvg($airplane-color, $fill);
   }
@@ -434,6 +437,9 @@ $itinerary-tab-switch-height: 48px;
     &.circle-fill {
       &.bus {
         @include setModeCircles($bus-color);
+      }
+      &.trolleybus {
+        @include setModeCircles($trolleybus-color);
       }
       &.airplane {
         @include setModeCircles($airplane-color);
