@@ -1,3 +1,5 @@
+import { PREFIX_ITINERARY_SUMMARY } from '../util/path';
+
 /* eslint-disable prefer-template */
 const CONFIG = 'matka';
 const APP_DESCRIPTION = 'Matka.fi–palvelu.';
@@ -64,7 +66,7 @@ export default {
 
   meta: {
     description: APP_DESCRIPTION,
-    keywords: 'reitti,reitit,opas,reittiopas,joukkoliikenne',
+    keywords: `${PREFIX_ITINERARY_SUMMARY},reitit,opas,reittiopas,joukkoliikenne`,
   },
 
   routeTimetables: {
@@ -136,6 +138,20 @@ export default {
           fi: 'https://www.foli.fi/kaupunkipyorat',
           sv: 'https://www.foli.fi/sv/stadscyklar',
           en: 'https://www.foli.fi/en/citybikes',
+        },
+      },
+      vilkku: {
+        icon: 'citybike',
+        name: {
+          fi: 'Vilkku',
+          sv: 'Vilkku',
+          en: 'Vilkku',
+        },
+        type: 'citybike',
+        url: {
+          fi: 'https://kaupunkipyorat.kuopio.fi/',
+          sv: 'https://kaupunkipyorat.kuopio.fi/?lang=2',
+          en: 'https://kaupunkipyorat.kuopio.fi/?lang=2',
         },
       },
     },
