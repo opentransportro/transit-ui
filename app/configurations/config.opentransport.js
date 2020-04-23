@@ -9,7 +9,7 @@ const MAP_TOKEN = process.env.MAP_TOKEN || '';
 const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
 const APP_DESCRIPTION = 'Opentransport - finding your way';
 
-const walttiConfig = require('./waltti').default;
+const walttiConfig = require('./config.waltti').default;
 
 const minLat = 43;
 const maxLat = 48;
