@@ -266,6 +266,11 @@
   flex: 1 1 auto;
 }
 
+.mobile .summary-list-container {
+  margin-top: 5px;
+  box-shadow: 0 -2px 5px -5px #575757;
+}
+
 @media print {
   .summary {
     display: block;

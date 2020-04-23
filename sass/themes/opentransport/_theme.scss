@@ -2,16 +2,37 @@
 
 /* main theme colors */
 $primary-color: #000000;
-$secondary-color: darken($primary-color, 20%);
+$secondary-color: lighten($primary-color, 20%);
 $hilight-color: $primary-color;
 $action-color: $primary-color;
-$bus-color: $primary-color;
 $viewpoint-marker-color: $primary-color;
 $current-location-color: $primary-color;
 
 $standalone-btn-color: $primary-color;
 $link-color: $primary-color;
 
+/* Vehicle palette */
+$bus-color: rgb(204, 0, 0);
+$tram-color: rgb(214, 157, 52);
+$rail-color: rgb(0,0,0);
+$citybike-color: #f2b62d;
+$citybike-off-color: #919191;
+$walk-color: #6ba3af;
+$wait-color: #979797;
+$bicycle-color: #64be14;
+$car-color: #333;
+
+/* Fonts */
+$font-family: 'Noto Sans', Arial, Georgia, Serif;
+$font-weight-book: 400;
+$font-weight-medium: 400;
+$font-weight-bold: 700;
+$font-weight-map-container: $font-weight-book;
+$letter-spacing: 0.5;
+
 /* Component palette */
-$desktop-title-color: $primary-color;
-$desktop-title-arrow-icon-color: $secondary-color;
+$desktop-title-color: rgb(204,0,0);
+$desktop-title-arrow-icon-color: #ffffff;
+
+/* top bar */
+$topbar-height: 60px;

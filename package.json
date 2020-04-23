@@ -47,10 +47,10 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HSLdevcom/digitransit-ui"
+    "url": "https://github.com/opentransportro/transit-ui"
   },
   "bugs": {
-    "url": "https://github.com/HSLdevcom/digitransit-ui/issues"
+    "url": "https://github.com/opentransportro/transit-ui/issues"
   },
   "engineStrict": true,
   "engines": {

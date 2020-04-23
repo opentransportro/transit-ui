@@ -5,6 +5,7 @@ const CONFIG = 'opentransport';
 const APP_TITLE = 'Open Transport';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
+const MAP_TOKEN = process.env.MAP_TOKEN || '';
 const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
 const APP_DESCRIPTION = 'Opentransport - finding your way';
 
@@ -22,17 +23,17 @@ export default configMerger(walttiConfig, {
   URL: {
     OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/romania/`,
     MAP: {
-      default: `${MAP_URL}/map/v1/hsl-map/`,
+      default: `https://api.mapbox.com/styles/v1/vladvesa/ck9329uuj2q1h1ik4h4am6ogr/tiles/`,
+      token: MAP_TOKEN
+      // default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
     },
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,
-    FONT:
-      'https://fonts.googleapis.com/css?family=Lato:300,400,900%7CPT+Sans+Narrow:400,700',
+
+    FONT: 'https://fonts.googleapis.com/css?family=Noto+Sans:400,700%7CPT+Sans+Narrow:400,700',
     PELIAS: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/search`,
-    PELIAS_REVERSE_GEOCODER: `${process.env.GEOCODING_BASE_URL ||
-      GEOCODING_BASE_URL}/reverse`,
-    PELIAS_PLACE: `${process.env.GEOCODING_BASE_URL ||
-      GEOCODING_BASE_URL}/place`,
+    PELIAS_REVERSE_GEOCODER: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/reverse`,
+    PELIAS_PLACE: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/place`,
   },
 
   contactName: {
@@ -56,6 +57,7 @@ export default configMerger(walttiConfig, {
     showLoginCreateAccount: false,
     showOffCanvasList: true,
   },
+  showVehiclesOnStopPage: true,
 
   itinerary: {
     // How long vehicle should be late in order to mark it delayed. Measured in seconds.
@@ -72,6 +74,26 @@ export default configMerger(walttiConfig, {
     showZoneLimits: false,
     // Number of days to include to the service time range from the future (DT-3317)
     serviceTimeRange: 30,
+  },
+
+  map: {
+    useRetinaTiles: true,
+    tileSize: 512,
+    zoomOffset: -1,
+    minZoom: 12,
+    maxZoom: 18,
+    genericMarker: {
+      // Do not render name markers at zoom levels below this value
+      nameMarkerMinZoom: 18,
+
+      popup: {
+        offset: [106, 16],
+        maxWidth: 250,
+        minWidth: 250,
+      },
+    },
+
+    useModeIconsInNonTileLayer: true,
   },
   
   // Navbar logo
@@ -90,17 +112,7 @@ export default configMerger(walttiConfig, {
 
   maxWalkDistance: 2500,
   itineraryFiltering: 2.5, // drops 40% worse routes
- 
-  parkAndRide: {
-    showParkAndRide: false,
-    parkAndRideMinZoom: 14,
-  },
 
-  ticketSales: {
-    showTicketSales: false,
-    ticketSalesMinZoom: 16,
-  },
-  
   showDisclaimer: true,
 
   stopsMinZoom: 14,
@@ -110,7 +122,7 @@ export default configMerger(walttiConfig, {
     primary: '#000000',
   },
 
-  sprites: 'assets/svg-sprite.hsl.svg',
+  sprites: 'assets/svg-sprite.default.svg',
 
   agency: {
     show: true,
@@ -128,23 +140,18 @@ export default configMerger(walttiConfig, {
 
     twitter: {
       card: 'summary',
-      site: '@opentransport',
+      site: '@opentransportro',
     },
   },
 
 
   meta: {
     description: APP_DESCRIPTION,
+    keywords: 'opentransport, timisoara, romania, routing, planificator, rute',
   },
 
 
   streetModes: {
-    bicycle: {
-      availableForSelection: true,
-      defaultValue: true,
-      icon: 'biking',
-    },
-
     car_park: {
       availableForSelection: true,
       defaultValue: false,
@@ -180,12 +187,12 @@ export default configMerger(walttiConfig, {
       'i',
     ),
   },
-  searchParams: {
-    'boundary.rect.min_lat': minLat,
-    'boundary.rect.max_lat': maxLat,
-    'boundary.rect.min_lon': minLon,
-    'boundary.rect.max_lon': maxLon,
-  },
+  // searchParams: {
+  //   'boundary.rect.min_lat': minLat,
+  //   'boundary.rect.max_lat': maxLat,
+  //   'boundary.rect.min_lon': minLon,
+  //   'boundary.rect.max_lon': maxLon,
+  // },
 
   textLogo: false,
 
@@ -206,18 +213,6 @@ export default configMerger(walttiConfig, {
 
   cityBike: {
     showCityBikes: true,
-    // networks: {
-    //   "Velo TM": {
-    //     icon: 'citybike',
-    //     name: {
-    //       en: 'Helsinki and Espoo',
-    //     },
-    //     type: 'citybike',
-    //     url: {
-    //       en: 'https://www.hsl.fi/en/citybikes',
-    //     },
-    //   },
-    // },
   },
 
   transportModes: {
@@ -252,16 +247,16 @@ export default configMerger(walttiConfig, {
     },
   },
 
-  redirectReittiopasParams: true,
+  redirectReittiopasParams: false,
   queryMaxAgeDays: 14,
 
   defaultOrigins: [
     {
-      icon: 'icon-icon_bus',
-      label: 'Linja-autoasema, Opentransport',
-      lat: 45.749558161214544,
-      lon: 21.23279571533203,
-    },
+      icon: 'icon-icon_locate',
+      label: 'Iulius Town',
+      lat: 45.76693919705344,
+      lon: 21.22649788856506
+    }
   ],
 
   footer: {

@@ -39,7 +39,7 @@ export default class BackButton extends React.Component {
     return (
       <button
         className="icon-holder noborder cursor-pointer"
-        style={{ paddingTop: '7px' }}
+        style={{ paddingTop: '12px' }}
         onClick={this.goBack}
         aria-label={this.context.intl.formatMessage({
           id: 'back-button-title',

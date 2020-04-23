@@ -3110,7 +3110,7 @@ const translations = {
     'time-selector-hours-label': 'Ora',
     'time-selector-minutes-label': 'Minut',
     timetable: 'Orar',
-    'to-stop': 'Către stația',
+    'to-stop': 'Distanță',
     today: 'Azi',
     tomorrow: 'Mâine',
     'track-num': 'Peronul {platformCode}',

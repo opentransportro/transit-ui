@@ -5,7 +5,7 @@ $offcanvas-background-hover: scale-color($gray, $lightness: -30%);
 $offcanvas-background-active: scale-color($gray, $lightness: -30%);
 
 /* top bar */
-$topbar-height: 40px;
+$topbar-height: 50px;
 
 $top-navigation-icon-color: $primary-font-color;
 $top-navigation-title-color: $title-color;
@@ -57,7 +57,7 @@ $content-background-color: $background-color;
     height: 60px;
     align-items: center;
     line-height: 1.8em;
-    box-shadow: 2px 0px 2px #575757;
+    box-shadow: 2px 0px 25px #575757;
 
     @media print {
       display: none;

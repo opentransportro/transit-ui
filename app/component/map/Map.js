@@ -111,6 +111,10 @@ export default class Map extends React.Component {
       mapUrl = mapUrl[this.props.lang] || config.URL.MAP.default;
     }
 
+    const mapToken = config.URL.MAP.token
+      ? `?access_token=${config.URL.MAP.token}`
+      : '.png';
+
     return (
       <div aria-hidden="true">
         <LeafletMap
@@ -143,7 +147,7 @@ export default class Map extends React.Component {
         >
           <TileLayer
             onLoad={this.setLoaded}
-            url={`${mapUrl}{z}/{x}/{y}{size}.png`}
+            url={`${mapUrl}{z}/{x}/{y}{size}${mapToken}`}
             tileSize={config.map.tileSize || 256}
             zoomOffset={config.map.zoomOffset || 0}
             updateWhenIdle={false}
