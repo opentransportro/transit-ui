@@ -18,6 +18,7 @@ $hilight-color: $secondary-color; //$primary-color;
 $action-color: #ff5959;
 $viewpoint-marker-color: $primary-color;
 $current-location-color: $primary-color;
+$selected-lang-background: lighten($primary-color, 20);// rgba(0, 0, 0, 0.15);
 
 $standalone-btn-color: #ff5959;
 $link-color: $errie_black;

@@ -2,12 +2,12 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'opentransport';
-const APP_TITLE = 'Open Transport';
+const APP_TITLE = 'DU-MA.RO | Harta transport public Romania';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
-const MAP_TOKEN = process.env.MAP_TOKEN || '';
+const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoiZ25vbWUtbWFwcyIsImEiOiJjaXF3a3lwbXkwMDJwaTBubmZlaGk4cDZ6In0.8aukTfgjzeqATA8eNItPJA&';
 const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
-const APP_DESCRIPTION = 'Opentransport - finding your way';
+const APP_DESCRIPTION = 'Planificator  rute ce ofera suport pentru planificare de calatorii folosind transportul public sau bicicleta.';
 
 const walttiConfig = require('./config.waltti').default;
 
@@ -19,25 +19,22 @@ const maxLon = 30;
 export default configMerger(walttiConfig, {
   CONFIG,
 
-  appBarLink: { name: 'Opentransport', href: 'http://www.opentransport.ro/' },
+  appBarLink: { name: 'opentransport.ro', href: 'http://www.opentransport.ro/' },
   URL: {
     OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/romania/`,
     MAP: {
-      default: `https://api.mapbox.com/styles/v1/vladvesa/ck9329uuj2q1h1ik4h4am6ogr/tiles/`,
+      // default: `https://api.mapbox.com/styles/v1/vladvesa/ck9329uuj2q1h1ik4h4am6ogr/tiles/`,
+      default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
       token: MAP_TOKEN
-      // default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
+
     },
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,
 
-    FONT: 'https://fonts.googleapis.com/css?family=Noto+Sans:400,700%7CPT+Sans+Narrow:400,700',
+    FONT: 'https://fonts.googleapis.com/css?family=Noto+Sans:300,400,700%7CPT+Sans+Narrow:400,700',
     PELIAS: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/search`,
     PELIAS_REVERSE_GEOCODER: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/reverse`,
     PELIAS_PLACE: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/place`,
-  },
-
-  contactName: {
-    default: 'STPT',
   },
 
   title: APP_TITLE,
@@ -50,13 +47,7 @@ export default configMerger(walttiConfig, {
     'Europe/Bucharest|EET EEST|-20 -30|01010101010101010101010|1BWp0 1qM0 WM0 1qM0 ' +
     'WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|35e5',
 
-  mainMenu: {
-    // Whether to show the left menu toggle button at all
-    show: true,
-    showDisruptions: false,
-    showLoginCreateAccount: false,
-    showOffCanvasList: true,
-  },
+  showAllBusses: true,
   showVehiclesOnStopPage: true,
 
   itinerary: {
@@ -65,11 +56,7 @@ export default configMerger(walttiConfig, {
     // Wait time to show "wait leg"? e.g. 180 means over 3 minutes are shown as wait time.
     // Measured in seconds.
     waitThreshold: 180,
-    enableFeedback: false,
-
-    timeNavigation: {
-      enableButtonArrows: false,
-    },
+    enableFeedback: true,
 
     showZoneLimits: false,
     // Number of days to include to the service time range from the future (DT-3317)
@@ -80,7 +67,7 @@ export default configMerger(walttiConfig, {
     useRetinaTiles: true,
     tileSize: 512,
     zoomOffset: -1,
-    minZoom: 12,
+    minZoom: 8,
     maxZoom: 18,
     genericMarker: {
       // Do not render name markers at zoom levels below this value
@@ -100,14 +87,10 @@ export default configMerger(walttiConfig, {
   logo: 'opentransport/opentransport-logo.svg',
   favicon: './app/configurations/images/opentransport/opentransport-favicon.svg',
 
-  defaultMapCenter: {
-    lat: 45.76567,
-    lon: 21.227578,
-  },
-
   nearbyRoutes: {
     radius: 2000,
-    bucketSize: 100,
+    results: 50,
+    timeRange: 3600,
   },
 
   maxWalkDistance: 2500,
@@ -115,14 +98,15 @@ export default configMerger(walttiConfig, {
 
   showDisclaimer: true,
 
-  stopsMinZoom: 14,
+  // Lowest level for stops and terminals are rendered
+  stopsMinZoom: 15,
   mergeStopsByCode: false,
 
   colors: {
-    primary: '#000000',
+    primary: '#181c56',
   },
 
-  sprites: 'assets/svg-sprite.default.svg',
+  sprites: 'assets/svg-sprite.opentransport.svg',
 
   agency: {
     show: true,
@@ -147,7 +131,7 @@ export default configMerger(walttiConfig, {
 
   meta: {
     description: APP_DESCRIPTION,
-    keywords: 'opentransport, timisoara, romania, routing, planificator, rute',
+    keywords: 'du-ma, opentransport, timisoara, romania, routing, planificator, rute',
   },
 
 
@@ -159,7 +143,7 @@ export default configMerger(walttiConfig, {
     },
 
     car: {
-      availableForSelection: false,
+      availableForSelection: true,
       defaultValue: false,
       icon: 'car_park-withoutBox',
     },
@@ -259,10 +243,20 @@ export default configMerger(walttiConfig, {
     }
   ],
 
+  // Minimun distance between from and to locations in meters. User is noticed
+  // if distance is less than this.
+  minDistanceBetweenFromAndTo: 200,
+
   footer: {
     content: [
       { label: `© Opentransport ${walttiConfig.YEAR}` },
       {},
+      {
+        name: 'footer-feedback',
+        nameEn: 'Submit feedback',
+        href: 'https://www.facebook.com/opentransport.ro/',
+        icon: 'icon-icon_speech-bubble',
+      },
       {
         name: 'about-this-service',
         nameEn: 'About this service',
@@ -274,6 +268,14 @@ export default configMerger(walttiConfig, {
 
   aboutThisService: {
     en: [
+      {
+        header: 'About this service',
+        paragraphs: [
+          'This service is provided by Opentransport for route planning in Opentransport region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+        ],
+      },
+    ],
+    ro: [
       {
         header: 'About this service',
         paragraphs: [
