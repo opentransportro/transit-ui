@@ -69,12 +69,13 @@ export default class ItineraryFeedback extends React.Component {
               value={this.state.feedbackText}
               onChange={this.updateText}
             />
-            <input
+            <button
               type="button"
               className="standalone-btn"
-              value={buttonText}
               onClick={this.sendFeedback}
-            />
+            >
+              {buttonText}
+            </button>
           </div>
         </div>
       </span>
