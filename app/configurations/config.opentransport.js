@@ -56,7 +56,7 @@ export default configMerger(walttiConfig, {
     // Wait time to show "wait leg"? e.g. 180 means over 3 minutes are shown as wait time.
     // Measured in seconds.
     waitThreshold: 180,
-    enableFeedback: true,
+    enableFeedback: false,
 
     showZoneLimits: false,
     // Number of days to include to the service time range from the future (DT-3317)
@@ -99,7 +99,7 @@ export default configMerger(walttiConfig, {
   showDisclaimer: true,
 
   // Lowest level for stops and terminals are rendered
-  stopsMinZoom: 15,
+  stopsMinZoom: 14,
   mergeStopsByCode: false,
 
   colors: {
