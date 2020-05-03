@@ -311,9 +311,10 @@ $itinerary-tab-switch-height: 48px;
 }
 
 .itinerary-disclaimer {
-  color: $gray;
-  margin: 1em 1em 1em 0em;
-  font-size: $font-size-small;
+  color: $dark-gray;
+  background-color: $light-gray;
+  padding: 1em 1em 1em 1em;
+  font-size: $font-size-xsmall;
   white-space: normal;
 }
 
