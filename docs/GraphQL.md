@@ -4,4 +4,4 @@
   `cd build; SERVER_ROOT=http://your-otp-host node generate-schema.js`
 
   When running otp in localhost, this usually translates to:
-  `cd build; SERVER_ROOT=http://localhost:8080/otp node generate-schema.js`
+  `cd build; SERVER_ROOT=http://localhost:8080/otp/router/default node generate-schema.js`
