@@ -5,7 +5,7 @@ const CONFIG = 'opentransport';
 const APP_TITLE = 'DU-MA.RO | Harta transport public Romania';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
-const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoiZ25vbWUtbWFwcyIsImEiOiJjaXF3a3lwbXkwMDJwaTBubmZlaGk4cDZ6In0.8aukTfgjzeqATA8eNItPJA&';
+const MAP_TOKEN = process.env.MAP_TOKEN || '';
 const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
 const APP_DESCRIPTION = 'Planificator  rute ce ofera suport pentru planificare de calatorii folosind transportul public sau bicicleta.';
 
@@ -23,8 +23,8 @@ export default configMerger(walttiConfig, {
   URL: {
     OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/romania/`,
     MAP: {
-      // default: `https://api.mapbox.com/styles/v1/vladvesa/ck9329uuj2q1h1ik4h4am6ogr/tiles/`,
-      default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
+      // default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
+      default: `https://api.mapbox.com/styles/v1/vladvesa/ck9sy09li0awb1ip824j78jc1/tiles/`,
       token: MAP_TOKEN
 
     },
@@ -197,6 +197,44 @@ export default configMerger(walttiConfig, {
 
   cityBike: {
     showCityBikes: true,
+    networks: {
+      velotm: {
+        icon: 'citybike',
+        name: {
+          en: 'VeloTM',
+          ro: 'VeloTM',
+        },
+        type: 'citybike',
+        url: {
+          en: 'http://velotm.ro/',
+          ro: 'http://velotm.ro/',
+        },
+      },
+      clujbike: {
+        icon: 'citybike',
+        name: {
+          en: 'Cluj Bike',
+          ro: 'Cluj Bike',
+        },
+        type: 'citybike',
+        url: {
+          en: 'https://www.clujbike.eu',
+          ro: 'https://www.clujbike.eu',
+        },
+      },
+      blackseabike: {
+        icon: 'citybike',
+        name: {
+          en: 'Blacksea Bike',
+          ro: 'Blacksea Bike',
+        },
+        type: 'citybike',
+        url: {
+          ro: 'http://www.blackseabike.ro',
+          en: 'http://www.blackseabike.ro',
+        },
+      },
+    },
   },
 
   transportModes: {
