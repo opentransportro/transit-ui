@@ -139,13 +139,13 @@ export default configMerger(walttiConfig, {
     car_park: {
       availableForSelection: true,
       defaultValue: false,
-      icon: 'car-withoutBox',
+      icon: 'car_park-withoutBox',
     },
 
     car: {
       availableForSelection: true,
       defaultValue: false,
-      icon: 'car_park-withoutBox',
+      icon: 'car-withoutBox',
     },
   },
 
