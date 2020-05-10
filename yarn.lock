@@ -11950,14 +11950,14 @@ name-all-modules-plugin@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/name-all-modules-plugin/-/name-all-modules-plugin-1.0.1.tgz#0abfb6ad835718b9fb4def0674e06657a954375c"
 
-nan@^2.0.4, nan@^2.9.2:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.1.tgz#a15bee3790bde247e8f38f1d446edcdaeb05f2dd"
-
 nan@^2.13.2, nan@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
+
+nan@^2.9.2:
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.1.tgz#a15bee3790bde247e8f38f1d446edcdaeb05f2dd"
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -13482,10 +13482,11 @@ pn@^1.0.0, pn@^1.1.0:
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
 
 png-img@^2.1.0, png-img@^2.1.1:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/png-img/-/png-img-2.2.0.tgz#e986cc90de008da0659b77252123f98d7be48333"
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/png-img/-/png-img-2.3.0.tgz#ae5e24e4f8601d6f20692874be60a69d0684b14d"
+  integrity sha512-niTERtbYrszcFHdUbsM0JnKMvCUnT/5AJfozWKf8jKYf4gRoyF+xTMhgOKcM3H9rdZX9G8K+MJjPLeM90u/92w==
   dependencies:
-    nan "^2.0.4"
+    nan "^2.14.0"
 
 pngjs@^3.0.0, pngjs@^3.2.0, pngjs@^3.3.3:
   version "3.4.0"
