@@ -67,7 +67,7 @@ export default configMerger(walttiConfig, {
     useRetinaTiles: true,
     tileSize: 512,
     zoomOffset: -1,
-    minZoom: 8,
+    minZoom: 7,
     maxZoom: 18,
     genericMarker: {
       // Do not render name markers at zoom levels below this value
@@ -196,6 +196,7 @@ export default configMerger(walttiConfig, {
   },
 
   geolocation: {
+    serviceUrl: 'http://ip-api.com/json?fields=33288191&lang=en',
     shouldUse: true
   },
 

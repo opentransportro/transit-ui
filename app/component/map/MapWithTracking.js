@@ -21,6 +21,7 @@ import {
 import triggerMessage from '../../util/messageUtils';
 import { addAnalyticsEvent } from '../../util/analyticsUtils';
 
+const COUNTRY_ZOOM = 6;
 const DEFAULT_ZOOM = 12;
 const FOCUS_ZOOM = 16;
 
@@ -114,6 +115,8 @@ class MapWithTrackingStateHandler extends React.Component {
       origin: props.origin,
       destination: props.destination,
       shouldShowDefaultLocation: !hasOriginorPosition,
+      defaultLocation:
+        props.config.defaultMapCenter || props.config.defaultEndpoint,
     };
   }
 
@@ -161,6 +164,8 @@ class MapWithTrackingStateHandler extends React.Component {
       startClient(this.context);
     }
 
+    const prevState = this.state;
+
     if (config.geolocation.shouldUse === true) {
       fetch(config.geolocation.serviceUrl)
         .then(res => res.json())
@@ -169,10 +174,19 @@ class MapWithTrackingStateHandler extends React.Component {
             this.setState({
               defaultLocation: {
                 address: 'User detected location',
-                lat: result.latitude,
-                lon: result.longitude,
+                lat: result.lat,
+                lon: result.lon,
               },
             });
+            if (
+              (result.mobile === true || result.proxy === true) &&
+              prevState.destination.set === false &&
+              prevState.origin.set === false
+            ) {
+              this.setState({
+                initialZoom: COUNTRY_ZOOM,
+              });
+            }
           },
           () => {
             this.setState({
