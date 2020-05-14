@@ -160,6 +160,28 @@ class MapWithTrackingStateHandler extends React.Component {
     if (this.props.mapLayers.showAllBusses) {
       startClient(this.context);
     }
+
+    if (config.geolocation.shouldUse === true) {
+      fetch(config.geolocation.serviceUrl)
+        .then(res => res.json())
+        .then(
+          result => {
+            this.setState({
+              defaultLocation: {
+                address: 'User detected location',
+                lat: result.latitude,
+                lon: result.longitude,
+              },
+            });
+          },
+          () => {
+            this.setState({
+              defaultLocation:
+                config.defaultMapCenter || config.defaultEndpoint,
+            });
+          },
+        );
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -333,7 +355,7 @@ class MapWithTrackingStateHandler extends React.Component {
       mapLayers,
       ...rest
     } = this.props;
-    const { geoJson } = this.state;
+    const { geoJson, defaultLocation } = this.state;
     let location;
     if (
       this.state.focusOnOrigin &&
@@ -352,7 +374,7 @@ class MapWithTrackingStateHandler extends React.Component {
     ) {
       location = this.state.destination;
     } else if (this.state.shouldShowDefaultLocation) {
-      location = config.defaultMapCenter || config.defaultEndpoint;
+      location = defaultLocation;
     }
     const leafletObjs = [];
 

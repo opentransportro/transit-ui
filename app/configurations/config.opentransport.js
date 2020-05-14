@@ -195,6 +195,10 @@ export default configMerger(walttiConfig, {
     lon: 21.23279571533203,
   },
 
+  geolocation: {
+    shouldUse: true
+  },
+
   cityBike: {
     showCityBikes: true,
     networks: {

@@ -568,7 +568,10 @@ export default {
       },
     ],
   },
-
+  geolocation: {
+    serviceUrl: 'https://geolocation-db.com/json/',
+    shouldUse: false,
+  },
   // Default origin endpoint to use when user is outside of area
   defaultEndpoint: {
     address: 'Helsinki-Vantaan Lentoasema',
