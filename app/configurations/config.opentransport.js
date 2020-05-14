@@ -80,7 +80,19 @@ export default configMerger(walttiConfig, {
       },
     },
 
-    useModeIconsInNonTileLayer: true,
+    line: {
+      halo: {
+        weight: 5,
+        thinWeight: 3,
+      },
+
+      leg: {
+        weight: 4,
+        thinWeight: 2,
+      },
+
+      passiveColor: '#758993',
+    },
   },
   
   // Navbar logo

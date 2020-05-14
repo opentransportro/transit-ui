@@ -338,10 +338,12 @@ export function drawAvailabilityValue(
   const y =
     calculateIconBadgePosition(geom.y, tile, imageSize, radius, scaleratio) + 1;
 
+  tile.ctx.strokeStyle = 'white';
   tile.ctx.beginPath();
+  tile.ctx.lineWidth = 2;
   tile.ctx.fillStyle =
-    (value > 3 && '#4EA700') || (value > 0 && '#FF6319') || '#DC0451';
-  tile.ctx.arc(x, y, radius, 0, FULL_CIRCLE);
+    (value > 3 && '#49C248') || (value > 0 && '#FF9900') || '#7F8B8F';
+  tile.ctx.arc(x, y - 1, radius, 0, FULL_CIRCLE);
   tile.ctx.fill();
 
   tile.ctx.font = `${0.7 * badgeSize}px
@@ -350,6 +352,8 @@ export function drawAvailabilityValue(
   tile.ctx.textAlign = 'center';
   tile.ctx.textBaseline = 'middle';
   tile.ctx.fillText(value, x, y);
+  tile.ctx.closePath();
+  tile.ctx.stroke();
 }
 
 export const getZoneLabelColor = config => {
