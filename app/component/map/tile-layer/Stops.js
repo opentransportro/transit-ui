@@ -9,6 +9,8 @@ import {
   drawRoundIcon,
   drawTerminalIcon,
   drawRoundIconAlertBadge,
+  drawIcon,
+  getStopRadius,
 } from '../../../util/mapIconUtils';
 import { isFeatureLayerEnabled } from '../../../util/mapLayerUtils';
 
@@ -30,6 +32,8 @@ class Stops {
     this.mapLayers = mapLayers;
     this.promise = this.getPromise();
     this.getCurrentTime = getCurrentTime;
+    this.scaleratio =
+      (typeof window !== 'undefined' && window.devicePixelRatio) || 1;
   }
 
   static getName = () => 'stop';
@@ -58,6 +62,61 @@ class Stops {
       return;
     }
 
+    if (
+      feature.properties.type === 'BUS' &&
+      this.config.transportModes &&
+      this.tile.coords.z >= this.config.transportModes.bus.smallIconZoom
+    ) {
+      drawIcon(
+        'icon_map-bus',
+        this.tile,
+        feature.geom,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+      );
+      return;
+    }
+
+    if (
+      feature.properties.type === 'TRAM' &&
+      this.config.transportModes &&
+      this.tile.coords.z >= this.config.transportModes.tram.smallIconZoom
+    ) {
+      drawIcon(
+        'icon_map-tram',
+        this.tile,
+        feature.geom,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+      );
+      return;
+    }
+
+    if (
+      feature.properties.type === 'RAIL' &&
+      this.config.transportModes &&
+      this.tile.coords.z >= this.config.transportModes.rail.smallIconZoom
+    ) {
+      drawIcon(
+        'icon_map-rail',
+        this.tile,
+        feature.geom,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+      );
+      return;
+    }
+
+    if (
+      feature.properties.type === 'SUBWAY' &&
+      this.config.transportModes &&
+      this.tile.coords.z >= this.config.transportModes.subway.smallIconZoom
+    ) {
+      drawIcon(
+        'icon_map-subway',
+        this.tile,
+        feature.geom,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+      );
+      return;
+    }
     let scale;
 
     if (large) {

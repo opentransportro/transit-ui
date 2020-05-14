@@ -152,7 +152,7 @@ export function drawRoundIcon(tile, geom, type, customScale, platformNumber) {
     );
     tile.ctx.fill();
 
-    if (hubRadius > 0) {
+    if (hubRadius > 2) {
       tile.ctx.beginPath();
       tile.ctx.fillStyle = '#fff';
       tile.ctx.arc(

@@ -31,7 +31,7 @@ export default configMerger(walttiConfig, {
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,
 
-    FONT: 'https://fonts.googleapis.com/css?family=Noto+Sans:300,400,700%7CPT+Sans+Narrow:400,700',
+    FONT: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700%7CPT+Sans+Narrow:400,700',
     PELIAS: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/search`,
     PELIAS_REVERSE_GEOCODER: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/reverse`,
     PELIAS_PLACE: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/place`,
@@ -255,19 +255,28 @@ export default configMerger(walttiConfig, {
   },
 
   transportModes: {
+    bus: {
+      availableForSelection: true,
+      defaultValue: true,
+      smallIconZoom: 14,
+    },
+
     rail: {
       availableForSelection: true,
       defaultValue: true,
+      smallIconZoom: 14,
     },
 
     tram: {
       availableForSelection: true,
       defaultValue: true,
+      smallIconZoom: 14,
     },
 
     subway: {
-      availableForSelection: false,
+      availableForSelection: true,
       defaultValue: false,
+      smallIconZoom: 14,
     },
 
     airplane: {
