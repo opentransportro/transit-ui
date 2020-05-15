@@ -32,7 +32,7 @@ class Stops {
     this.mapLayers = mapLayers;
     this.promise = this.getPromise();
     this.getCurrentTime = getCurrentTime;
-    this.scaleratio =
+    this.scaleRatio =
       (typeof window !== 'undefined' && window.devicePixelRatio) || 1;
   }
 
@@ -62,6 +62,7 @@ class Stops {
       return;
     }
 
+    console.log(feature.properties);
     if (
       feature.properties.type === 'BUS' &&
       this.config.transportModes &&
@@ -71,7 +72,7 @@ class Stops {
         'icon_map-bus',
         this.tile,
         feature.geom,
-        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleRatio,
       );
       return;
     }
@@ -85,7 +86,7 @@ class Stops {
         'icon_map-tram',
         this.tile,
         feature.geom,
-        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleRatio,
       );
       return;
     }
@@ -99,7 +100,7 @@ class Stops {
         'icon_map-rail',
         this.tile,
         feature.geom,
-        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleRatio,
       );
       return;
     }
@@ -113,7 +114,7 @@ class Stops {
         'icon_map-subway',
         this.tile,
         feature.geom,
-        3 * getStopRadius(this.tile.coords.z) * this.scaleratio,
+        3 * getStopRadius(this.tile.coords.z) * this.scaleRatio,
       );
       return;
     }

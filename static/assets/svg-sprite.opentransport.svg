@@ -708,6 +708,7 @@
 -->
 	<use x="850" y="830" width="550" height="550" class="fill-color14" xlink:href="#icon-icon_user" fill="#fff"/>
 </symbol>
+<!-- MAP ICONS FOR STOPS -->
 <symbol id="icon_map-bus" viewBox="0 0 1024 1024">
 	<circle class="bus" cx="512" cy="512" r="465.5"/>
 	<path fill="#ffffff" d="M1024,512c0-140.3-50.2-260.7-150.6-361.3C772.9,50.3,652.4,0,512,0C370.6,0,249.7,50.2,149.1,150.7
@@ -791,6 +792,7 @@
 	c-4.9-4.9-7.3-10.2-7.3-16.1c0-7.8,2.4-14.1,7.3-19c4.9-5.9,10.7-8.8,17.6-8.8s13.2,2.9,19,8.8c3.9,4.9,5.9,11.2,5.9,19
 	c0,5.9-2,11.2-5.9,16.1c-5.8,4.9-12.2,7.3-19,7.3S499.3,607.6,494.4,602.7 M550,684.6l29.3,26.3H446.2l27.8-26.3H550z"/>
 </symbol>
+<!-- MAP ICONS FOR STOPS -->
 <symbol id="icon-icon_no_route_found" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46">
   <g id="bkg" display="none"> </g>
   <g id="picto">
