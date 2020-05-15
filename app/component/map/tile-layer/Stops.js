@@ -62,7 +62,6 @@ class Stops {
       return;
     }
 
-    console.log(feature.properties);
     if (
       feature.properties.type === 'BUS' &&
       this.config.transportModes &&
