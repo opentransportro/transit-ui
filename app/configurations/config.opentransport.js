@@ -46,7 +46,10 @@ export default configMerger(walttiConfig, {
     'Europe/Bucharest|EET EEST|-20 -30|01010101010101010101010|1BWp0 1qM0 WM0 1qM0 ' +
     'WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|35e5',
 
-  showAllBusses: true,
+  /* Option to disable the "next" column of the Route panel as it can be confusing sometimes: https://github.com/mfdz/digitransit-ui/issues/167 */
+  displayNextDeparture: true,
+
+  showAllBusses: false,
   showVehiclesOnStopPage: true,
 
   itinerary: {
@@ -111,7 +114,7 @@ export default configMerger(walttiConfig, {
 
   // Lowest level for stops and terminals are rendered
   stopsMinZoom: 14,
-  mergeStopsByCode: false,
+  mergeStopsByCode: true,
 
   colors: {
     primary: '#181c56',
