@@ -124,7 +124,7 @@ export default configMerger(walttiConfig, {
   sprites: 'assets/svg-sprite.opentransport.svg',
 
   agency: {
-    show: true,
+    show: false,
   },
 
   socialMedia: {

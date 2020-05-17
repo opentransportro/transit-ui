@@ -63,6 +63,7 @@ $heading-color: #858585;
 .fpccontainer {
   position: absolute;
   top: 16px;
+  margin-top: 3.5%;
   right: 30px;
   z-index: index($zindex, context-panel);
   height: calc(100% - 100px);

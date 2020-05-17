@@ -40,24 +40,34 @@ $content-background-color: $background-color;
   white-space: nowrap;
 }
 .top-bar {
-  position: relative;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: $primary-color;
+  // background: transparentize(#f0f0f0, 0.25);
   text-align: center;
   overflow: visible; // Show drawer menu
   z-index: 1008;
+  width: 100%;
 
   // Fixed navbar height for now, as dynamic height leads to Safari issues
   height: $topbar-height;
   min-height: $topbar-height;
+  box-shadow: none;
+
+  transition: 0.2s; /* Add a transition effect (when scrolling - and font size is decreased) */
+
+  &.scrolled {
+    background-color: #fafafa;
+    box-shadow: 1px 0px 15px #8c8c8c;
+  }
 
   &.bp-large {
+    position: absolute;
     height: 60px;
     align-items: center;
     line-height: 1.8em;
-    box-shadow: 2px 0px 25px #575757;
+    //box-shadow: 2px 0px 25px #575757;
 
     @media print {
       display: none;
@@ -102,6 +112,7 @@ $content-background-color: $background-color;
 
 #skip-to-content-link {
   height: 0px;
+  display: none;
 
   @media print {
     display: none;
@@ -125,6 +136,8 @@ $content-background-color: $background-color;
     cursor: pointer;
     padding: 2px 8px;
     margin: 0px 2px;
+    background-color: hsla(0, 0%, 35%, 0.7);
+    border-radius: 3px;
     &.selected {
       border-radius: 3px;
       background-color: hsla(0, 0%, 100%, 0.15);
@@ -135,7 +148,7 @@ $content-background-color: $background-color;
 .navi-languages {
   //desktop
   #lang-select {
-    border-bottom: 0px;
+    border-bottom: 0;
     .lang.selected {
       background: $selected-lang-background;
     }
@@ -262,6 +275,7 @@ section.content {
     flex-direction: column;
     height: 100%;
     position: relative;
+    padding-top: 13%;
   }
 
   .desktop {
@@ -278,6 +292,7 @@ section.content {
       height: 100%;
       display: flex;
       flex-direction: column;
+      padding-top: 3.5%;
 
       @media print {
         height: auto;
@@ -374,9 +389,11 @@ section.content {
   @media print {
     display: none;
   }
-  position: relative;
+  position: absolute;
+  bottom: 0;
   z-index: 802;
   width: 100%;
+  opacity: 0.9;
   display: block;
   @include font-book;
   font-size: $font-size-small;
@@ -492,12 +509,14 @@ section.content {
   margin: 0px;
   padding: 0px 6px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 
   a.external-link {
     display: inline-block;
     vertical-align: text-top;
-    color: $white;
+    //color: $white;
+    color: $black;
     font-size: $font-size-xxsmall;
     text-decoration: none;
   }

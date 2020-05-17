@@ -24,7 +24,7 @@ export default class BackButton extends React.Component {
   static defaultProps = {
     icon: 'icon-icon_arrow-left',
     className: 'back',
-    color: 'white',
+    color: 'black',
   };
 
   goBack = () => {
