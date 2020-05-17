@@ -10,6 +10,7 @@ const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
 const APP_DESCRIPTION = 'Planificator  rute ce ofera suport pentru planificare de calatorii folosind transportul public sau bicicleta.';
 
 const walttiConfig = require('./config.waltti').default;
+const STATIC_MESSAGE_URL = process.env.STATIC_MESSAGE_URL || 'https://api.opentransport.ro/messages/';
 
 const minLat = 43;
 const maxLat = 48;
@@ -350,4 +351,5 @@ export default configMerger(walttiConfig, {
       },
     ],
   },
+  staticMessagesUrl: STATIC_MESSAGE_URL,
 });
