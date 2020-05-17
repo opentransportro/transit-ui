@@ -9,27 +9,46 @@ import MessageBar from './MessageBar';
 import LogoSmall from './LogoSmall';
 import CanceledLegsBar from './CanceledLegsBar';
 
-const AppBarSmall = ({
-  disableBackButton,
-  showLogo,
-  title,
-  homeUrl,
-  logo,
-  user,
-}) => (
-  <React.Fragment>
-    <DisruptionInfo />
-    <nav className="top-bar">
-      {!disableBackButton && <BackButton />}
-      <section className="title">
-        <LogoSmall showLogo={showLogo} logo={logo} title={title} />
-      </section>
-      <MainMenuContainer homeUrl={homeUrl} user={user} />
-    </nav>
-    <MessageBar />
-    <CanceledLegsBar />
-  </React.Fragment>
-);
+class AppBarSmall extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { scrolled: false };
+  }
+
+  componentDidMount() {
+    window.onscroll = () => {
+      this.setState({
+        scrolled: window.pageYOffset >= 10,
+      });
+    };
+  }
+
+  render() {
+    const {
+      disableBackButton,
+      showLogo,
+      title,
+      homeUrl,
+      logo,
+      user,
+    } = this.props;
+    return (
+      <React.Fragment>
+        <DisruptionInfo />
+        <nav className={`top-bar ${this.state.scrolled ? 'scrolled' : ''}`}>
+          {!disableBackButton && <BackButton />}
+          <section className="title">
+            <LogoSmall showLogo={showLogo} logo={logo} title={title} />
+          </section>
+          <MainMenuContainer homeUrl={homeUrl} user={user} />
+        </nav>
+        <MessageBar />
+        <CanceledLegsBar />
+      </React.Fragment>
+    );
+  }
+}
 
 AppBarSmall.displayName = 'AppBarSmall';
 
