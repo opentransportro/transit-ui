@@ -53,9 +53,7 @@ div.map.full {
   flex-grow: 1;
   flex-basis: 0;
 }
-div.background-gradient {
-  height: $gradient-height;
-}
+
 div.below-map {
   height: calc(100% - #{$small-map-height});
 }
@@ -116,8 +114,8 @@ div.leaflet-marker-icon.to,
 div.leaflet-marker-icon.via {
   > span {
     > svg.icon {
-      height: auto;
-      width: auto;
+      height: 2.8em;
+      width: 2.8em;
     }
   }
 }
@@ -575,6 +573,7 @@ div.origin-popup {
 
 div.background-gradient {
   width: 100%;
+  height: $gradient-height;
   position: absolute;
   top: 0px;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
@@ -669,7 +668,7 @@ div.map-click-prevent-overlay {
   border: none;
   background: transparent;
   cursor: none;
-  interactive: false;
+  // interactive: false;
   font-size: 50px;
   color: $primary-color;
 }
