@@ -22,6 +22,10 @@ const defaultProps = {
     feedIds: [],
     stopsMinZoom: 0,
     showAllBusses: false,
+    geolocation: {
+      serviceUrl: '',
+      shouldUse: false,
+    },
   },
   mapLayers: {
     geoJson: {},
