@@ -64,6 +64,10 @@
         vertical-align: top;
       }
     }
+
+    &:nth-child(even) {
+      background-color: #efefef;
+    }
     background-color: $white;
     border: 1px solid $light-gray;
     border-top: none;
