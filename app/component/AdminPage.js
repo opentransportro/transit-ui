@@ -23,7 +23,7 @@ class AdminPage extends React.Component {
     const OTPURLSplit = this.context.config.URL.OTP.split('/');
     const dataContainerURL = `${
       this.context.config.URL.API_URL
-    }/routing-data/v2/${
+    }/routing-data/v1/${
       OTPURLSplit[OTPURLSplit.length - 2]
     }/router-config.json`;
     fetch(dataContainerURL)
