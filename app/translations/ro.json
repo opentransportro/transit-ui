@@ -223,7 +223,7 @@
   "no-route-start-end": "Selectați punctele de plecare și destinație.",
   "no-transfers-margin": "1 min",
   "no-trips-found": "Nicio călătorie găsită pentru data respectivă.",
-  "now": "Now",
+  "now": "Acum",
   "number-of-intermediate-stops": "{number, plural, =0 {Nicio stație intermediară} one {1 stație} other {{number} opriri} }",
   "number-of-minutes": "{number, plural, =0 {0 minute} one {1 minut} other {{number} minute}}",
   "off-canvas-info": "Autentificați-vă pe platformă pentru a vă salva locațiile favorite și a le putea utiliza pe alte dispozitive.",
