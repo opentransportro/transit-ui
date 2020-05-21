@@ -465,6 +465,9 @@ svg.icon.footer-icon {
   justify-content: center;
   > div {
     max-width: 600px;
+    > a {
+      text-decoration: none;
+    }
   }
 }
 
