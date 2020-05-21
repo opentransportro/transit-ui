@@ -8,39 +8,44 @@ import AppBarSmall from './AppBarSmall';
 import AppBarLarge from './AppBarLarge';
 import { DesktopOrMobile } from '../util/withBreakpoint';
 
-const AppBarContainer = ({
-  router,
-  location,
-  homeUrl,
-  logo,
-  user,
-  ...args
-}) => (
-  <Fragment>
-    <a href="#mainContent" id="skip-to-content-link">
-      <FormattedMessage id="skip-to-content" defaultMessage="Skip to content" />
-    </a>
-    <DesktopOrMobile
-      mobile={() => (
-        <AppBarSmall
-          {...args}
-          showLogo={location.pathname === homeUrl}
-          logo={logo}
-          homeUrl={homeUrl}
-          user={user}
+class AppBarContainer extends React.Component {
+  isHome() {
+    const { location, homeUrl } = this.props;
+    return location.pathname.includes(homeUrl);
+  }
+  render() {
+    const { router, location, homeUrl, logo, user, ...args } = this.props;
+    return (
+      <Fragment>
+        <a href="#mainContent" id="skip-to-content-link">
+          <FormattedMessage
+            id="skip-to-content"
+            defaultMessage="Skip to content"
+          />
+        </a>
+        <DesktopOrMobile
+          mobile={() => (
+            <AppBarSmall
+              {...args}
+              showLogo={this.isHome()}
+              logo={logo}
+              homeUrl={homeUrl}
+              user={user}
+            />
+          )}
+          desktop={() => (
+            <AppBarLarge
+              {...args}
+              logo={logo}
+              titleClicked={() => router.push(homeUrl)}
+              user={user}
+            />
+          )}
         />
-      )}
-      desktop={() => (
-        <AppBarLarge
-          {...args}
-          logo={logo}
-          titleClicked={() => router.push(homeUrl)}
-          user={user}
-        />
-      )}
-    />
-  </Fragment>
-);
+      </Fragment>
+    );
+  }
+}
 
 AppBarContainer.propTypes = {
   location: locationShape.isRequired,

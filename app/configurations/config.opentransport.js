@@ -2,7 +2,7 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'opentransport';
-const APP_TITLE = 'DU-MA.RO | Harta transport public Romania';
+const APP_TITLE = 'Harta transportului public din Romania - Timsoara, Cluj, Bucuresti, Constanta, Sibiu';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
 const MAP_TOKEN = process.env.MAP_TOKEN || '';
@@ -99,7 +99,8 @@ export default configMerger(walttiConfig, {
   },
   
   // Navbar logo
-  logo: 'opentransport/opentransport-logo.svg',
+  // logo: 'opentransport/opentransport-logo.svg',
+  logo: 'opentransport/gomee-logo.svg',
   favicon: './app/configurations/images/opentransport/opentransport-favicon.svg',
 
   nearbyRoutes: {
@@ -316,7 +317,7 @@ export default configMerger(walttiConfig, {
 
   footer: {
     content: [
-      { label: `© Opentransport ${walttiConfig.YEAR}` },
+      { label: `© Open Transport ${walttiConfig.YEAR}` },
       {},
       {
         name: 'footer-feedback',
@@ -327,7 +328,7 @@ export default configMerger(walttiConfig, {
       {
         name: 'about-this-service',
         nameEn: 'About this service',
-        route: '/tietoja-palvelusta',
+        route: '/about-this-service',
         icon: 'icon-icon_info',
       },
     ],
@@ -341,12 +342,36 @@ export default configMerger(walttiConfig, {
           'This service is provided by Opentransport for route planning in Opentransport region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
         ],
       },
+      {
+        header: 'Digitransit platform',
+        paragraphs: [
+          'The Digitransit service platform is an open source routing platform developed by HSL and Traficom.',
+        ],
+      },
+      {
+        header: 'Data sources',
+        paragraphs: [
+          "Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from the Building and Dwelling Register of the Finnish Population Register Center. Public transport routes and timetables are downloaded from Traficom's national public transit database.",
+        ],
+      },
     ],
     ro: [
       {
         header: 'About this service',
         paragraphs: [
           'This service is provided by Opentransport for route planning in Opentransport region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+        ],
+      },
+      {
+        header: 'Digitransit platform',
+        paragraphs: [
+          'The Digitransit service platform is an open source routing platform developed by HSL and Traficom.',
+        ],
+      },
+      {
+        header: 'Data sources',
+        paragraphs: [
+          "Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from the Building and Dwelling Register of the Finnish Population Register Center. Public transport routes and timetables are downloaded from Traficom's national public transit database.",
         ],
       },
     ],

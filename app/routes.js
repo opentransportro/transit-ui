@@ -139,7 +139,7 @@ export default config => {
         }}
       />
       <Route
-        path="/tietoja-palvelusta"
+        path="/about-this-service"
         getComponents={(location, cb) => {
           Promise.all([
             Promise.resolve(Title),

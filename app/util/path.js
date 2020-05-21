@@ -10,6 +10,7 @@ import { addAnalyticsEvent } from './analyticsUtils';
 const debug = d('path.js');
 export const TAB_NEARBY = 'in-apropiere';
 export const TAB_FAVOURITES = 'favorite';
+export const TAB_NONE = '';
 export const PREFIX_ROUTES = 'rute';
 export const PREFIX_STOPS = 'statii';
 export const PREFIX_TERMINALS = 'terminale';
@@ -112,12 +113,9 @@ export const parseLocation = location => {
   return parsed;
 };
 
-export const getHomeUrl = origin => {
+export const getHomeUrl = (origin, destination) => {
   // TODO consider looking at destination too
-  const homeUrl = getPathWithEndpointObjects(origin, {
-    set: false,
-    ready: false,
-  });
+  const homeUrl = getPathWithEndpointObjects(origin, destination, TAB_NONE);
 
   return homeUrl;
 };
