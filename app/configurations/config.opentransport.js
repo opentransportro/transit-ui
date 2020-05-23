@@ -100,7 +100,7 @@ export default configMerger(walttiConfig, {
   
   // Navbar logo
   // logo: 'opentransport/opentransport-logo.svg',
-  logo: 'opentransport/gomee-logo.svg',
+  logo: 'opentransport/cityradar-logo.svg',
   favicon: './app/configurations/images/opentransport/opentransport-favicon.svg',
 
   nearbyRoutes: {
