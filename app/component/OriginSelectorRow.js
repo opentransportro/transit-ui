@@ -4,7 +4,12 @@ import Icon from './Icon';
 
 const OriginSelectorRow = ({ icon, label, onClick }) => (
   <li>
-    <button className="noborder" style={{ display: 'block' }} onClick={onClick}>
+    <button
+      id="localize-user"
+      className="noborder"
+      style={{ display: 'block' }}
+      onClick={onClick}
+    >
       <Icon className={`splash-icon ${icon}`} img={icon} />
       {label}
     </button>

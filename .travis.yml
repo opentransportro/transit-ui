@@ -21,6 +21,8 @@ install: true
 services:
   - docker
 
+notifications:
+  slack: opentransportro:lxVFa6wGTFd0FaSUujY1zLJX
 jobs:
   include:
     - stage: test
