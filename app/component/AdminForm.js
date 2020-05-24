@@ -148,7 +148,7 @@ class AdminForm extends React.Component {
     };
 
     return (
-      <div className="page-frame fullscreen momentum-scroll">
+      <div className="page-frame admin-page fullscreen momentum-scroll">
         <h3>Explanations for terms:</h3>
         <p>
           In routing configuration, cost is often equal to the time something
