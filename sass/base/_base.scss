@@ -7,7 +7,7 @@ $foundation-version: $font-family;
 $transparency: 0.5;
 $transparent-color: $white;
 
-$spinner-size: 68px;
+$spinner-size: 128px;
 
 html {
   /* Fix font display on webkit based browsers */
@@ -155,11 +155,28 @@ h1 a {
   color: $transparent-color !important;
 }
 
-div.spinner-loader {
+div.spinner-bg {
   z-index: 40000;
   position: absolute;
+  background-color: rgba(240, 240, 240, 0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+div.spinner-loader-bg {
+  position: absolute;
   left: 50%;
+  top: 35%;
   margin: $spinner-size * 0.25 0 0 $spinner-size * -0.5;
+  width: $spinner-size;
+  height: $spinner-size;
+  background-image: $spinner-image-bg;
+  background-size: cover;
+}
+div.spinner-loader {
+  z-index: 40000;
   width: $spinner-size;
   height: $spinner-size;
   background-image: $spinner-image;
@@ -168,8 +185,20 @@ div.spinner-loader {
 }
 
 @keyframes spin {
-  100% {
+  15% {
     transform: rotate(360deg);
+  }
+  30% {
+    transform: rotate(-360deg);
+  }
+  40% {
+    transform: rotate(-180deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(10deg);
   }
 }
 hr {

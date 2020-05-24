@@ -9,8 +9,12 @@ const defaultMessage = (
 );
 
 const Loading = props => (
-  <div className="spinner-loader">
-    {(props && props.children) || defaultMessage}
+  <div className="spinner-bg">
+    <div className="spinner-loader-bg">
+      <div className="spinner-loader">
+        {(props && props.children) || defaultMessage}
+      </div>
+    </div>
   </div>
 );
 
