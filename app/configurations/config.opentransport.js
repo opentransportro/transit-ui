@@ -293,8 +293,8 @@ export default configMerger(walttiConfig, {
     },
 
     citybike: {
-      availableForSelection: false,
-      defaultValue: false, // always false
+      availableForSelection: true,
+      defaultValue: true, // always false
     },
   },
 
