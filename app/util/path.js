@@ -113,9 +113,16 @@ export const parseLocation = location => {
   return parsed;
 };
 
-export const getHomeUrl = (origin, destination) => {
+export const getHomeUrl = origin => {
   // TODO consider looking at destination too
-  const homeUrl = getPathWithEndpointObjects(origin, destination, TAB_NONE);
+  const homeUrl = getPathWithEndpointObjects(
+    origin,
+    {
+      set: false,
+      ready: false,
+    },
+    TAB_NONE,
+  );
 
   return homeUrl;
 };
