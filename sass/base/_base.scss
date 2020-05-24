@@ -18,6 +18,12 @@ html {
   font-size: 15px !important;
 }
 
+a, button {
+  -webkit-user-select:none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+}
+
 @media screen and (min-width: 320px) {
   html {
     font-size: calc(14px + 7 * (100vw - 320px) / 500) !important;
