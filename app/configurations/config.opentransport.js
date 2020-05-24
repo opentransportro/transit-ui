@@ -2,12 +2,12 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'opentransport';
-const APP_TITLE = 'Harta transportului public din Romania - Timsoara, Cluj, Bucuresti, Constanta, Sibiu';
+const APP_TITLE = 'CityRadar - sursa de informatii pentru orasul tau';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
 const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoiZ25vbWUtbWFwcyIsImEiOiJjaXF3a3lwbXkwMDJwaTBubmZlaGk4cDZ6In0.8aukTfgjzeqATA8eNItPJA&';
 const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
-const APP_DESCRIPTION = 'Planificator  rute ce ofera suport pentru planificare de calatorii folosind transportul public sau bicicleta.';
+const APP_DESCRIPTION = 'Planificator rute ce ofera suport pentru organizarea de calatorii folosind transportul public sau bicicleta.';
 
 const walttiConfig = require('./config.waltti').default;
 const STATIC_MESSAGE_URL = process.env.STATIC_MESSAGE_URL || 'https://api.opentransport.ro/messages/';
