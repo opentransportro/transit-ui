@@ -115,7 +115,7 @@ const OriginSelector = (
         origin={origin}
         tab={tab}
       />
-      {names.slice(0, 3)}
+      {names.slice(0, 10)}
     </ul>
   );
 };
