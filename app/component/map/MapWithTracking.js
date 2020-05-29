@@ -3,6 +3,7 @@ import React from 'react';
 import connectToStores from 'fluxible-addons-react/connectToStores';
 import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import getContext from 'recompose/getContext';
+import inside from 'point-in-polygon';
 import LazilyLoad, { importLazy } from '../LazilyLoad';
 import ComponentUsageExample from '../ComponentUsageExample';
 import MapContainer from './MapContainer';
@@ -166,35 +167,36 @@ class MapWithTrackingStateHandler extends React.Component {
 
     const prevState = this.state;
 
-    if (config.geolocation.shouldUse === true) {
-      fetch(config.geolocation.serviceUrl)
-        .then(res => res.json())
-        .then(
-          result => {
-            this.setState({
-              defaultLocation: {
-                address: 'User detected location',
-                lat: result.lat,
-                lon: result.lon,
-              },
-            });
-            if (
-              (result.mobile === true || result.proxy === true) &&
+    if (config.geoLocator.active === true) {
+      config.geoLocator.locate(
+        result => {
+          let zoomLevel = prevState.initialZoom;
+          if (
+            (result.precision > 50 &&
               prevState.destination.set === false &&
-              prevState.origin.set === false
-            ) {
-              this.setState({
-                initialZoom: COUNTRY_ZOOM,
-              });
-            }
-          },
-          () => {
-            this.setState({
-              defaultLocation:
-                config.defaultMapCenter || config.defaultEndpoint,
-            });
-          },
-        );
+              prevState.origin.set === false) ||
+            !inside([result.longitude, result.latitude], config.areaPolygon)
+          ) {
+            zoomLevel = COUNTRY_ZOOM;
+          }
+
+          this.setState({
+            defaultLocation: {
+              address: 'User detected location',
+              lat: result.latitude,
+              lon: result.longitude,
+            },
+            initialZoom: zoomLevel,
+          });
+        },
+        // eslint-disable-next-line no-unused-vars
+        error => {
+          this.setetState({
+            defaultLocation: config.defaultMapCenter || config.defaultEndpoint,
+            initialZoom: COUNTRY_ZOOM,
+          });
+        },
+      );
     }
   }
 

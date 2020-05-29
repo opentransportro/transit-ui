@@ -16,6 +16,23 @@ const realtime = require('./realtimeUtils').default;
 
 const REALTIME_PATCH = safeJsonParse(process.env.REALTIME_PATCH) || {};
 
+const GEOLOCATION_URL = 'https://get.geojs.io/v1/ip/geo.json';
+
+function geoLocateFunction(callback, errorCallback) {
+  fetch(this.url)
+    .then(result => result.json())
+    .then(result => {
+      callback({
+        latitude: parseFloat(result.latitude),
+        longitude: parseFloat(result.longitude),
+        precision: result.accuracy,
+      });
+    })
+    .catch(error => {
+      errorCallback(error);
+    });
+}
+
 export default {
   SENTRY_DSN,
   PORT,
@@ -783,4 +800,10 @@ export default {
 
   timetables: {},
   showLogin: false,
+
+  geoLocator: {
+    url: GEOLOCATION_URL,
+    locate: geoLocateFunction,
+    active: true,
+  },
 };

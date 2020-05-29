@@ -12,10 +12,10 @@ const APP_DESCRIPTION = 'Planificator rute ce ofera suport pentru organizarea de
 const walttiConfig = require('./config.waltti').default;
 const STATIC_MESSAGE_URL = process.env.STATIC_MESSAGE_URL || 'https://api.opentransport.ro/messages/';
 
-const minLat = 43;
-const maxLat = 48;
-const minLon = 20;
-const maxLon = 30;
+const minLat = 43.6884447292;
+const maxLat = 48.2208812526;
+const minLon = 20.2201924985;
+const maxLon = 29.62654341;
 
 export default configMerger(walttiConfig, {
   CONFIG,
@@ -24,10 +24,8 @@ export default configMerger(walttiConfig, {
   URL: {
     OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/romania/`,
     MAP: {
-      // default: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/`, //`${MAP_URL}/map/v1/hsl-map/`,
       default: `https://api.mapbox.com/styles/v1/vladvesa/ck9sy09li0awb1ip824j78jc1/tiles/`,
       token: MAP_TOKEN
-
     },
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,
@@ -146,7 +144,7 @@ export default configMerger(walttiConfig, {
 
   meta: {
     description: APP_DESCRIPTION,
-    keywords: 'du-ma, opentransport, timisoara, romania, routing, planificator, rute',
+    keywords: 'cityradar, informatii, opentransport, timisoara, cluj, bucuresti, sibiu, constanta, romania, routing, planificator, rute',
   },
 
 
@@ -158,7 +156,7 @@ export default configMerger(walttiConfig, {
     },
 
     car: {
-      availableForSelection: true,
+      availableForSelection: false,
       defaultValue: false,
       icon: 'car-withoutBox',
     },
@@ -208,11 +206,6 @@ export default configMerger(walttiConfig, {
     address: 'Timisoara',
     lat: 45.749558161214544,
     lon: 21.23279571533203,
-  },
-
-  geolocation: {
-    serviceUrl: 'http://ip-api.com/json?fields=33288191&lang=en',
-    shouldUse: true
   },
 
   cityBike: {
@@ -303,11 +296,35 @@ export default configMerger(walttiConfig, {
 
   defaultOrigins: [
     {
-      icon: 'icon-icon_locate',
-      label: 'Iulius Town',
+      icon: 'icon-icon_city',
+      label: 'Timișoara',
       lat: 45.76693919705344,
       lon: 21.22649788856506
-    }
+    },
+    // {
+    //   icon: 'icon-icon_city',
+    //   label: 'Cluj Napoca',
+    //   lat: 46.772722,
+    //   lon: 23.5913713
+    // },
+    // {
+    //   icon: 'icon-icon_city',
+    //   label: 'Sibiu',
+    //   lat: 45.7916218,
+    //   lon: 24.1379915
+    // },
+    // {
+    //   icon: 'icon-icon_city',
+    //   label: 'București',
+    //   lat: 44.4378043,
+    //   lon: 26.0245983
+    // },
+    // {
+    //   icon: 'icon-icon_city',
+    //   label: 'Constanța',
+    //   lat: 44.1761039,
+    //   lon: 28.6317739
+    // }
   ],
 
   // Minimun distance between from and to locations in meters. User is noticed
