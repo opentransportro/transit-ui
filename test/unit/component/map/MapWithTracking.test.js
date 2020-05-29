@@ -22,9 +22,13 @@ const defaultProps = {
     feedIds: [],
     stopsMinZoom: 0,
     showAllBusses: false,
-    geolocation: {
-      serviceUrl: '',
-      shouldUse: false,
+    geoLocator: {
+      url: '',
+      locate: (c, ec) => {
+        c({ latitude: 0, longitude: 0, precision: 0 });
+        ec('');
+      },
+      active: false,
     },
   },
   mapLayers: {
