@@ -48,7 +48,7 @@ const AppBarLarge = (
   return (
     <div>
       <div className="top-bar bp-large flex-horizontal">
-        <button
+        <a
           className="noborder"
           onClick={e => {
             titleClicked(e);
@@ -60,7 +60,7 @@ const AppBarLarge = (
           }}
         >
           {logoElement}
-        </button>
+        </a>
         <div className="empty-space flex-grow" />
         {config.showLogin &&
           (!user.name ? (
