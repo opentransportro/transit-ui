@@ -99,7 +99,7 @@ export default configMerger(walttiConfig, {
   
   // Navbar logo
   logo: 'opentransport/cityradar-logo.svg',
-  favicon: 'opentransport/cityradar-favicon.png',
+  favicon: './app/configurations/images/opentransport/cityradar-favicon.png',
 
   nearbyRoutes: {
     radius: 2000,
