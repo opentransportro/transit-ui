@@ -61,11 +61,11 @@ table.nearby-departures-table {
       margin: 0;
       line-height: 1em;
       display: flex;
-      &:nth-child(2n){
-        background-color: #efefef !important;
-      }
-      &:nth-child(1st){
+      &:nth-child(even){
         background-color: $white;
+      }
+      &:nth-child(odd){
+        background-color: #efefef !important;
       }
       td {
         padding-top: 0.6em;
