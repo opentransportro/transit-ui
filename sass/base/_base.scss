@@ -164,7 +164,7 @@ h1 a {
 div.spinner-bg {
   z-index: 40000;
   position: absolute;
-  background-color: rgba(240, 240, 240, 0.8);
+  background-color: rgba(240, 240, 240, 0.9);
   top: 0;
   left: 0;
   width: 100%;
@@ -186,7 +186,7 @@ div.spinner-loader {
   width: $spinner-size;
   height: $spinner-size;
   background-image: $spinner-image;
-  animation: spin 4s linear infinite;
+  animation: spin 5s linear infinite;
   background-size: cover;
 }
 
