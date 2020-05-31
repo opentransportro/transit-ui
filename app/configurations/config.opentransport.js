@@ -12,6 +12,7 @@ const APP_DESCRIPTION = 'Planificator rute ce ofera suport pentru organizarea de
 const walttiConfig = require('./config.waltti').default;
 const STATIC_MESSAGE_URL = process.env.STATIC_MESSAGE_URL || 'https://api.opentransport.ro/messages/';
 
+// romania bounding box coordinates
 const minLat = 43.6884447292;
 const maxLat = 48.2208812526;
 const minLon = 20.2201924985;
@@ -98,7 +99,7 @@ export default configMerger(walttiConfig, {
   
   // Navbar logo
   logo: 'opentransport/cityradar-logo.svg',
-  favicon: './app/configurations/images/opentransport/cityradar-favicon.svg',
+  favicon: 'opentransport/cityradar-favicon.png',
 
   nearbyRoutes: {
     radius: 2000,
