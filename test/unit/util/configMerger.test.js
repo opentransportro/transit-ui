@@ -49,11 +49,14 @@ describe('configMerger', () => {
 
       // keep sections which do not exist in sub config
       expect(merged.aboutThisService.fi[1].header).to.equal('header2');
-      expect(merged.aboutThisService.fi[1].paragraphs[0]).to.equal('foo2');
+      expect(typeof merged.aboutThisService.fi[1].paragraphs).to.equal(
+        'undefined',
+      );
       expect(merged.aboutThisService.fi[1].link).to.equal('bar2.com');
 
       // insert new sections
       expect(merged.aboutThisService.fi[2].header).to.equal('header3');
+      expect(merged.aboutThisService.fi[2].paragraphs.length).to.equal(1);
       expect(merged.aboutThisService.fi[2].paragraphs[0]).to.equal('bar3');
       expect(merged.aboutThisService.fi[2].link).to.equal('bar3.com');
     });

@@ -1,58 +1,85 @@
 import PropTypes from 'prop-types';
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { routerShape } from 'react-router';
+import { FormattedMessage, intlShape } from 'react-intl';
 import connectToStores from 'fluxible-addons-react/connectToStores';
+import { isBrowser, isIOSApp } from '../util/browser';
+import { getIndex } from '../localStorageHistory';
 
-const AboutPage = ({ currentLanguage }, { config }) => {
-  const about = config.aboutThisService[currentLanguage];
-  return (
-    <div className="about-page fullscreen">
-      <div className="page-frame fullscreen momentum-scroll">
-        {about.map(
-          (section, i) =>
-            (section.paragraphs && section.paragraphs.length) ||
-            section.link ? (
-              <div key={`about-section-${i}`}>
-                <h1 className="about-header">{section.header}</h1>
-                {section.paragraphs &&
-                  section.paragraphs.map((p, j) => (
-                    <p key={`about-section-${i}-p-${j}`}>{p}</p>
-                  ))}
-                {section.link && (
-                  <a href={section.link}>
-                    <FormattedMessage
-                      id="extra-info"
-                      defaultMessage="More information"
-                    />
-                  </a>
-                )}
-              </div>
-            ) : (
-              false
-            ),
-        )}
-        <Link to="/">
-          <div className="call-to-action-button">
-            <FormattedMessage
-              id="back-to-front-page"
-              defaultMessage="Back to front page"
-            />
-          </div>
-        </Link>
+const hasHistoryEntries = () =>
+  (isIOSApp && getIndex() > 0) || (isBrowser && window.history.length);
+
+class AboutPage extends React.Component {
+  static contextTypes = {
+    intl: intlShape.isRequired,
+    router: routerShape,
+    config: PropTypes.object.isRequired,
+  };
+
+  static propTypes = {
+    currentLanguage: PropTypes.string.isRequired,
+  };
+
+  goBack = () => {
+    if (hasHistoryEntries()) {
+      this.context.router.goBack();
+    } else {
+      this.context.router.push('/');
+    }
+  };
+
+  render() {
+    const { config } = this.context;
+    const { currentLanguage } = this.props;
+    const about = config.aboutThisService[currentLanguage];
+    return (
+      <div className="about-page fullscreen">
+        <div className="page-frame fullscreen momentum-scroll">
+          {about.map(
+            (section, i) =>
+              (section.paragraphs && section.paragraphs.length) ||
+              section.link ? (
+                <div key={`about-section-${i}`}>
+                  <h1 className="about-header">{section.header}</h1>
+                  {section.paragraphs &&
+                    section.paragraphs.map((p, j) => (
+                      <p key={`about-section-${i}-p-${j}`}>{p}</p>
+                    ))}
+                  {section.link && (
+                    <a href={section.link}>
+                      <FormattedMessage
+                        id="extra-info"
+                        defaultMessage="More information"
+                      />
+                    </a>
+                  )}
+                </div>
+              ) : (
+                false
+              ),
+          )}
+          <button
+            type="button"
+            className="icon-holder noborder cursor-pointer"
+            onClick={this.goBack}
+            aria-label={this.context.intl.formatMessage({
+              id: 'back-button-title',
+              defaultMessage: 'Go back to previous page',
+            })}
+          >
+            <div className="call-to-action-button">
+              <FormattedMessage
+                id="back-to-front-page"
+                defaultMessage="Back to front page"
+              />
+            </div>
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
-
-AboutPage.propTypes = {
-  currentLanguage: PropTypes.string.isRequired,
-};
-
-AboutPage.contextTypes = {
-  config: PropTypes.object.isRequired,
-};
+    );
+  }
+}
 
 const connectedComponent = connectToStores(
   AboutPage,
