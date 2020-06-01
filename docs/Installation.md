@@ -17,7 +17,7 @@ You also need a C compiler:
 ## Start development version
 
 - OSX / Linux: `yarn run dev`
-- Windows: `npm run dev-win-national`
+- Windows: `npm run dev-win-national` / `npm run dev-win-opentransport`
 - open: http://localhost:8080
 
 ## Start production version
