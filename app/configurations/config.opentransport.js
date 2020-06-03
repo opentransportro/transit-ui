@@ -131,15 +131,15 @@ export default configMerger(walttiConfig, {
     description: APP_DESCRIPTION,
 
     image: {
-      url: '/img/hsl-social-share.png',
-      width: 400,
-      height: 400,
+      url: '/img/cityradar-social-share.png',
+      width: 800,
+      height: 751,
     },
 
-    twitter: {
-      card: 'summary',
-      site: '@opentransportro',
-    },
+    // twitter: {
+    //   card: 'summary',
+    //   site: '@opentransportro',
+    // },
   },
 
 
