@@ -403,9 +403,9 @@ export default configMerger(walttiConfig, {
     cities: [
       {
         name: 'Timișoara',
-        quote: 'Capitala banatului',
-        lat: 45.76693919705344,
-        lon: 21.22649788856506,
+        quote: 'Catedrala Mitropolitana',
+        lat: 45.751067,
+        lon: 21.224414,
         icon: 'icon-icon_city-timisoara',
         origins: [
           {
@@ -448,9 +448,9 @@ export default configMerger(walttiConfig, {
       },
       {
         name: 'Cluj-Napoca',
-        quote: 'Silicon valley of Romania',
-        lat: 46.769979,
-        lon:  23.588884,
+        quote: 'Teatrul National "Lucian Blaga"',
+        lat: 46.770651,
+        lon:  23.597136,
         icon: 'icon-icon_city-cluj',
         origins: [
           {
@@ -481,9 +481,9 @@ export default configMerger(walttiConfig, {
       },
       {
         name: 'București',
-        quote: 'Capitala României',
-        lat: 44.436180,
-        lon: 26.090322,
+        quote: 'Palatul Cec',
+        lat: 44.4319626,
+        lon: 26.0960873,
         icon: 'icon-icon_city-bucuresti',
         origins: [
           {
@@ -526,7 +526,7 @@ export default configMerger(walttiConfig, {
       },
       {
         name: 'Sibiu',
-        quote: 'The City where the houses don\'t sleep',
+        quote: 'Muzeul National Brukenthal',
         lat: 45.7965443,
         lon: 24.1499947,
         icon: 'icon-icon_city-sibiu',
@@ -553,20 +553,20 @@ export default configMerger(walttiConfig, {
       },
       {
         name: 'Constanta',
-        quote: '',
-        lat: 44.178660,
-        lon: 28.647218,
+        quote: 'Cazinoul Constanta',
+        lat: 44.170476,
+        lon: 28.663355,
         icon: 'icon-icon_city-constanta',
         origins: [
           {
             icon: 'icon-icon_city',
-            label: 'Tomis Mall',
-            lat: 44.178660,
-            lon: 28.647218,
+            label: 'Faleza Constanta',
+            lat: 44.173023,
+            lon: 28.664930,
           },
           {
             icon: 'icon-icon_city',
-            label: 'Hospital',
+            label: 'Spitalul Clinic Județean',
             lat: 44.185846,
             lon: 28.642427,
           },
