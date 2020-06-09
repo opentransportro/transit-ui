@@ -15,6 +15,9 @@ describe('<AppBarLarge />', () => {
         context: {
           config: {
             textLogo: false,
+            mainMenu: {
+              showDisruptions: true,
+            },
           },
         },
       },
@@ -31,6 +34,9 @@ describe('<AppBarLarge />', () => {
         context: {
           config: {
             textLogo: true,
+            mainMenu: {
+              showDisruptions: true,
+            },
           },
         },
       },

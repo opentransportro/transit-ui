@@ -44,6 +44,24 @@ const AppBarLarge = (
     logoElement = <LogoSmall className="navi-logo" logo={logo} showLogo />;
   }
 
+  let disruptionButton = null;
+  if (config.mainMenu.showDisruptions) {
+    disruptionButton = (
+      <div className="navi-icons navi-margin padding-horizontal-large">
+        <button
+          type="button"
+          className="noborder"
+          onClick={openDisruptionInfo}
+          aria-label={intl.formatMessage({
+            id: 'disruptions',
+            defaultMessage: 'Disruptions',
+          })}
+        >
+          <Icon img="icon-icon_caution" className="caution-topbar" />
+        </button>
+      </div>
+    );
+  }
   /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid */
   return (
     <div>
@@ -81,18 +99,7 @@ const AppBarLarge = (
         <div className="navi-languages right-border navi-margin">
           <LangSelect />
         </div>
-        <div className="navi-icons navi-margin padding-horizontal-large">
-          <a
-            className="noborder"
-            onClick={openDisruptionInfo}
-            aria-label={intl.formatMessage({
-              id: 'disruptions',
-              defaultMessage: 'Disruptions',
-            })}
-          >
-            <Icon img="icon-icon_caution" className="caution-topbar" />
-          </a>
-        </div>
+        {disruptionButton}
         <div className="padding-horizontal-large navi-margin">
           <ExternalLink
             className="external-top-bar"

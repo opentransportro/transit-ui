@@ -127,7 +127,7 @@ export default configMerger(walttiConfig, {
   },
 
   mainMenu: {
-    showDisruptions: false,
+    showDisruptions: true,
   },
 
   socialMedia: {
