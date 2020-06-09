@@ -25,6 +25,7 @@ import PreferencesStore from '../../store/PreferencesStore';
 
 const COUNTRY_ZOOM = 6;
 const DEFAULT_ZOOM = 12;
+const CITY_ZOOM = 14;
 const FOCUS_ZOOM = 16;
 
 const onlyUpdateCoordChanges = onlyUpdateForKeys([
@@ -180,7 +181,7 @@ class MapWithTrackingStateHandler extends React.Component {
           lat: this.props.city.lat,
           lon: this.props.city.lon,
         },
-        initialZoom: prevState.initialZoom,
+        initialZoom: CITY_ZOOM,
       });
     } else if (config.geoLocator.active === true) {
       config.geoLocator.locate(
@@ -286,7 +287,7 @@ class MapWithTrackingStateHandler extends React.Component {
           lat: newProps.city.lat,
           lon: newProps.city.lon,
         },
-        initialZoom: DEFAULT_ZOOM,
+        initialZoom: CITY_ZOOM,
       });
     }
 
