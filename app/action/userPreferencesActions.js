@@ -3,3 +3,7 @@
 export function setLanguage(actionContext, language) {
   actionContext.dispatch('SetLanguage', language);
 }
+
+export function setPrefferedCity(actionContext, city) {
+  actionContext.dispatch('SetPreferredCity', city);
+}

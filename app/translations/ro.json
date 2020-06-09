@@ -54,6 +54,7 @@
   "cause": "cauză",
   "char-left": "caractere",
   "choose-stop": "Selectare stație",
+  "choose-city-text": "Selectează un oras si descoperă opțiunile de transport disponibile. Poți selecta una din opțiunile de mai jos:",
   "citybike": "Bicicletă de închiriat",
   "citybike-distance-duration": "Bicicletă {distance} ({duration})",
   "citybike-network-headers": "Biciclete, trotinete, scutere",

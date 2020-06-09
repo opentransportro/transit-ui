@@ -806,4 +806,8 @@ export default {
     locate: geoLocateFunction,
     active: true,
   },
+  multiCity: {
+    enabled: false,
+    cities: [],
+  },
 };

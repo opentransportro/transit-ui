@@ -1,6 +1,10 @@
 import Store from 'fluxible/addons/BaseStore';
 import reactCookie from 'react-cookie';
 import { isLangMockEn } from '../util/browser';
+import {
+  getCityPreferenceStorage,
+  setCityPreferenceStorage,
+} from './localStorage';
 
 /* Language is stored in cookie, server should set the language based on browser
  * accepted languages
@@ -26,6 +30,8 @@ class PreferencesStore extends Store {
     } else {
       this.language = language;
     }
+
+    this.preferedCityInfo = getCityPreferenceStorage();
   }
 
   getLanguage() {
@@ -46,8 +52,19 @@ class PreferencesStore extends Store {
     this.emitChange();
   }
 
+  getPreferredCity() {
+    return this.preferedCityInfo;
+  }
+
+  setPreferredCity(city) {
+    this.preferedCityInfo = city;
+    setCityPreferenceStorage(this.preferedCityInfo);
+    this.emitChange();
+  }
+
   static handlers = {
     SetLanguage: 'setLanguage',
+    SetPreferredCity: 'setPreferredCity',
   };
 }
 
