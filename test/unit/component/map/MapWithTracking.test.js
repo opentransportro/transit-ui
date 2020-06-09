@@ -30,6 +30,10 @@ const defaultProps = {
       },
       active: false,
     },
+    multiCity: {
+      enabled: false,
+      cities: [],
+    },
   },
   mapLayers: {
     geoJson: {},

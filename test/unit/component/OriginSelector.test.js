@@ -22,6 +22,7 @@ describe('<OriginSelector />', () => {
     favouriteLocations: [],
     favouriteStops: [],
     oldSearches: [],
+    city: {},
     destination: { ready: false },
     origin: { ready: false },
     tab: 'test-tab',
@@ -50,6 +51,10 @@ describe('<OriginSelector />', () => {
           lon: 24.931702,
         },
       ],
+      multiCity: {
+        enabled: false,
+        cities: [],
+      },
     },
     router,
   };

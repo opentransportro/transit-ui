@@ -11,7 +11,15 @@ import GeopositionSelector from './GeopositionSelector';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
 
 const OriginSelector = (
-  { favouriteLocations, favouriteStops, oldSearches, destination, origin, tab },
+  {
+    favouriteLocations,
+    favouriteStops,
+    oldSearches,
+    city,
+    destination,
+    origin,
+    tab,
+  },
   { config, router },
 ) => {
   const setOrigin = newOrigin => {
@@ -54,59 +62,77 @@ const OriginSelector = (
   // those rendered on client side. Thanks to this fav icons aren't patched
   // and icons of default locations are shown. So don't render those on
   // server side.
-  const names = !isBrowser
-    ? []
-    : favouriteLocations
-        .map(f => (
+  let names;
+  if (!isBrowser) {
+    names = [];
+  } else {
+    names = favouriteLocations
+      .map(f => (
+        <OriginSelectorRow
+          key={`fl-${f.name}`}
+          icon={getIcon('favourite')}
+          onClick={() => {
+            setOrigin({ ...f, address: f.name });
+          }}
+          label={f.name}
+        />
+      ))
+      .concat(
+        favouriteStops.map(f => (
           <OriginSelectorRow
-            key={`fl-${f.name}`}
+            key={`fs-${f.name}`}
             icon={getIcon('favourite')}
             onClick={() => {
               setOrigin({ ...f, address: f.name });
             }}
             label={f.name}
           />
-        ))
-        .concat(
-          favouriteStops.map(f => (
+        )),
+      )
+      .concat(
+        oldSearches
+          .filter(isGeocodingResult)
+          .filter(notInFavouriteLocations)
+          .filter(notInFavouriteStops)
+          .map(s => (
             <OriginSelectorRow
-              key={`fs-${f.name}`}
-              icon={getIcon('favourite')}
+              key={`o-${s.properties.label || s.properties.name}`}
+              icon={getIcon(s.properties.layer)}
+              label={s.properties.label || s.properties.name}
               onClick={() => {
-                setOrigin({ ...f, address: f.name });
-              }}
-              label={f.name}
-            />
-          )),
-        )
-        .concat(
-          oldSearches
-            .filter(isGeocodingResult)
-            .filter(notInFavouriteLocations)
-            .filter(notInFavouriteStops)
-            .map(s => (
-              <OriginSelectorRow
-                key={`o-${s.properties.label || s.properties.name}`}
-                icon={getIcon(s.properties.layer)}
-                label={s.properties.label || s.properties.name}
-                onClick={() => {
-                  setOrigin(suggestionToLocation(s));
-                }}
-              />
-            )),
-        )
-        .concat(
-          config.defaultOrigins.map(o => (
-            <OriginSelectorRow
-              key={`o-${o.label}`}
-              icon={o.icon}
-              label={o.label}
-              onClick={() => {
-                setOrigin({ ...o, address: o.label });
+                setOrigin(suggestionToLocation(s));
               }}
             />
           )),
-        );
+      );
+    if (config.multiCity.enabled && city.origins && city.origins.length > 0) {
+      names = names.concat(
+        city.origins.map(o => (
+          <OriginSelectorRow
+            key={`o-${o.label}`}
+            icon={o.icon}
+            label={o.label}
+            onClick={() => {
+              setOrigin({ ...o, address: o.label });
+            }}
+          />
+        )),
+      );
+    } else {
+      names = names.concat(
+        config.defaultOrigins.map(o => (
+          <OriginSelectorRow
+            key={`o-${o.label}`}
+            icon={o.icon}
+            label={o.label}
+            onClick={() => {
+              setOrigin({ ...o, address: o.label });
+            }}
+          />
+        )),
+      );
+    }
+  }
 
   return (
     <ul>
@@ -124,6 +150,7 @@ OriginSelector.propTypes = {
   favouriteLocations: PropTypes.array.isRequired,
   favouriteStops: PropTypes.array.isRequired,
   oldSearches: PropTypes.array.isRequired,
+  city: PropTypes.object.isRequired,
   destination: dtLocationShape.isRequired,
   origin: dtLocationShape.isRequired,
   tab: PropTypes.string,
@@ -139,13 +166,14 @@ OriginSelector.contextTypes = {
 
 const connectedComponent = connectToStores(
   OriginSelector,
-  ['OldSearchesStore', 'FavouriteStore'],
+  ['OldSearchesStore', 'FavouriteStore', 'PreferencesStore'],
   context => ({
     favouriteLocations: context.getStore('FavouriteStore').getLocations(),
     favouriteStops: context.getStore('FavouriteStore').getStopsAndStations(),
     oldSearches: context
       .getStore('OldSearchesStore')
       .getOldSearches('endpoint'),
+    city: context.getStore('PreferencesStore').getPreferredCity(),
   }),
 );
 
