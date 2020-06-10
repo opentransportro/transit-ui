@@ -127,7 +127,8 @@ export default configMerger(walttiConfig, {
   },
 
   mainMenu: {
-    showDisruptions: true,
+    showDisruptions: false,
+    showCitySelect: true,
   },
 
   socialMedia: {
@@ -299,38 +300,6 @@ export default configMerger(walttiConfig, {
   redirectReittiopasParams: false,
   queryMaxAgeDays: 14,
 
-  defaultOrigins: [
-    {
-      icon: 'icon-icon_city',
-      label: 'Timișoara',
-      lat: 45.76693919705344,
-      lon: 21.22649788856506
-    },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Cluj Napoca',
-    //   lat: 46.772722,
-    //   lon: 23.5913713
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Sibiu',
-    //   lat: 45.7916218,
-    //   lon: 24.1379915
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'București',
-    //   lat: 44.4378043,
-    //   lon: 26.0245983
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Constanța',
-    //   lat: 44.1761039,
-    //   lon: 28.6317739
-    // }
-  ],
 
   // Minimun distance between from and to locations in meters. User is noticed
   // if distance is less than this.

@@ -43,28 +43,31 @@ function MainMenu(props, { config, intl, location, router }) {
           <FormattedMessage id="frontpage" defaultMessage="Frontpage" />
         </Link>
       </div>
-      <div className="offcanvas-section">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <Link
-          onClick={() => {
-            addAnalyticsEvent({
-              category: 'Navigation',
-              action: 'OpenChoseCity',
-              name: null,
-            });
-            router.push({
-              ...location,
-              state: {
-                ...location.state,
-                cityPopupOpen: true,
-              },
-              pathname: `/`,
-            });
-          }}
-        >
-          <FormattedMessage id="choose-city" defaultMessage="Choose city" />
-        </Link>
-      </div>
+      {config.mainMenu.showCitySelect &&
+        config.multiCity.enabled && (
+          <div className="offcanvas-section">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <Link
+              onClick={() => {
+                addAnalyticsEvent({
+                  category: 'Navigation',
+                  action: 'OpenChoseCity',
+                  name: null,
+                });
+                router.push({
+                  ...location,
+                  state: {
+                    ...location.state,
+                    cityPopupOpen: true,
+                  },
+                  pathname: `/`,
+                });
+              }}
+            >
+              <FormattedMessage id="choose-city" defaultMessage="Choose city" />
+            </Link>
+          </div>
+        )}
       {config.mainMenu.showDisruptions &&
         props.showDisruptionInfo && (
           <div className="offcanvas-section">

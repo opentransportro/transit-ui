@@ -197,6 +197,7 @@ export default {
     showDisruptions: true,
     showLoginCreateAccount: true,
     showOffCanvasList: true,
+    showCitySelect: false,
   },
 
   itinerary: {

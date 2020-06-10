@@ -78,7 +78,7 @@ const AppBarLarge = (
     );
   }
   let choseCityButton = null;
-  if (config.mainMenu.showDisruptions) {
+  if (config.mainMenu.showCitySelect && config.multiCity.enabled) {
     choseCityButton = (
       <div className="navi-icons navi-margin padding-horizontal">
         <button
