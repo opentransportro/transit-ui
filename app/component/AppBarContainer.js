@@ -13,6 +13,8 @@ import { setPrefferedCity } from '../action/userPreferencesActions';
 class AppBarContainer extends React.Component {
   static contextTypes = {
     config: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
     executeAction: PropTypes.func.isRequired,
   };
 
@@ -28,6 +30,14 @@ class AppBarContainer extends React.Component {
   }
 
   handleCitySelected(city) {
+    this.context.router.push({
+      ...this.context.location,
+      state: {
+        ...this.context.location.state,
+        cityPopupOpen: false,
+        offcanvasVisible: false,
+      },
+    });
     this.context.executeAction(setPrefferedCity, {
       ...city,
     });
@@ -38,7 +48,14 @@ class AppBarContainer extends React.Component {
     const { multiCity } = this.context.config;
     // evaluating if popup required
     let popup = null;
-    if (multiCity.enabled && (city.lat == null || city.lon == null)) {
+    if (
+      multiCity.enabled &&
+      (city.lat == null ||
+        city.lon == null ||
+        (this.context.location != null &&
+          this.context.location.state != null &&
+          this.context.location.state.cityPopupOpen))
+    ) {
       popup = (
         <ChooseCityPopup
           logo={logo}

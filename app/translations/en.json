@@ -55,6 +55,7 @@
   "char-left": "characters",
   "choose-stop": "Select stop",
   "choose-city-text": "Choose a city and discover transit routes available! Select one from the following available options:",
+  "choose-city": "Choose city",
   "citybike": "City bike",
   "citybike-distance-duration": "Bike {distance} ({duration})",
   "citybike-network-headers": "Citybikes and scooters",
