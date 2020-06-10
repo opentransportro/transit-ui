@@ -572,10 +572,11 @@ div.origin-popup {
 }
 
 div.background-gradient {
+  display: none;
   width: 100%;
   height: $gradient-height;
   position: absolute;
-  top: 0px;
+  top: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   pointer-events: none;
   z-index: index($zindex, map-gradient);
