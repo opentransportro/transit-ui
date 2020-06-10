@@ -33,6 +33,21 @@ const AppBarLarge = (
     });
   };
 
+  const openChoseCityPopup = () => {
+    addAnalyticsEvent({
+      category: 'Navigation',
+      action: 'OpenChoseCity',
+      name: null,
+    });
+    router.push({
+      ...location,
+      state: {
+        ...location.state,
+        cityPopupOpen: true,
+      },
+    });
+  };
+
   let logoElement;
   if (config.textLogo) {
     logoElement = (
@@ -44,6 +59,42 @@ const AppBarLarge = (
     logoElement = <LogoSmall className="navi-logo" logo={logo} showLogo />;
   }
 
+  let disruptionButton = null;
+  if (config.mainMenu.showDisruptions) {
+    disruptionButton = (
+      <div className="navi-icons navi-margin padding-horizontal">
+        <button
+          type="button"
+          className="noborder"
+          onClick={openDisruptionInfo}
+          aria-label={intl.formatMessage({
+            id: 'disruptions',
+            defaultMessage: 'Disruptions',
+          })}
+        >
+          <Icon img="icon-icon_caution" className="caution-topbar" />
+        </button>
+      </div>
+    );
+  }
+  let choseCityButton = null;
+  if (config.mainMenu.showCitySelect && config.multiCity.enabled) {
+    choseCityButton = (
+      <div className="navi-icons navi-margin padding-horizontal">
+        <button
+          type="button"
+          className="noborder"
+          onClick={openChoseCityPopup}
+          aria-label={intl.formatMessage({
+            id: 'choose-city',
+            defaultMessage: 'Choose City',
+          })}
+        >
+          <Icon img="icon-icon_city-withBox" className="caution-topbar" />
+        </button>
+      </div>
+    );
+  }
   /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid */
   return (
     <div>
@@ -81,18 +132,8 @@ const AppBarLarge = (
         <div className="navi-languages right-border navi-margin">
           <LangSelect />
         </div>
-        <div className="navi-icons navi-margin padding-horizontal-large">
-          <a
-            className="noborder"
-            onClick={openDisruptionInfo}
-            aria-label={intl.formatMessage({
-              id: 'disruptions',
-              defaultMessage: 'Disruptions',
-            })}
-          >
-            <Icon img="icon-icon_caution" className="caution-topbar" />
-          </a>
-        </div>
+        {disruptionButton}
+        {choseCityButton}
         <div className="padding-horizontal-large navi-margin">
           <ExternalLink
             className="external-top-bar"
@@ -122,6 +163,7 @@ AppBarLarge.propTypes = {
 
 AppBarLarge.defaultProps = {
   logo: undefined,
+  user: undefined,
 };
 
 AppBarLarge.displayName = 'AppBarLarge';

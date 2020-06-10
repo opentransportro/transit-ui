@@ -21,9 +21,11 @@ import {
 } from '../../action/realTimeClientAction';
 import triggerMessage from '../../util/messageUtils';
 import { addAnalyticsEvent } from '../../util/analyticsUtils';
+import PreferencesStore from '../../store/PreferencesStore';
 
 const COUNTRY_ZOOM = 6;
 const DEFAULT_ZOOM = 12;
+const CITY_ZOOM = 14;
 const FOCUS_ZOOM = 16;
 
 const onlyUpdateCoordChanges = onlyUpdateForKeys([
@@ -95,6 +97,7 @@ class MapWithTrackingStateHandler extends React.Component {
     renderCustomButtons: PropTypes.func,
     mapLayers: mapLayerShape.isRequired,
     messages: PropTypes.array,
+    city: PropTypes.object,
   };
 
   static defaultProps = {
@@ -167,7 +170,20 @@ class MapWithTrackingStateHandler extends React.Component {
 
     const prevState = this.state;
 
-    if (config.geoLocator.active === true) {
+    if (
+      config.multiCity.enabled &&
+      this.props.city.lat != null &&
+      this.props.city.lon != null
+    ) {
+      this.setState({
+        defaultLocation: {
+          address: 'User detected location',
+          lat: this.props.city.lat,
+          lon: this.props.city.lon,
+        },
+        initialZoom: CITY_ZOOM,
+      });
+    } else if (config.geoLocator.active === true) {
       config.geoLocator.locate(
         result => {
           let zoomLevel = prevState.initialZoom;
@@ -263,6 +279,18 @@ class MapWithTrackingStateHandler extends React.Component {
         this.props.messages,
       );
     }
+
+    if (newProps.city.lat != null && newProps.city.lon != null) {
+      this.setState({
+        defaultLocation: {
+          address: 'User detected location',
+          lat: newProps.city.lat,
+          lon: newProps.city.lon,
+        },
+        initialZoom: CITY_ZOOM,
+      });
+    }
+
     if (newProps.mapLayers.showAllBusses) {
       if (!this.props.mapLayers.showAllBusses) {
         startClient(this.context);
@@ -501,14 +529,22 @@ const MapWithTracking = connectToStores(
       defaultMapCenter: dtLocationShape,
     }),
   })(MapWithTrackingStateHandler),
-  [PositionStore, MapLayerStore, GeoJsonStore, MessageStore],
+  [PositionStore, MapLayerStore, GeoJsonStore, MessageStore, PreferencesStore],
   ({ getStore }) => {
     const position = getStore(PositionStore).getLocationState();
     const mapLayers = getStore(MapLayerStore).getMapLayers();
     const { getGeoJsonConfig, getGeoJsonData } = getStore(GeoJsonStore);
     const messages = getStore(MessageStore).getMessages();
+    const city = getStore(PreferencesStore).getPreferredCity();
 
-    return { position, mapLayers, getGeoJsonConfig, getGeoJsonData, messages };
+    return {
+      position,
+      mapLayers,
+      getGeoJsonConfig,
+      getGeoJsonData,
+      messages,
+      city,
+    };
   },
 );
 

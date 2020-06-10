@@ -197,6 +197,7 @@ export default {
     showDisruptions: true,
     showLoginCreateAccount: true,
     showOffCanvasList: true,
+    showCitySelect: false,
   },
 
   itinerary: {
@@ -805,5 +806,9 @@ export default {
     url: GEOLOCATION_URL,
     locate: geoLocateFunction,
     active: true,
+  },
+  multiCity: {
+    enabled: false,
+    cities: [],
   },
 };

@@ -117,13 +117,18 @@ export default configMerger(walttiConfig, {
   mergeStopsByCode: true,
 
   colors: {
-    primary: '#181c56',
+    primary: '#fff',
   },
 
   sprites: 'assets/svg-sprite.opentransport.svg',
 
   agency: {
     show: false,
+  },
+
+  mainMenu: {
+    showDisruptions: false,
+    showCitySelect: true,
   },
 
   socialMedia: {
@@ -295,38 +300,6 @@ export default configMerger(walttiConfig, {
   redirectReittiopasParams: false,
   queryMaxAgeDays: 14,
 
-  defaultOrigins: [
-    {
-      icon: 'icon-icon_city',
-      label: 'Timișoara',
-      lat: 45.76693919705344,
-      lon: 21.22649788856506
-    },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Cluj Napoca',
-    //   lat: 46.772722,
-    //   lon: 23.5913713
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Sibiu',
-    //   lat: 45.7916218,
-    //   lon: 24.1379915
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'București',
-    //   lat: 44.4378043,
-    //   lon: 26.0245983
-    // },
-    // {
-    //   icon: 'icon-icon_city',
-    //   label: 'Constanța',
-    //   lat: 44.1761039,
-    //   lon: 28.6317739
-    // }
-  ],
 
   // Minimun distance between from and to locations in meters. User is noticed
   // if distance is less than this.
@@ -394,4 +367,186 @@ export default configMerger(walttiConfig, {
     ],
   },
   staticMessagesUrl: STATIC_MESSAGE_URL,
+  multiCity: {
+    enabled: true,
+    cities: [
+      {
+        name: 'Timișoara',
+        quote: 'Catedrala Mitropolitana',
+        lat: 45.751067,
+        lon: 21.224414,
+        icon: 'icon-icon_city-timisoara',
+        origins: [
+          {
+            icon: 'icon-icon_city',
+            label: 'Spitalul Judetean',
+            lat: 45.737180,
+            lon: 21.242349,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Piata Unirii',
+            lat: 45.757502,
+            lon: 21.228801
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Stadionul Dan Paltinisanu',
+            lat: 45.740508,
+            lon: 21.244028,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Universitatea Politehnica',
+            lat: 45.747390,
+            lon: 21.226669,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Gara de nord',
+            lat: 45.751562,
+            lon: 21.207828,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Zoo & Pădurea Verde',
+            lat: 45.781389,
+            lon: 21.268209,
+          },
+        ],
+      },
+      {
+        name: 'Cluj-Napoca',
+        quote: 'Teatrul National "Lucian Blaga"',
+        lat: 46.770651,
+        lon:  23.597136,
+        icon: 'icon-icon_city-cluj',
+        origins: [
+          {
+            icon: 'icon-icon_city',
+            label: 'Cluj Arena',
+            lat: 46.768435,
+            lon: 23.572722
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Belvedere',
+            lat: 46.775283,
+            lon: 23.582504,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Spitalul Judetean',
+            lat: 46.765357,
+            lon: 23.583503,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Muzeul de arta',
+            lat: 46.770419,
+            lon: 23.589988,
+          },
+        ],
+      },
+      {
+        name: 'București',
+        quote: 'Palatul Cec',
+        lat: 44.4319626,
+        lon: 26.0960873,
+        icon: 'icon-icon_city-bucuresti',
+        origins: [
+          {
+            icon: 'icon-icon_city',
+            label: 'Muzeul national de arta',
+            lat: 44.432007,
+            lon: 26.099853,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Ateneul Roman',
+            lat: 44.441255,
+            lon: 26.097236,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Palatul Parlamentului',
+            lat: 44.427513,
+            lon: 26.088870,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Muzeul national de arta',
+            lat: 44.439423,
+            lon: 26.096102,
+          },
+          {
+            icon: 'icon-icon_airplane',
+            label: 'Aeroportul Otopeni',
+            lat: 44.573036,
+            lon: 26.084485,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Lacul Cismigiu',
+            lat: 44.436180,
+            lon: 26.090322,
+          },
+        ],
+      },
+      {
+        name: 'Sibiu',
+        quote: 'Muzeul National Brukenthal',
+        lat: 45.7965443,
+        lon: 24.1499947,
+        icon: 'icon-icon_city-sibiu',
+        origins: [
+          {
+            icon: 'icon-icon_city',
+            label: 'Piața Mare',
+            lat: 45.7965443,
+            lon: 24.1499947
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Hospital',
+            lat: 45.795204,
+            lon: 24.156961,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Stadion',
+            lat: 45.783129,
+            lon: 24.144584,
+          }
+        ],
+      },
+      {
+        name: 'Constanta',
+        quote: 'Cazinoul Constanta',
+        lat: 44.170476,
+        lon: 28.663355,
+        icon: 'icon-icon_city-constanta',
+        origins: [
+          {
+            icon: 'icon-icon_city',
+            label: 'Faleza Constanta',
+            lat: 44.173023,
+            lon: 28.664930,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Spitalul Clinic Județean',
+            lat: 44.185846,
+            lon: 28.642427,
+          },
+          {
+            icon: 'icon-icon_city',
+            label: 'Delfinariul Constanta',
+            lat: 44.205682,
+            lon: 28.643303,
+          }
+        ],
+      }
+    ]
+  }
 });

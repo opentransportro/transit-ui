@@ -336,6 +336,14 @@ export function setOldSearchesStorage(data) {
   setItem('saved-searches', data);
 }
 
+export function getCityPreferenceStorage() {
+  return getItemAsJson('city-preference', '{}');
+}
+
+export function setCityPreferenceStorage(data) {
+  setItem('city-preference', data);
+}
+
 export function setPositioningHasSucceeded(state) {
   setItem('positioningSuccesful', { state });
 }

@@ -7,14 +7,64 @@ import connectToStores from 'fluxible-addons-react/connectToStores';
 import AppBarSmall from './AppBarSmall';
 import AppBarLarge from './AppBarLarge';
 import { DesktopOrMobile } from '../util/withBreakpoint';
+import ChooseCityPopup from './ChooseCityPopup';
+import { setPrefferedCity } from '../action/userPreferencesActions';
 
 class AppBarContainer extends React.Component {
+  static contextTypes = {
+    config: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+    executeAction: PropTypes.func.isRequired,
+  };
+
+  constructor() {
+    super();
+
+    this.citySelectedCallback = this.handleCitySelected.bind(this);
+  }
+
   isHome() {
     const { location, homeUrl } = this.props;
     return location.pathname.includes(homeUrl);
   }
+
+  handleCitySelected(city) {
+    this.context.router.push({
+      ...this.context.location,
+      state: {
+        ...this.context.location.state,
+        cityPopupOpen: false,
+        offcanvasVisible: false,
+      },
+    });
+    this.context.executeAction(setPrefferedCity, {
+      ...city,
+    });
+  }
+
   render() {
-    const { router, location, homeUrl, logo, user, ...args } = this.props;
+    const { router, location, homeUrl, logo, user, city, ...args } = this.props;
+    const { multiCity } = this.context.config;
+    // evaluating if popup required
+    let popup = null;
+    if (
+      multiCity.enabled &&
+      (city.lat == null ||
+        city.lon == null ||
+        (this.context.location != null &&
+          this.context.location.state != null &&
+          this.context.location.state.cityPopupOpen))
+    ) {
+      popup = (
+        <ChooseCityPopup
+          logo={logo}
+          showLogo
+          onCitySelected={this.citySelectedCallback}
+        />
+      );
+    }
+
     return (
       <Fragment>
         <a href="#mainContent" id="skip-to-content-link">
@@ -42,6 +92,7 @@ class AppBarContainer extends React.Component {
             />
           )}
         />
+        {popup}
       </Fragment>
     );
   }
@@ -53,6 +104,7 @@ AppBarContainer.propTypes = {
   homeUrl: PropTypes.string.isRequired,
   logo: PropTypes.string,
   user: PropTypes.object,
+  city: PropTypes.object,
 };
 
 const WithContext = connectToStores(
@@ -60,9 +112,10 @@ const WithContext = connectToStores(
     location: locationShape.isRequired,
     router: routerShape.isRequired,
   })(AppBarContainer),
-  ['UserStore'],
+  ['UserStore', 'PreferencesStore'],
   context => ({
     user: context.getStore('UserStore').getUser(),
+    city: context.getStore('PreferencesStore').getPreferredCity(),
   }),
 );
 
