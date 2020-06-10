@@ -6,7 +6,6 @@ const APP_TITLE = 'CityRadar - sursa de informatii pentru orasul tau';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
 const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoiZ25vbWUtbWFwcyIsImEiOiJjaXF3a3lwbXkwMDJwaTBubmZlaGk4cDZ6In0.8aukTfgjzeqATA8eNItPJA&';
-const GEOCODING_BASE_URL = `${API_URL}/geocoding/v1`;
 const APP_DESCRIPTION = 'Planificator rute ce ofera suport pentru organizarea de calatorii folosind transportul public sau bicicleta.';
 
 const walttiConfig = require('./config.waltti').default;
@@ -30,10 +29,7 @@ export default configMerger(walttiConfig, {
     },
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,
-
-    PELIAS: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/search`,
-    PELIAS_REVERSE_GEOCODER: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/reverse`,
-    PELIAS_PLACE: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/place`,
+    GEOCODING_BASE_URL: process.env.GEOCODING_BASE_URL || `${API_URL}/geocoding/v1`,
   },
 
   title: APP_TITLE,
