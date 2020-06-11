@@ -325,14 +325,14 @@ export default configMerger(walttiConfig, {
       {
         header: 'About this service',
         paragraphs: [
-          'This service is provided by Opentransport for route planning in Timisoara, Cluj, Bucuresti, Constanta, Sibiu cities. The service covers public transport, walking, cycling, and some private car use.',
+          'This service is provided by Open Transport Routing S.R.L. for route planning in Timișoara, Cluj Napoca, Bucharest, Constanța and Sibiu cities. The service covers public transport, walking, cycling, and some private car use.',
           'Each data for each city might contain errors so if your willing to do so, please contribute and help us make this service even better.'
         ],
       },
       {
         header: 'Contributors',
         paragraphs: [
-          'Thanks to all the contributors that made this project possible: Mihai Balin, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
+          'Thanks to all the contributors that made this project possible: Mihai Balint, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
         ],
         link: 'https://bit.ly/opentransportro'
       },
@@ -347,21 +347,21 @@ export default configMerger(walttiConfig, {
       {
         header: 'Despre acest serviciu',
         paragraphs: [
-          'Acest serviciu este furnizat de catre Open Transport Routing S.R.L. si ofera posibilitatea de a planifca rute in orasele Timisoara, Cluj Napoca, Bucuresti, Constanta, Sibiu. Serviciul ofera posibilitatea de a planifica rute folosind transportul public, mersul pe jos, cu bicicleta sau in unele cazuri utilizarea masinii particulare.',
-          'Fiecare set de date este prelucrat individual si poate contine erori. Daca esti interesat sa ne ajuti pentru a imbunatati informatiile te rugam sa ne contactezi.'
+          'Acest serviciu este furnizat de către Open Transport Routing S.R.L. și oferă posibilitatea de a planifca rute în orașele Timișoara, Cluj Napoca, București, Constanța și Sibiu. Serviciul oferă posibilitatea de a planifica rute folosind transportul public, mersul pe jos, cu bicicleta sau în unele cazuri, utilizarea mașinii personale.',
+          'Fiecare set de date este prelucrat individual și poate conține erori. Dacă ești interesat să ne ajuți pentru a imbunătăți informațiile, te rugăm să ne contactezi.'
         ],
       },
       {
         header: 'Oamenii din spatele proiectului',
         paragraphs: [
-          'Multumim tutoror celor ce au contribuit si au facut acest serviciu posibil:  Mihai Balin, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
+          'Mulțumim tutoror celor care au contribuit și au făcut acest serviciu posibil: Mihai Balint, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
         ],
         link: 'https://bit.ly/opentransportro'
       },
       {
         header: 'Sursele de date',
         paragraphs: [
-          "Hartile, strazile, cladirile, locatiile pentru statiile de transport sunt furnizate de catre © OpenStreetMap incluzand aici contributiile comunitatii. Informatiile legate de transportul public (rute si programele de circulatie) sunt generate si intretinute intern. Acestea sunt create folosind infromatiile furnizate de societatiile de transport din fiecare oras mentionat.",
+          "Hărțile, străzile, clădirile, locațiile pentru stațiile de transport sunt furnizate de către © OpenStreetMap incluzand aici contribuțiile comunității. Informațiile legate de transportul public (rute și programele de circulație) sunt generate si întreținute intern. Acestea sunt create folosind informațiile furnizate de societățile de transport din fiecare oraș menționat.",
         ],
       },
     ],
