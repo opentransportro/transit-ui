@@ -378,37 +378,37 @@ export default configMerger(walttiConfig, {
         icon: 'icon-icon_city-timisoara',
         origins: [
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-hospital',
             label: 'Spitalul Judetean',
             lat: 45.737180,
             lon: 21.242349,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Piata Unirii',
             lat: 45.757502,
             lon: 21.228801
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-stadium',
             label: 'Stadionul Dan Paltinisanu',
             lat: 45.740508,
             lon: 21.244028,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Universitatea Politehnica',
             lat: 45.747390,
             lon: 21.226669,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-rail-station',
             label: 'Gara de nord',
             lat: 45.751562,
             lon: 21.207828,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-zoo',
             label: 'Zoo & Pădurea Verde',
             lat: 45.781389,
             lon: 21.268209,
@@ -423,25 +423,25 @@ export default configMerger(walttiConfig, {
         icon: 'icon-icon_city-cluj',
         origins: [
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-stadium',
             label: 'Cluj Arena',
             lat: 46.768435,
             lon: 23.572722
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-parc',
             label: 'Belvedere',
             lat: 46.775283,
             lon: 23.582504,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-hospital',
             label: 'Spitalul Judetean',
             lat: 46.765357,
             lon: 23.583503,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Muzeul de arta',
             lat: 46.770419,
             lon: 23.589988,
@@ -456,19 +456,19 @@ export default configMerger(walttiConfig, {
         icon: 'icon-icon_city-bucuresti',
         origins: [
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Ateneul Roman',
             lat: 44.441255,
             lon: 26.097236,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Palatul Parlamentului',
             lat: 44.427513,
             lon: 26.088870,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Muzeul national de arta',
             lat: 44.439423,
             lon: 26.096102,
@@ -480,7 +480,7 @@ export default configMerger(walttiConfig, {
             lon: 26.084485,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-parc',
             label: 'Lacul Cismigiu',
             lat: 44.436180,
             lon: 26.090322,
@@ -495,19 +495,19 @@ export default configMerger(walttiConfig, {
         icon: 'icon-icon_city-sibiu',
         origins: [
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-monument',
             label: 'Piața Mare',
             lat: 45.7965443,
             lon: 24.1499947
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-hospital',
             label: 'Hospital',
             lat: 45.795204,
             lon: 24.156961,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-stadium',
             label: 'Stadion',
             lat: 45.783129,
             lon: 24.144584,
@@ -522,19 +522,19 @@ export default configMerger(walttiConfig, {
         icon: 'icon-icon_city-constanta',
         origins: [
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-parc',
             label: 'Faleza Constanta',
             lat: 44.173023,
             lon: 28.664930,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-hospital',
             label: 'Spitalul Clinic Județean',
             lat: 44.185846,
             lon: 28.642427,
           },
           {
-            icon: 'icon-icon_city',
+            icon: 'icon-icon_city-poi-parc',
             label: 'Delfinariul Constanta',
             lat: 44.205682,
             lon: 28.643303,
