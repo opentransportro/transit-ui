@@ -160,7 +160,7 @@
     padding: $padding-medium;
 
     .list {
-      display: table;
+      display: flex;
       border-spacing: 10px;
       margin: 10px auto;
       padding: 0;
@@ -171,7 +171,7 @@
         margin: 5px 5px;
         border-radius: $border-radius-bigger;
         border: 1px dotted rgba(26,26,26, 0.2);
-        display: table-cell;
+        display: block;
 
         &:hover {
           background-color: #efefef;
