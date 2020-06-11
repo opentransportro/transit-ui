@@ -325,39 +325,43 @@ export default configMerger(walttiConfig, {
       {
         header: 'About this service',
         paragraphs: [
-          'This service is provided by Opentransport for route planning in Opentransport region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+          'This service is provided by Opentransport for route planning in Timisoara, Cluj, Bucuresti, Constanta, Sibiu cities. The service covers public transport, walking, cycling, and some private car use.',
+          'Each data for each city might contain errors so if your willing to do so, please contribute and help us make this service even better.'
         ],
       },
       {
-        header: 'Digitransit platform',
+        header: 'Contributors',
         paragraphs: [
-          'The Digitransit service platform is an open source routing platform developed by HSL and Traficom.',
+          'Thanks to all the contributors that made this project possible: Mihai Balin, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
         ],
+        link: 'https://bit.ly/opentransportro'
       },
       {
         header: 'Data sources',
         paragraphs: [
-          "Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from the Building and Dwelling Register of the Finnish Population Register Center. Public transport routes and timetables are downloaded from Traficom's national public transit database.",
+          "Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Public transport routes and timetables are processed internally and created by the informations provided by the transit agencies in each city.",
         ],
       },
     ],
     ro: [
       {
-        header: 'About this service',
+        header: 'Despre acest serviciu',
         paragraphs: [
-          'This service is provided by Opentransport for route planning in Opentransport region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+          'Acest serviciu este furnizat de catre Open Transport Routing S.R.L. si ofera posibilitatea de a planifca rute in orasele Timisoara, Cluj Napoca, Bucuresti, Constanta, Sibiu. Serviciul ofera posibilitatea de a planifica rute folosind transportul public, mersul pe jos, cu bicicleta sau in unele cazuri utilizarea masinii particulare.',
+          'Fiecare set de date este prelucrat individual si poate contine erori. Daca esti interesat sa ne ajuti pentru a imbunatati informatiile te rugam sa ne contactezi.'
         ],
       },
       {
-        header: 'Digitransit platform',
+        header: 'Oamenii din spatele proiectului',
         paragraphs: [
-          'The Digitransit service platform is an open source routing platform developed by HSL and Traficom.',
+          'Multumim tutoror celor ce au contribuit si au facut acest serviciu posibil:  Mihai Balin, Kristian Cseh, Claudiu Groza, Iulia Tamazlicariu, Lucian Mangu, Vlad Luca, Vlad Vesa.',
         ],
+        link: 'https://bit.ly/opentransportro'
       },
       {
-        header: 'Data sources',
+        header: 'Sursele de date',
         paragraphs: [
-          "Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from the Building and Dwelling Register of the Finnish Population Register Center. Public transport routes and timetables are downloaded from Traficom's national public transit database.",
+          "Hartile, strazile, cladirile, locatiile pentru statiile de transport sunt furnizate de catre © OpenStreetMap incluzand aici contributiile comunitatii. Informatiile legate de transportul public (rute si programele de circulatie) sunt generate si intretinute intern. Acestea sunt create folosind infromatiile furnizate de societatiile de transport din fiecare oras mentionat.",
         ],
       },
     ],
