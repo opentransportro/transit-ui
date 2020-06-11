@@ -4,16 +4,12 @@ import React from 'react';
 import { routerShape } from 'react-router';
 import { FormattedMessage, intlShape } from 'react-intl';
 import connectToStores from 'fluxible-addons-react/connectToStores';
-import { isBrowser, isIOSApp } from '../util/browser';
-import { getIndex } from '../localStorageHistory';
-
-const hasHistoryEntries = () =>
-  (isIOSApp && getIndex() > 0) || (isBrowser && window.history.length);
 
 class AboutPage extends React.Component {
   static contextTypes = {
     intl: intlShape.isRequired,
     router: routerShape,
+    location: PropTypes.object,
     config: PropTypes.object.isRequired,
   };
 
@@ -22,11 +18,14 @@ class AboutPage extends React.Component {
   };
 
   goBack = () => {
-    if (hasHistoryEntries()) {
-      this.context.router.goBack();
-    } else {
-      this.context.router.push('/');
-    }
+    this.context.router.push({
+      ...this.context.location,
+      state: {
+        ...this.context.location.state,
+        offcanvasVisible: false,
+      },
+      pathname: '/',
+    });
   };
 
   render() {
@@ -65,7 +64,7 @@ class AboutPage extends React.Component {
             onClick={this.goBack}
             aria-label={this.context.intl.formatMessage({
               id: 'back-button-title',
-              defaultMessage: 'Go back to previous page',
+              defaultMessage: 'Back to front page',
             })}
           >
             <div className="call-to-action-button">
