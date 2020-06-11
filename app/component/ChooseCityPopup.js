@@ -34,7 +34,11 @@ function ChooseCityPopup(props, context) {
   });
 
   return (
-    <div className={`bp-${props.breakpoint} choose-city-popup`}>
+    <div
+      className={`bp-${props.breakpoint} choose-city-popup ${
+        props.enabled ? 'active' : ''
+      }`}
+    >
       <div className="content">
         {logoElement}
         <div className="message">
@@ -55,12 +59,14 @@ ChooseCityPopup.propTypes = {
   logo: PropTypes.string,
   showLogo: PropTypes.bool,
   title: PropTypes.node,
+  enabled: PropTypes.bool,
   onCitySelected: PropTypes.func.isRequired,
 };
 
 ChooseCityPopup.defaultProps = {
   breakpoint: 'large',
   showLogo: false,
+  enabled: false,
   title: '',
   logo: '',
 };

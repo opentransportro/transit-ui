@@ -280,13 +280,20 @@ class MapWithTrackingStateHandler extends React.Component {
       );
     }
 
-    if (newProps.city.lat != null && newProps.city.lon != null) {
+    if (
+      newProps.city.lat != null &&
+      newProps.city.lon != null &&
+      this.props.city !== newProps.city
+    ) {
       this.setState({
         defaultLocation: {
           address: 'User detected location',
           lat: newProps.city.lat,
           lon: newProps.city.lon,
         },
+        shouldShowDefaultLocation: true,
+        focusOnOrigin: false,
+        focusOnDestination: false,
         initialZoom: CITY_ZOOM,
       });
     }

@@ -20,8 +20,29 @@ class AppBarContainer extends React.Component {
 
   constructor() {
     super();
-
     this.citySelectedCallback = this.handleCitySelected.bind(this);
+    this.state = {
+      cityPopupEnabled: false,
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { multiCity } = this.context.config;
+    // evaluating if popup required
+    let locationReceivedPopupTrigger = false;
+    if (this.context.router.location.state != null) {
+      locationReceivedPopupTrigger = this.context.router.location.state
+        .cityPopupOpen;
+    }
+    const popupEnabled =
+      multiCity.enabled &&
+      (newProps.city.lat == null ||
+        newProps.city.lon == null ||
+        locationReceivedPopupTrigger);
+
+    this.setState({
+      cityPopupEnabled: popupEnabled,
+    });
   }
 
   isHome() {
@@ -41,29 +62,23 @@ class AppBarContainer extends React.Component {
     this.context.executeAction(setPrefferedCity, {
       ...city,
     });
+
+    this.setState({
+      cityPopupEnabled: false,
+    });
   }
 
   render() {
     const { router, location, homeUrl, logo, user, city, ...args } = this.props;
-    const { multiCity } = this.context.config;
-    // evaluating if popup required
-    let popup = null;
-    if (
-      multiCity.enabled &&
-      (city.lat == null ||
-        city.lon == null ||
-        (this.context.location != null &&
-          this.context.location.state != null &&
-          this.context.location.state.cityPopupOpen))
-    ) {
-      popup = (
-        <ChooseCityPopup
-          logo={logo}
-          showLogo
-          onCitySelected={this.citySelectedCallback}
-        />
-      );
-    }
+    const { cityPopupEnabled } = this.state;
+    const popup = (
+      <ChooseCityPopup
+        logo={logo}
+        showLogo
+        onCitySelected={this.citySelectedCallback}
+        enabled={cityPopupEnabled}
+      />
+    );
 
     return (
       <Fragment>
@@ -112,10 +127,9 @@ const WithContext = connectToStores(
     location: locationShape.isRequired,
     router: routerShape.isRequired,
   })(AppBarContainer),
-  ['UserStore', 'PreferencesStore'],
+  ['UserStore'],
   context => ({
     user: context.getStore('UserStore').getUser(),
-    city: context.getStore('PreferencesStore').getPreferredCity(),
   }),
 );
 

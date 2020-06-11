@@ -43,6 +43,7 @@ class TopLevel extends React.Component {
     }).isRequired,
     origin: dtLocationShape,
     user: PropTypes.object,
+    city: PropTypes.object,
   };
 
   static contextTypes = {
@@ -189,6 +190,7 @@ class TopLevel extends React.Component {
             {...this.topBarOptions}
             {...this.state}
             homeUrl={homeUrl}
+            city={this.props.city}
           />
         )}
         <section id="mainContent" className="content">
@@ -203,9 +205,10 @@ class TopLevel extends React.Component {
 
 export default connectToStores(
   TopLevel,
-  ['OriginStore', 'UserStore'],
+  ['OriginStore', 'UserStore', 'PreferencesStore'],
   ({ getStore }) => ({
     origin: getStore('OriginStore').getOrigin(),
     user: getStore('UserStore').getUser(),
+    city: getStore('PreferencesStore').getPreferredCity(),
   }),
 );

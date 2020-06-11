@@ -453,12 +453,6 @@ export default configMerger(walttiConfig, {
         origins: [
           {
             icon: 'icon-icon_city',
-            label: 'Muzeul national de arta',
-            lat: 44.432007,
-            lon: 26.099853,
-          },
-          {
-            icon: 'icon-icon_city',
             label: 'Ateneul Roman',
             lat: 44.441255,
             lon: 26.097236,

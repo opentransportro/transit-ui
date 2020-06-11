@@ -3,7 +3,11 @@
   height: 100%;
   top: 0;
   left: 0;
+  display: none;
 
+  &.active {
+    display: block !important;
+  }
   z-index: 99999;
   position: absolute;
   background-color: rgba(26, 26, 26, 0.85);
