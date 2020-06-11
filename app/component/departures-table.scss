@@ -59,7 +59,7 @@ table.nearby-departures-table {
       @include font-narrow-book;
       font-size: $font-size-small;
       margin: 0;
-      line-height: 1em;
+      line-height: 1.15em;
       display: flex;
       &:nth-child(even){
         background-color: $white;
