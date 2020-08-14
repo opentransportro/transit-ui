@@ -4,11 +4,10 @@ import React from 'react';
 import elementResizeDetectorMaker from 'element-resize-detector';
 
 import LeafletMap from 'react-leaflet/es/Map';
-import TileLayer from 'react-leaflet/es/TileLayer';
+import { MapboxGlLayer } from '@mongodb-js/react-mapbox-gl-leaflet/lib/react-mapbox-gl-leaflet';
 import AttributionControl from 'react-leaflet/es/AttributionControl';
 import ScaleControl from 'react-leaflet/es/ScaleControl';
 import ZoomControl from 'react-leaflet/es/ZoomControl';
-import L from 'leaflet';
 import 'leaflet-active-area';
 // Webpack handles this by bundling it with the other css files
 import 'leaflet/dist/leaflet.css';
@@ -16,7 +15,6 @@ import 'leaflet/dist/leaflet.css';
 import PositionMarker from './PositionMarker';
 import VectorTileLayerContainer from './tile-layer/VectorTileLayerContainer';
 import { boundWithMinimumArea } from '../../util/geo-utils';
-import { isDebugTiles } from '../../util/browser';
 import { BreakpointConsumer } from '../../util/withBreakpoint';
 import events from '../../util/events';
 
@@ -51,7 +49,7 @@ export default class Map extends React.Component {
 
   static defaultProps = {
     animate: true,
-    loaded: () => {},
+    loaded: () => { },
     showScaleBar: false,
     activeArea: null,
     mapRef: null,
@@ -104,17 +102,6 @@ export default class Map extends React.Component {
       boundsOptions.paddingTopLeft = this.props.padding;
     }
 
-    let mapUrl =
-      (isDebugTiles && `${config.URL.OTP}inspector/tile/traversal/`) ||
-      config.URL.MAP;
-    if (mapUrl !== null && typeof mapUrl === 'object') {
-      mapUrl = mapUrl[this.props.lang] || config.URL.MAP.default;
-    }
-
-    const mapToken = config.URL.MAP.token
-      ? `?access_token=${config.URL.MAP.token}`
-      : '.png';
-
     return (
       <div aria-hidden="true">
         <LeafletMap
@@ -145,20 +132,14 @@ export default class Map extends React.Component {
           onPopupopen={this.onPopupopen}
           closePopupOnClick={false}
         >
-          <TileLayer
+          <MapboxGlLayer
             onLoad={this.setLoaded}
-            url={`${mapUrl}{z}/{x}/{y}{size}${mapToken}`}
-            tileSize={config.map.tileSize || 256}
+            accessToken={config.URL.MAP.token}
+            style="mapbox://styles/vladvesa/ckawhh7bm33441il3qmw7csjd"
             zoomOffset={config.map.zoomOffset || 0}
             updateWhenIdle={false}
-            size={
-              config.map.useRetinaTiles && L.Browser.retina && !isDebugTiles
-                ? '@2x'
-                : ''
-            }
             minZoom={config.map.minZoom}
-            maxZoom={config.map.maxZoom}
-          />
+            maxZoom={config.map.maxZoom} />
           <AttributionControl
             position="bottomright"
             prefix="&copy; <a tabindex=&quot;-1&quot; href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"
