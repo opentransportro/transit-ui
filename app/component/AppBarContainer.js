@@ -51,7 +51,7 @@ class AppBarContainer extends React.Component {
   }
 
   handleCitySelected(city) {
-    this.context.router.push({
+    this.context.router.replace({
       ...this.context.location,
       state: {
         ...this.context.location.state,
