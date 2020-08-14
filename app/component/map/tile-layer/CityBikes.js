@@ -4,22 +4,14 @@ import Relay from 'react-relay/classic';
 import pick from 'lodash/pick';
 
 import { isBrowser } from '../../../util/browser';
-import {
-  drawAvailabilityValue,
-  drawIcon,
-  drawRoundIcon,
-  drawCitybikeNotInUseIcon,
-  getMapIconScale,
-} from '../../../util/mapIconUtils';
+import { getMapIconScale, drawCitybikeIcon } from '../../../util/mapIconUtils';
 
-import {
-  BIKESTATION_ON,
-  BIKESTATION_OFF,
-  BIKESTATION_CLOSED,
-  getCityBikeNetworkConfig,
-  getCityBikeNetworkIcon,
-  getCityBikeNetworkId,
-} from '../../../util/citybikes';
+// TODO
+// import {
+//   getCityBikeNetworkConfig,
+//   getCityBikeNetworkIcon,
+//   getCityBikeNetworkId,
+// } from '../../../util/citybikes';
 
 const timeOfLastFetch = {};
 
@@ -74,82 +66,38 @@ class CityBikes {
   fetchAndDrawStatus = ({ geom, properties: { id } }) => {
     const query = Relay.createQuery(
       Relay.QL`
-    query Test($id: String!){
-      bikeRentalStation(id: $id) {
-        bikesAvailable
-        spacesAvailable
-        networks
-        state
-      }
-    }`,
+          query Test($id: String!){
+              bikeRentalStation(id: $id) {
+                  bikesAvailable
+                  spacesAvailable
+                  networks
+                  state
+              }
+          }`,
       { id },
     );
 
     const lastFetch = timeOfLastFetch[id];
     const currentTime = new Date().getTime();
 
-    const callback = readyState => {
-      if (readyState.done) {
+    const callback = response => {
+      if (response.done) {
         timeOfLastFetch[id] = new Date().getTime();
         const result = Relay.Store.readQuery(query)[0];
-
         if (result) {
-          if (
-            this.tile.coords.z <= this.config.cityBike.cityBikeSmallIconZoom
-          ) {
-            let mode;
-            if (result.state !== BIKESTATION_ON) {
-              mode = 'citybike-off';
-            } else {
-              mode = 'citybike';
-            }
-            return drawRoundIcon(this.tile, geom, mode);
-          }
-
-          const iconName = getCityBikeNetworkIcon(
-            getCityBikeNetworkConfig(
-              getCityBikeNetworkId(result.networks),
-              this.config,
-            ),
+          drawCitybikeIcon(
+            this.tile,
+            geom,
+            result.state,
+            result.bikesAvailable,
           );
-
-          if (
-            result.state === BIKESTATION_CLOSED ||
-            result.state === BIKESTATION_OFF
-          ) {
-            return drawIcon(
-              iconName,
-              this.tile,
-              geom,
-              this.citybikeImageSize,
-            ).then(() =>
-              drawCitybikeNotInUseIcon(
-                this.tile,
-                geom,
-                this.citybikeImageSize,
-                this.availabilityImageSize,
-                this.scaleratio,
-              ),
-            );
-          }
-
-          if (result.state === BIKESTATION_ON) {
-            return drawIcon(
-              iconName,
-              this.tile,
-              geom,
-              this.citybikeImageSize,
-            ).then(() => {
-              drawAvailabilityValue(
-                this.tile,
-                geom,
-                result.bikesAvailable,
-                this.citybikeImageSize,
-                this.availabilityImageSize,
-                this.scaleratio,
-              );
-            });
-          }
+          // const iconName = getCityBikeNetworkIcon(
+          // TODO draw the correct icon
+          //   getCityBikeNetworkConfig(
+          //     getCityBikeNetworkId(result.networks),
+          //     this.config,
+          //   ),
+          // );
         }
       }
       return this;
