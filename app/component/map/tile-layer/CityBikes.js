@@ -66,32 +66,39 @@ class CityBikes {
   fetchAndDrawStatus = ({ geom, properties: { id } }) => {
     const query = Relay.createQuery(
       Relay.QL`
-    query Test($id: String!){
-      bikeRentalStation(id: $id) {
-        bikesAvailable
-        spacesAvailable
-        networks
-        state
-      }
-    }`,
+          query Test($id: String!){
+              bikeRentalStation(id: $id) {
+                  bikesAvailable
+                  spacesAvailable
+                  networks
+                  state
+              }
+          }`,
       { id },
     );
 
     const lastFetch = timeOfLastFetch[id];
     const currentTime = new Date().getTime();
 
-    const callback = ({ station: result }) => {
-      timeOfLastFetch[id] = new Date().getTime();
-
-      if (result) {
-        drawCitybikeIcon(this.tile, geom, result.state, result.bikesAvailable);
-        // TODO draw the correct icon
-        // const iconName = getCityBikeNetworkIcon(
-        //   getCityBikeNetworkConfig(
-        //     getCityBikeNetworkId(result.networks),
-        //     this.config,
-        //   ),
-        // );
+    const callback = response => {
+      if (response.done) {
+        timeOfLastFetch[id] = new Date().getTime();
+        const result = Relay.Store.readQuery(query)[0];
+        if (result) {
+          drawCitybikeIcon(
+            this.tile,
+            geom,
+            result.state,
+            result.bikesAvailable,
+          );
+          // const iconName = getCityBikeNetworkIcon(
+          // TODO draw the correct icon
+          //   getCityBikeNetworkConfig(
+          //     getCityBikeNetworkId(result.networks),
+          //     this.config,
+          //   ),
+          // );
+        }
       }
       return this;
     };
