@@ -49,7 +49,7 @@ export default class Map extends React.Component {
 
   static defaultProps = {
     animate: true,
-    loaded: () => { },
+    loaded: () => {},
     showScaleBar: false,
     activeArea: null,
     mapRef: null,
@@ -135,11 +135,13 @@ export default class Map extends React.Component {
           <MapboxGlLayer
             onLoad={this.setLoaded}
             accessToken={config.URL.MAP.token}
+            /* eslint-disable-next-line react/style-prop-object */
             style="mapbox://styles/vladvesa/ckawhh7bm33441il3qmw7csjd"
             zoomOffset={config.map.zoomOffset || 0}
             updateWhenIdle={false}
             minZoom={config.map.minZoom}
-            maxZoom={config.map.maxZoom} />
+            maxZoom={config.map.maxZoom}
+          />
           <AttributionControl
             position="bottomright"
             prefix="&copy; <a tabindex=&quot;-1&quot; href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"
