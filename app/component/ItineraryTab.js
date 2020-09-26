@@ -25,6 +25,8 @@ import ComponentUsageExample from './ComponentUsageExample';
 import exampleData from './data/ItineraryTab.exampleData.json';
 import { getFares, shouldShowFareInfo } from '../util/fareUtils';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
+import { ReservationWideBanner } from '../partners/ReservationAds';
+
 /* eslint-disable prettier/prettier */
 class ItineraryTab extends React.Component {
   static propTypes = {
@@ -142,6 +144,7 @@ class ItineraryTab extends React.Component {
                   />
                 )}
                 {config.showRouteInformation && <RouteInformation />}
+                <ReservationWideBanner />
               </div>
               <div className="row print-itinerary-button-container">
                 <SecondaryButton
