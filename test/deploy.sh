@@ -1,36 +1,20 @@
-#/bin/bash
+#!/bin/bash
 set -e
-ORG=${ORG:-opentransport}
-DOCKER_IMAGE=$ORG/map-ui
-LATEST_IMAGE=$DOCKER_IMAGE:latest
-PROD_IMAGE=$DOCKER_IMAGE:prod
+
+REPO=$(git remote get-url --push origin | sed -e "s/[.]git$/$2/g" | sed -e "s/^.*\///g")
+BRANCH="$TRAVIS_BRANCH"
+APP="$REPO-$BRANCH"
+TAG=$(git rev-parse --short HEAD)
+FULL_TAG="registry.app.opentsr.com/cityradar/$APP:$TAG"
 
 if [[ -n "$TRAVIS_TAG" || ( "$TRAVIS_PULL_REQUEST" = "false") ]]; then
-
-  docker login -u $DOCKER_USER -p $DOCKER_AUTH
-
-  if [ -n "$TRAVIS_TAG" ]; then
-    docker pull $LATEST_IMAGE
-    echo "Pushing :prod release to Docker Hub"
-    docker tag $LATEST_IMAGE $PROD_IMAGE
-    docker push $PROD_IMAGE
-  else
-    if [ "$TRAVIS_BRANCH" = "prod" ]; then
-      #sanity check to skip invalid branch name
-      echo Not Pushing :prod tag to Docker Hub
-      exit 0
-    fi
-    if [ "$TRAVIS_BRANCH" = "opentransport" ]; then
-      BRANCH_IMAGE=$LATEST_IMAGE
-    else
-      BRANCH_IMAGE=$DOCKER_IMAGE:$TRAVIS_BRANCH
-    fi
-    CI_IMAGE=$DOCKER_IMAGE:ci-$TRAVIS_COMMIT
-    echo -e "export const COMMIT_ID = \"${TRAVIS_COMMIT}\";\nexport const BUILD_TIME = \""`date -Iminutes -u`"\";" > app/buildInfo.js
-    docker build -t $CI_IMAGE .
-    echo "Pushing ci image to Docker Hub"
-    docker push $CI_IMAGE
-    docker tag $CI_IMAGE $BRANCH_IMAGE
-    docker push $BRANCH_IMAGE
-  fi
+  # Don't build pull requests or tagged commits
+  echo "Building and publishing: $APP:$TAG"
+  docker login -u "$KUBE_DOCKER_USER" -p "$KUBE_DOCKER_AUTH" registry.app.opentsr.com
+  docker build -f Dockerfile -t "$FULL_TAG" . && docker push "$FULL_TAG"
+  rm -rf deployment
+  git clone -b main git@github.com:opentransportro/kube-hosting.git deployment
+  export KUBECONFIG="$(pwd)/deployment/kubeconfig/open-transport-kubeconfig.yaml"
+  kubectl get pods
+  rm -rf deployment
 fi
