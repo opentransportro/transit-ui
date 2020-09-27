@@ -7,6 +7,7 @@ branches:
     - master
     - next
     - opentransport
+    - kube-migration
     - /20(1[7-9]|2[0-9])[0-1][0-9][0-3][0-9]/
 
 cache: yarn
@@ -37,7 +38,7 @@ jobs:
       script:
         - yarn install
         - test/flow.sh
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
     - stage: test
       env: UNIT=1
       node_js: '10'
@@ -45,27 +46,27 @@ jobs:
         - yarn install
         - yarn run test-coverage
         - yarn run test-report
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
     - stage: visual
       env: VISUAL=chrome
       node_js: '10'
       script: test/visual.sh
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
     - stage: visual
       env: VISUAL=firefox
       node_js: '10'
       script: test/visual.sh
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
     - stage: visual
       env: VISUAL=safari
       node_js: '10'
       script: test/visual.sh
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
     - stage: visual
       env: VISUAL=edge
       node_js: '10'
       script: test/visual.sh
-      if: branch != opentransport
+      if: NOT branch IN (opentransport, "kube-migration")
 
     - stage: build and deploy container
       node_js: '10'
