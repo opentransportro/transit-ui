@@ -10,6 +10,7 @@ import MainMenuLinks from './MainMenuLinks';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
 import LoginButton from './LoginButton';
 import UserInfo from './UserInfo';
+import { ReservationSquareBanner } from '../partners/ReservationAds';
 
 function MainMenu(props, { config, intl, location, router }) {
   /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
@@ -96,6 +97,7 @@ function MainMenu(props, { config, intl, location, router }) {
             isMobile
           />
         ))}
+      <ReservationSquareBanner />
     </div>
   );
 }
