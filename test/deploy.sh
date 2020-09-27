@@ -13,13 +13,13 @@ if [[ -n "$TRAVIS_TAG" || ( "$TRAVIS_PULL_REQUEST" = "false") ]]; then
   echo "Building and publishing: $APP:$TAG"
   docker login -u "$KUBE_DOCKER_USER" -p "$KUBE_DOCKER_AUTH" registry.app.opentsr.com
   docker build -f Dockerfile -t "$FULL_TAG" . && docker push "$FULL_TAG"
-  sed -i "s|POD_IMAGE|${FULL_TAG}|g" prod-transit-ui.yaml
-  cat prod-transit-ui.yaml
+  sed -i "s|POD_IMAGE|${FULL_TAG}|g" test/prod-transit-ui.yaml
+  cat test/prod-transit-ui.yaml
   echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
   /usr/local/bin/kubectl \
-    --kubeconfig=open-transport-kubeconfig.yaml \
+    --kubeconfig=test/open-transport-kubeconfig.yaml \
     --server=$KUBERNETES_SERVER \
     --certificate-authority=cert.crt \
     --token=$KUBERNETES_TOKEN \
-    apply -f prod-transit-ui.yaml
+    apply -f test/prod-transit-ui.yaml
 fi
