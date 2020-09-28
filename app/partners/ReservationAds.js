@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
+import PropTypes from 'prop-types';
 import React from 'react';
+import {
+  getCityPreferenceStorage,
+} from '../store/localStorage';
 
 const wideStyle = {
   margin: '10px auto 10px auto',
@@ -14,30 +18,81 @@ const squareStyle = {
   height: '200px',
 };
 
-const ReservationWideBanner = function ReservationWideBanner() {
-  const lang = 'ro';
-  // TODO: set locale correctly: window.location.search
-  // TODO: display ads only for/nearby Timisoara
-  const url = `https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-${lang}`;
+const getAdvertisingOptions = function getAdvertisingContext(props, locale) {
+  const selectedLocale = locale || 'ro'; // Default locale: Romanian
+  const adSpecs = [
+    {
+      locale: 'en',
+      locationFilter: ((citySelection) => citySelection.icon === 'icon-icon_city-timisoara'),
+      wideImageBannerUrl: '/img/goebike-banner.png',
+      squareImageBannerUrl: '/img/goebike-square-banner.png',
+      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-en',
+    },
+    {
+      locale: 'ro',
+      locationFilter: ((citySelection) => citySelection.icon === 'icon-icon_city-timisoara'),
+      wideImageBannerUrl: '/img/goebike-banner.png',
+      squareImageBannerUrl: '/img/goebike-square-banner.png',
+      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-ro',
+    },
+  ];
+
+  const preferedCityInfo = getCityPreferenceStorage();
+
+  const results = adSpecs.filter((ad) => {
+    return ad.locale === selectedLocale && ad.locationFilter(preferedCityInfo)
+  });
+  return results;
+}
+
+const ReservationWideBanner = function ReservationWideBanner(props, { location }) {
+  const ads = getAdvertisingOptions(props, location.query.locale);
+  if (!ads || !ads.length) {
+    return (<></>);
+  }
+  const ad = ads[0];
+
   return (
     <div className="reservation-banner" style={wideStyle}>
-      <a href={url}>
-        <img src="/img/goebike-banner.png" alt="Rent/Reservations" />
+      <a href={ad.url}>
+        <img src={ad.wideImageBannerUrl} alt="Rent/Reservations" />
       </a>
     </div>
   );
 };
 
-const ReservationSquareBanner = function ReservationSquareBanner() {
-  const lang = 'ro';
-  const url = `https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-${lang}`;
+const ReservationSquareBanner = function ReservationSquareBanner(props, { location }) {
+  const ads = getAdvertisingOptions(props, location.query.locale);
+  if (!ads || !ads.length) {
+    return (<></>);
+  }
+  const ad = ads[0];
+  
   return (
     <div className="reservation-square-banner" style={squareStyle}>
-      <a href={url}>
-        <img src="/img/goebike-square-banner.png" alt="Rent/Reservations" />
+      <a href={ad.url}>
+        <img src={ad.squareImageBannerUrl} alt="Rent/Reservations" />
       </a>
     </div>
   );
+};
+
+ReservationWideBanner.propTypes = {
+  // no props, yet
+};
+
+ReservationWideBanner.contextTypes = {
+  config: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+};
+
+ReservationSquareBanner.propTypes = {
+  // no props, yet
+};
+
+ReservationSquareBanner.contextTypes = {
+  config: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export {
