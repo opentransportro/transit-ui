@@ -26,14 +26,14 @@ const getAdvertisingOptions = function getAdvertisingContext(props, locale) {
       locationFilter: ((citySelection) => citySelection.icon === 'icon-icon_city-timisoara'),
       wideImageBannerUrl: '/img/goebike-banner.png',
       squareImageBannerUrl: '/img/goebike-square-banner.png',
-      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-en',
+      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-en?hide_back_button=false',
     },
     {
       locale: 'ro',
       locationFilter: ((citySelection) => citySelection.icon === 'icon-icon_city-timisoara'),
       wideImageBannerUrl: '/img/goebike-banner.png',
       squareImageBannerUrl: '/img/goebike-square-banner.png',
-      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-ro',
+      url: 'https://booking.goebike.ro/reservation/goe-rent-ebike-electric-bicycle-ro?hide_back_button=false',
     },
   ];
 
