@@ -107,6 +107,12 @@ export default configMerger(walttiConfig, {
         route: '/tietoja-palvelusta',
         icon: 'icon-icon_info',
       },
+      {
+        name: 'accessibility-statement',
+        nameEn: 'Accessibility statement',
+        href:
+          'https://kauppa.waltti.fi/media/authority/154/files/Saavutettavuusseloste_Waltti-reittiopas_JyQfJhC.htm',
+      },
     ],
   },
 
@@ -151,7 +157,7 @@ export default configMerger(walttiConfig, {
           sv: 'Zoner',
           en: 'Zones',
         },
-        url: '/assets/geojson/jkl_zone_lines_20200401.geojson',
+        url: '/assets/geojson/jkl_zone_lines_20201118.geojson',
       },
     ],
   },

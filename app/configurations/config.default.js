@@ -54,7 +54,7 @@ export default {
       process.env.GEOCODING_BASE_URL || `${API_URL}/geocoding/v1`,
     ROUTE_TIMETABLES: {
       HSL: `${API_URL}/timetables/v1/hsl/routes/`,
-      tampere: 'http://joukkoliikenne.tampere.fi/media/aikataulut/',
+      tampere: 'http://nysse.fi/media/aikataulut/',
     },
     STOP_TIMETABLES: {
       HSL: `${API_URL}/timetables/v1/hsl/stops/`,
@@ -179,10 +179,9 @@ export default {
   useUnpreferredRoutesPenalty: 1200, // adds 10 minute (weight) penalty to routes that are unpreferred
   availableLanguages: ['fi', 'sv', 'en', 'fr', 'nb', 'de', 'da', 'es', 'ro'],
   defaultLanguage: 'en',
-  // This timezone data will expire on 31.12.2020
+  // This timezone data will expire in 2037
   timezoneData:
-    'Europe/Helsinki|EET EEST|-20 -30|01010101010101010101010|1BWp0 1qM0 WM0 1qM0 ' +
-    'WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|35e5',
+    'Europe/Helsinki|EET EEST|-20 -30|0101010101010101010101010101010101010|22k10 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|12e5',
 
   /* Option to disable the "next" column of the Route panel as it can be confusing sometimes: https://github.com/mfdz/digitransit-ui/issues/167 */
   displayNextDeparture: true,
@@ -415,7 +414,7 @@ export default {
     },
 
     citybike: {
-      availableForSelection: true,
+      availableForSelection: false,
       defaultValue: false, // always false
     },
   },
@@ -772,6 +771,7 @@ export default {
     oulu: 'oulu',
     hameenlinna: 'hameenlinna',
     matka: 'matka',
+    walttiOpas: 'waltti',
     salo: 'salo',
     rovaniemi: 'rovaniemi',
     kouvola: 'kouvola',

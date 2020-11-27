@@ -5222,14 +5222,15 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-"codecov@https://github.com/codecov/codecov-node":
+codecov@3.7.2:
   version "3.7.2"
-  resolved "https://github.com/codecov/codecov-node#bcd0ad7df7ee8aa6a8d2032eb60b553d0bba61dc"
+  resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.7.2.tgz#998e68c8c1ef4b55cfcf11cd456866d35e13d693"
+  integrity sha512-fmCjAkTese29DUX3GMIi4EaKGflHa4K51EoMc29g8fBHawdk/+KEq5CWOeXLdd9+AT7o1wO4DIpp/Z1KCqCz1g==
   dependencies:
     argv "0.0.2"
     ignore-walk "3.0.3"
-    js-yaml "3.14.0"
-    teeny-request "7.0.0"
+    js-yaml "3.13.1"
+    teeny-request "6.0.1"
     urlgrey "0.4.4"
 
 collapse-white-space@^1.0.0, collapse-white-space@^1.0.2:
@@ -7927,7 +7928,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fbjs@^0.8.1, fbjs@^0.8.14, fbjs@^0.8.4, fbjs@^0.8.9:
+fbjs@^0.8.1, fbjs@^0.8.14, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -11742,10 +11743,10 @@ lodash@4.17.15, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.15.0, l
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@4.17.16:
-  version "4.17.16"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.16.tgz#34fa1571037ea4b35b2726932961eafedad3058e"
-  integrity sha512-mzxOTaU4AsJhnIujhngm+OnA6JX4fTI8D5H26wwGd+BJ57bW70oyRwTqo6EFJm1jTZ7hCo7yVzH1vB8TMFd2ww==
+lodash@4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 lodash@^3.2.0, lodash@^3.5.0:
   version "3.10.1"
@@ -12481,10 +12482,10 @@ minizlib@^1.2.1:
   dependencies:
     minipass "^2.9.0"
 
-minizlib@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.0.tgz#fd52c645301ef09a63a2c209697c294c6ce02cf3"
-  integrity sha512-EzTZN/fjSvifSX0SlqUERCN39o6T40AMarPbv0MrarSFtIITCBh7bi+dU8nxGFHuqs9jdIAeoYoKuQAAASsPPA==
+minizlib@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.2.tgz#e90d3466ba209b932451508a11ce3d3632145931"
+  integrity sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==
   dependencies:
     minipass "^3.0.0"
     yallist "^4.0.0"
@@ -12917,10 +12918,10 @@ node-fetch@2.1.2:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
   integrity sha1-q4hOjn5X44qUR1POxwb3iNF2i7U=
 
-node-fetch@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
-  integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-fetch@^1.0.1, node-fetch@^1.6.3:
   version "1.7.3"
@@ -15501,19 +15502,7 @@ react-swipeable-views-core@^0.13.1, react-swipeable-views-core@^0.13.7:
     "@babel/runtime" "7.0.0"
     warning "^4.0.1"
 
-react-swipeable-views-utils@0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views-utils/-/react-swipeable-views-utils-0.13.1.tgz#8e604af7316d409f22d8c47f841859dc150df30b"
-  integrity sha512-r5eyPIIHnlvILvFHXGnASDXa3RwC6X2YevegA2II5fhzYqwQRpJ81+lnzknNg5hiIN6ucXc5vrkqRRjabAhMpA==
-  dependencies:
-    "@babel/runtime" "7.0.0"
-    fbjs "^0.8.4"
-    keycode "^2.1.7"
-    prop-types "^15.6.0"
-    react-event-listener "^0.6.0"
-    react-swipeable-views-core "^0.13.1"
-
-react-swipeable-views-utils@^0.13.1:
+react-swipeable-views-utils@0.13.9, react-swipeable-views-utils@^0.13.1:
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/react-swipeable-views-utils/-/react-swipeable-views-utils-0.13.9.tgz#a66e98f2f4502d8b00182901f80d13b2f903e10f"
   integrity sha512-QLGxRKrbJCbWz94vkWLzb1Daaa2Y/TZKmsNKQ6WSNrS+chrlfZ3z9tqZ7YUJlW6pRWp3QZdLSY3UE3cN0TXXmw==
@@ -17947,14 +17936,14 @@ tar@^4.4.10, tar@^4.4.12, tar@^4.4.8:
     yallist "^3.0.3"
 
 tar@^6.0.1:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.0.2.tgz#5df17813468a6264ff14f766886c622b84ae2f39"
-  integrity sha512-Glo3jkRtPcvpDlAs/0+hozav78yoXKFr+c4wgw62NNMO3oo4AaJdCo21Uu7lcwr55h39W2XD1LMERc64wtbItg==
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.0.5.tgz#bde815086e10b39f1dcd298e89d596e1535e200f"
+  integrity sha512-0b4HOimQHj9nXNEAA7zWwMM91Zhhba3pspja6sQbgTpynOJf+bkjBnfybNYzbpLbnwXnbyB4LOREvlyXLkCHSg==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
     minipass "^3.0.0"
-    minizlib "^2.1.0"
+    minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 

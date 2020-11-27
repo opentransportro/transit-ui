@@ -288,6 +288,11 @@ export default {
         icon: 'icon-icon_info',
       },
       {
+        name: 'accessibility-statement',
+        nameEn: 'Accessibility statement',
+        href: 'https://www.hsl.fi/saavutettavuusseloste',
+      },
+      {
         name: 'footer-link-to-privacy-policy',
         nameEn: 'Privacy policy',
         href: 'https://www.hsl.fi/tietoa-sivustosta',
@@ -463,9 +468,6 @@ export default {
         url: '/assets/geojson/hsl_zone_lines_20190508.geojson',
       },
     ],
-    zones: {
-      url: '/assets/geojson/hsl_zone_areas_20190508.geojson',
-    },
   },
   mapLayers: {
     featureMapping: {
@@ -501,7 +503,8 @@ export default {
   useTicketIcons: true,
 
   cityBike: {
-    showCityBikes: true,
+    showCityBikes: false,
+    useSpacesAvailable: false,
     networks: {
       smoove: {
         icon: 'citybike',

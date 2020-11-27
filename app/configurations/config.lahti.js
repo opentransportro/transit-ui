@@ -37,6 +37,15 @@ export default configMerger(walttiConfig, {
 
   feedIds: ['Lahti'],
 
+  mapLayers: {
+    tooltip: {
+      fi: 'Uutta! Saat nyt lähellä olevat bussit kartalle asetuksista.',
+      en: 'New! You can now get nearby busses on the map from the settings.',
+      sv:
+        'Nytt! I inställningarna kan du nu välja att se närliggande bussar på kartan.',
+    },
+  },
+
   searchParams: {
     'boundary.rect.min_lat': minLat,
     'boundary.rect.max_lat': maxLat,
@@ -95,6 +104,12 @@ export default configMerger(walttiConfig, {
         route: '/tietoja-palvelusta',
         icon: 'icon-icon_info',
       },
+      {
+        name: 'accessibility-statement',
+        nameEn: 'Accessibility statement',
+        href:
+          'https://kauppa.waltti.fi/media/authority/154/files/Saavutettavuusseloste_Waltti-reittiopas_JyQfJhC.htm',
+      },
     ],
   },
 
@@ -144,6 +159,18 @@ export default configMerger(walttiConfig, {
       },
     ],
   },
+  geoJson: {
+    layers: [
+      {
+        name: {
+          fi: 'Vyöhykkeet',
+          sv: 'Zoner',
+          en: 'Zones',
+        },
+        url: '/assets/geojson/lahti_zone_lines_20201118.geojson',
+      },
+    ],
+  },
   zoneIdMapping: {
     1: 'A',
     2: 'B',
@@ -156,9 +183,17 @@ export default configMerger(walttiConfig, {
     9: 'H',
     10: 'I',
   },
+  zoneIdFontSize: {
+    F1: '20px',
+    F2: '20px',
+    'B/C': '16px',
+  },
   stopCard: {
     header: {
       showZone: true,
     },
   },
+
+  showAllBusses: true,
+  showVehiclesOnStopPage: true,
 });

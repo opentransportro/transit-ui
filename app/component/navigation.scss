@@ -44,7 +44,7 @@ $content-background-color: $background-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // background: transparentize(#f0f0f0, 0.25);
+  //background: $primary-color;
   text-align: center;
   overflow: visible; // Show drawer menu
   z-index: 1008;
