@@ -4,14 +4,24 @@ import Relay from 'react-relay/classic';
 import pick from 'lodash/pick';
 
 import { isBrowser } from '../../../util/browser';
-import { getMapIconScale, drawCitybikeIcon } from '../../../util/mapIconUtils';
 
-// TODO
-// import {
-//   getCityBikeNetworkConfig,
-//   getCityBikeNetworkIcon,
-//   getCityBikeNetworkId,
-// } from '../../../util/citybikes';
+import {
+  drawAvailabilityValue,
+  drawIcon,
+  drawRoundIcon,
+  drawCitybikeNotInUseIcon,
+  getMapIconScale,
+} from '../../../util/mapIconUtils';
+
+import {
+  BIKEAVL_UNKNOWN,
+  BIKESTATION_ON,
+  BIKESTATION_OFF,
+  BIKESTATION_CLOSED,
+  getCityBikeNetworkConfig,
+  getCityBikeNetworkIcon,
+  getCityBikeNetworkId,
+} from '../../../util/citybikes';
 
 const timeOfLastFetch = {};
 
@@ -32,8 +42,8 @@ class CityBikes {
   fetchWithAction = actionFn =>
     fetch(
       `${this.config.URL.CITYBIKE_MAP}` +
-        `${this.tile.coords.z + (this.tile.props.zoomOffset || 0)}/` +
-        `${this.tile.coords.x}/${this.tile.coords.y}.pbf`,
+      `${this.tile.coords.z + (this.tile.props.zoomOffset || 0)}/` +
+      `${this.tile.coords.x}/${this.tile.coords.y}.pbf`,
     ).then(res => {
       if (res.status !== 200) {
         return undefined;
@@ -91,13 +101,46 @@ class CityBikes {
             result.state,
             result.bikesAvailable,
           );
-          // const iconName = getCityBikeNetworkIcon(
-          // TODO draw the correct icon
-          //   getCityBikeNetworkConfig(
-          //     getCityBikeNetworkId(result.networks),
-          //     this.config,
-          //   ),
-          // );
+
+          if (
+            result.state === BIKESTATION_CLOSED ||
+            result.state === BIKESTATION_OFF
+          ) {
+            return drawIcon(
+              iconName,
+              this.tile,
+              geom,
+              this.citybikeImageSize,
+            ).then(() =>
+              drawCitybikeNotInUseIcon(
+                this.tile,
+                geom,
+                this.citybikeImageSize,
+                this.availabilityImageSize,
+                this.scaleratio,
+              ),
+            );
+          }
+
+          if (result.state === BIKESTATION_ON) {
+            return drawIcon(
+              iconName,
+              this.tile,
+              geom,
+              this.citybikeImageSize,
+            ).then(() => {
+              if (this.config.cityBike.capacity !== BIKEAVL_UNKNOWN) {
+                drawAvailabilityValue(
+                  this.tile,
+                  geom,
+                  result.bikesAvailable,
+                  this.citybikeImageSize,
+                  this.availabilityImageSize,
+                  this.scaleratio,
+                );
+              }
+            });
+          }
         }
       }
       return this;

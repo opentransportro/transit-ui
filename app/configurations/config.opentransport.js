@@ -1,5 +1,6 @@
 /* eslint-disable */
 import configMerger from '../util/configMerger';
+import { BIKEAVL_UNKNOWN } from '../util/citybikes';
 
 const CONFIG = 'opentransport';
 const APP_TITLE = 'CityRadar - sursa de informatii pentru orasul tau';
@@ -92,7 +93,7 @@ export default configMerger(walttiConfig, {
       passiveColor: '#758993',
     },
   },
-  
+
   // Navbar logo
   logo: 'opentransport/cityradar-logo.svg',
   favicon: './app/configurations/images/opentransport/cityradar-favicon.png',
@@ -212,6 +213,7 @@ export default configMerger(walttiConfig, {
 
   cityBike: {
     showCityBikes: true,
+    capacity: BIKEAVL_UNKNOWN,
     networks: {
       velotm: {
         icon: 'citybike',
@@ -419,7 +421,7 @@ export default configMerger(walttiConfig, {
         name: 'Cluj-Napoca',
         quote: 'Teatrul National "Lucian Blaga"',
         lat: 46.770651,
-        lon:  23.597136,
+        lon: 23.597136,
         icon: 'icon-icon_city-cluj',
         origins: [
           {

@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/HSLdevcom/digitransit-ui.svg?branch=master)](https://travis-ci.org/HSLdevcom/digitransit-ui)
-[![codecov](https://codecov.io/gh/HSLdevcom/digitransit-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/HSLdevcom/digitransit-ui)
+[![Build](https://github.com/opentransportro/transit-ui/workflows/Process%20master%20push%20or%20pr/badge.svg?branch=opentransport)](https://github.com/opentransportro/transit-ui/actions)
+[![codecov](https://codecov.io/gh/opentransportro/transit-ui/branch/opentransport/graph/badge.svg)](https://codecov.io/gh/opentransportro/transit-ui)
 
 
 Digitransit-ui is a mobile friendly User interface built to work with Digitransit platform
