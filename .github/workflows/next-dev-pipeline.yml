@@ -2,10 +2,10 @@ name: Process next push or pr
 on:
   push:
     branches:
-      - next
+      - opentransport-next
   pull_request:
     branches:
-      - next
+      - opentransport-next
 jobs:
   install:
     runs-on: ubuntu-18.04
@@ -35,10 +35,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: "Set time zone to Europe/Helsinki"
+      - name: "Set time zone to Europe/Bucharest"
         uses: zcong1993/setup-timezone@master
         with:
-          timezone: "Europe/Helsinki"
+          timezone: "Europe/Bucharest"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -61,10 +61,10 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
-  #     - name: "Set time zone to Europe/Helsinki"
+  #     - name: "Set time zone to Europe/Bucharest"
   #       uses: zcong1993/setup-timezone@master
   #       with:
-  #         timezone: "Europe/Helsinki"
+  #         timezone: "Europe/Bucharest"
   #     - name: Use Node.js ${{ matrix.node-version }}
   #       uses: actions/setup-node@v1
   #       with:
@@ -92,10 +92,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: "Set time zone to Europe/Helsinki"
+      - name: "Set time zone to Europe/Bucharest"
         uses: zcong1993/setup-timezone@master
         with:
-          timezone: "Europe/Helsinki"
+          timezone: "Europe/Bucharest"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -122,10 +122,10 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
-  #     - name: "Set time zone to Europe/Helsinki"
+  #     - name: "Set time zone to Europe/Bucharest"
   #       uses: zcong1993/setup-timezone@master
   #       with:
-  #         timezone: "Europe/Helsinki"
+  #         timezone: "Europe/Bucharest"
   #     - name: Use Node.js ${{ matrix.node-version }}
   #       uses: actions/setup-node@v1
   #       with:
@@ -154,10 +154,10 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
-  #     - name: "Set time zone to Europe/Helsinki"
+  #     - name: "Set time zone to Europe/Bucharest"
   #       uses: zcong1993/setup-timezone@master
   #       with:
-  #         timezone: "Europe/Helsinki"
+  #         timezone: "Europe/Bucharest"
   #     - name: Use Node.js ${{ matrix.node-version }}
   #       uses: actions/setup-node@v1
   #       with:
@@ -186,10 +186,10 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
-  #     - name: "Set time zone to Europe/Helsinki"
+  #     - name: "Set time zone to Europe/Bucharest"
   #       uses: zcong1993/setup-timezone@master
   #       with:
-  #         timezone: "Europe/Helsinki"
+  #         timezone: "Europe/Bucharest"
   #     - name: Use Node.js ${{ matrix.node-version }}
   #       uses: actions/setup-node@v1
   #       with:
@@ -218,10 +218,10 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
-  #     - name: "Set time zone to Europe/Helsinki"
+  #     - name: "Set time zone to Europe/Bucharest"
   #       uses: zcong1993/setup-timezone@master
   #       with:
-  #         timezone: "Europe/Helsinki"
+  #         timezone: "Europe/Bucharest"
   #     - name: Use Node.js ${{ matrix.node-version }}
   #       uses: actions/setup-node@v1
   #       with:
@@ -242,7 +242,7 @@ jobs:
   #         BS_ACCESS_KEY: ${{ secrets.BS_ACCESS_KEY }}
   #         BS_USERNAME: ${{ secrets.BS_USERNAME }}
   publish-npm:
-    if: github.ref == 'refs/heads/next'
+    if: github.ref == 'refs/heads/opentransport-next'
     needs:
       - install
       - lint
@@ -258,10 +258,10 @@ jobs:
         node-version: [ 10.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Set time zone to Europe/Helsinki
+      - name: Set time zone to Europe/Bucharest
         uses: zcong1993/setup-timezone@master
         with:
-          timezone: "Europe/Helsinki"
+          timezone: "Europe/Bucharest"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -298,7 +298,7 @@ jobs:
         shell: bash
 
   docker-push:
-    if: github.ref == 'refs/heads/next'
+    if: github.ref == 'refs/heads/opentransport-next'
     needs:
       - lint
       - publish-npm
@@ -312,10 +312,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set time zone to Europe/Helsinki
+      - name: Set time zone to Europe/Bucharest
         uses: zcong1993/setup-timezone@master
         with:
-          timezone: "Europe/Helsinki"
+          timezone: "Europe/Bucharest"
       - name: Build docker image from next and push it
         run: ./.github/workflows/scripts/build_and_push_dev.sh
         env:

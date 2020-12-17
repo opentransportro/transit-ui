@@ -2,17 +2,17 @@ name: Build next-prod
 on:
   push:
     branches:
-      - next-prod
+      - opentransport-next-prod
 jobs:
   prod-push:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set time zone to Europe/Helsinki
+      - name: Set time zone to Europe/Bucharest
         uses: zcong1993/setup-timezone@master
         with:
-          timezone: "Europe/Helsinki"
+          timezone: "Europe/Bucharest"
       - name: Push next image as next-prod
         run: ./.github/workflows/scripts/push_prod.sh
         env:
