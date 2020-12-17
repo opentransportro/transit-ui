@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DOCKER_IMAGE="hsldevcom/digitransit-ui"
+DOCKER_IMAGE="opentransport/transit-ui"
 DOCKER_TAG=${DOCKER_BASE_TAG:-prod}
 DOCKER_DEV_TAG=${DOCKER_DEV_TAG:-latest}
 
