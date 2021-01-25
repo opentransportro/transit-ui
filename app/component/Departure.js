@@ -40,15 +40,6 @@ function Departure({
   }
   return (
     <p className={cx('departure', 'route-detail-text', className)}>
-      {!staticDeparture && (
-        <DepartureTime
-          departureTime={departure.stoptime}
-          realtime={departure.realtime}
-          currentTime={currentTime}
-          canceled={canceled}
-          useUTC={useUTC}
-        />
-      )}
       <RouteNumberContainer
         alertSeverityLevel={alertSeverityLevel}
         route={departure.pattern.route}
@@ -73,6 +64,15 @@ function Departure({
         </span>
       ) : (
         platformNumber
+      )}
+      {!staticDeparture && (
+        <DepartureTime
+          departureTime={departure.stoptime}
+          realtime={departure.realtime}
+          currentTime={currentTime}
+          canceled={canceled}
+          useUTC={useUTC}
+        />
       )}
     </p>
   );
