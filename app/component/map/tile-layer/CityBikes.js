@@ -42,8 +42,8 @@ class CityBikes {
   fetchWithAction = actionFn =>
     fetch(
       `${this.config.URL.CITYBIKE_MAP}` +
-      `${this.tile.coords.z + (this.tile.props.zoomOffset || 0)}/` +
-      `${this.tile.coords.x}/${this.tile.coords.y}.pbf`,
+        `${this.tile.coords.z + (this.tile.props.zoomOffset || 0)}/` +
+        `${this.tile.coords.x}/${this.tile.coords.y}.pbf`,
     ).then(res => {
       if (res.status !== 200) {
         return undefined;
@@ -76,30 +76,43 @@ class CityBikes {
   fetchAndDrawStatus = ({ geom, properties: { id } }) => {
     const query = Relay.createQuery(
       Relay.QL`
-          query Test($id: String!){
-              bikeRentalStation(id: $id) {
-                  bikesAvailable
-                  spacesAvailable
-                  networks
-                  state
-              }
-          }`,
+    query Test($id: String!){
+      bikeRentalStation(id: $id) {
+        bikesAvailable
+        spacesAvailable
+        networks
+        state
+      }
+    }`,
       { id },
     );
 
     const lastFetch = timeOfLastFetch[id];
     const currentTime = new Date().getTime();
 
-    const callback = response => {
-      if (response.done) {
+    const callback = readyState => {
+      if (readyState.done) {
         timeOfLastFetch[id] = new Date().getTime();
         const result = Relay.Store.readQuery(query)[0];
+
         if (result) {
-          drawCitybikeIcon(
-            this.tile,
-            geom,
-            result.state,
-            result.bikesAvailable,
+          if (
+            this.tile.coords.z <= this.config.cityBike.cityBikeSmallIconZoom
+          ) {
+            let mode;
+            if (result.state !== BIKESTATION_ON) {
+              mode = 'citybike-off';
+            } else {
+              mode = 'citybike';
+            }
+            return drawRoundIcon(this.tile, geom, mode);
+          }
+
+          const iconName = getCityBikeNetworkIcon(
+            getCityBikeNetworkConfig(
+              getCityBikeNetworkId(result.networks),
+              this.config,
+            ),
           );
 
           if (

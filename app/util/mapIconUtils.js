@@ -6,6 +6,7 @@ import {
   BIKESTATION_OFF,
   BIKESTATION_CLOSED,
 } from './citybikes';
+import { AlertSeverityLevelType } from '../constants';
 
 /**
  * Corresponds to an arc forming a full circle (Math.PI * 2).
@@ -477,6 +478,120 @@ export function drawCitybikeIcon(tile, geom, state, bikesAvailable) {
   }
 }
 
+/* eslint-disable no-param-reassign */
+export function drawRoundIcon(tile, geom, type, customScale, platformNumber) {
+  const scale = customScale || 1;
+  const caseRadius = getCaseRadius(tile.coords.z) * scale;
+  const stopRadius = getStopRadius(tile.coords.z) * scale;
+  const hubRadius = getHubRadius(tile.coords.z) * scale;
+
+  if (caseRadius > 0) {
+    tile.ctx.beginPath();
+    tile.ctx.fillStyle = '#fff';
+    tile.ctx.arc(
+      geom.x / tile.ratio,
+      geom.y / tile.ratio,
+      caseRadius * tile.scaleratio,
+      0,
+      FULL_CIRCLE,
+    );
+    tile.ctx.fill();
+
+    tile.ctx.beginPath();
+    tile.ctx.fillStyle = getModeColor(type);
+    tile.ctx.arc(
+      geom.x / tile.ratio,
+      geom.y / tile.ratio,
+      stopRadius * tile.scaleratio,
+      0,
+      FULL_CIRCLE,
+    );
+    tile.ctx.fill();
+
+    if (hubRadius > 0) {
+      tile.ctx.beginPath();
+      tile.ctx.fillStyle = '#fff';
+      tile.ctx.arc(
+        geom.x / tile.ratio,
+        geom.y / tile.ratio,
+        hubRadius * tile.scaleratio,
+        0,
+        FULL_CIRCLE,
+      );
+      tile.ctx.fill();
+
+      // The text requires 14 pixels in width, so we draw if the hub radius is at least half of that
+      if (platformNumber && hubRadius > 7) {
+        const { length } = `${platformNumber}`;
+        const multiplier = (length > 3 && 1.2) || (length === 3 && 1.4) || 1.6;
+        tile.ctx.font = `${multiplier *
+          hubRadius *
+          tile.scaleratio}px Gotham XNarrow SSm A, Gotham XNarrow SSm B, Arial, sans-serif`;
+        tile.ctx.fillStyle = '#333';
+        tile.ctx.textAlign = 'center';
+        tile.ctx.textBaseline = 'middle';
+        tile.ctx.fillText(
+          platformNumber,
+          geom.x / tile.ratio,
+          geom.y / tile.ratio,
+        );
+      }
+    }
+  }
+
+  return {
+    iconRadius: stopRadius * tile.scaleratio,
+  };
+}
+
+export const drawRoundIconAlertBadge = async (
+  tile,
+  geometry,
+  iconRadius,
+  alertSeverityLevel,
+  getImage = getImageFromSpriteCache,
+) => {
+  if (!alertSeverityLevel) {
+    return;
+  }
+
+  const iconSize = iconRadius * 2;
+  const badgeSize = iconSize * 3 / 4;
+  if (badgeSize < 7) {
+    return;
+  }
+
+  const isCaution = alertSeverityLevel !== AlertSeverityLevelType.Info;
+  const image = await getImage(
+    `icon-icon_${isCaution ? 'caution-badge-with-halo' : 'info'}`,
+    badgeSize,
+    badgeSize,
+    isCaution ? getFill(`.icon.caution`) : getColor('.icon.info'),
+  );
+
+  const badgeCoords = {
+    x: geometry.x / tile.ratio - iconSize / 2 - badgeSize / 3,
+    y: geometry.y / tile.ratio,
+  };
+
+  // draw a white background circle for the info icon as it's partially transparent
+  if (!isCaution) {
+    tile.ctx.beginPath();
+    tile.ctx.fillStyle = '#fff';
+    tile.ctx.arc(
+      badgeCoords.x + badgeSize / 2,
+      badgeCoords.y + badgeSize / 2,
+      badgeSize / 2 + 1, // + 1 for a small halo effect
+      0,
+      FULL_CIRCLE,
+    );
+    tile.ctx.fill();
+  }
+
+  // draw the alert icon
+  tile.ctx.drawImage(image, badgeCoords.x, badgeCoords.y);
+};
+
 export function drawTerminalIcon(tile, geom, type) {
   const zoom = tile.coords.z - 1;
   const styles = getTerminalIconStyles(zoom);
@@ -504,6 +619,22 @@ export function drawParkAndRideIcon(tile, geom, width, height) {
     image => {
       drawIconImage(image, tile, geom, width, height);
     },
+  );
+}
+
+export function drawCitybikeNotInUseIcon(
+  tile,
+  geom,
+  imageSize,
+  badgeSize,
+  scaleratio,
+) {
+  return getImageFromSpriteCache(
+    'icon-icon_not-in-use',
+    badgeSize,
+    badgeSize,
+  ).then(image =>
+    drawIconImageBadge(image, tile, geom, imageSize, badgeSize, scaleratio),
   );
 }
 
@@ -536,6 +667,35 @@ export function drawIcon(icon, tile, geom, imageSize) {
   return getImageFromSpriteCache(icon, imageSize, imageSize).then(image => {
     drawIconImage(image, tile, geom, imageSize, imageSize);
   });
+}
+
+/* eslint-disable no-param-reassign */
+export function drawAvailabilityValue(
+  tile,
+  geom,
+  value,
+  imageSize,
+  badgeSize,
+  scaleratio,
+) {
+  const radius = badgeSize / 2;
+  const x =
+    calculateIconBadgePosition(geom.x, tile, imageSize, radius, scaleratio) + 1;
+  const y =
+    calculateIconBadgePosition(geom.y, tile, imageSize, radius, scaleratio) + 1;
+
+  tile.ctx.beginPath();
+  tile.ctx.fillStyle =
+    (value > 3 && '#4EA700') || (value > 0 && '#FF6319') || '#DC0451';
+  tile.ctx.arc(x, y, radius, 0, FULL_CIRCLE);
+  tile.ctx.fill();
+
+  tile.ctx.font = `${0.7 * badgeSize}px
+    Gotham XNarrow SSm A, Gotham XNarrow SSm B, Arial, sans-serif`;
+  tile.ctx.fillStyle = '#fff';
+  tile.ctx.textAlign = 'center';
+  tile.ctx.textBaseline = 'middle';
+  tile.ctx.fillText(value, x, y);
 }
 
 export const getZoneLabelColor = config => {
