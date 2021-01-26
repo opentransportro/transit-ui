@@ -315,9 +315,10 @@
         margin-top: 2px;
         background-color: currentColor;
         border-radius: 3px;
-        width: 2.25em;
+        width: 3em;
         height: 1.25em;
         text-align: center;
+        overflow: hidden;
         .route-number {
           color: $white;
           line-height: 1.35;
