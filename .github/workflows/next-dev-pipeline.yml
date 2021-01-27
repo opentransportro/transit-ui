@@ -303,7 +303,7 @@ jobs:
     if: github.ref == 'refs/heads/opentransport-next'
     needs:
       - lint
-      - publish-npm
+      # - publish-npm
       - flow-test
       - unit-test
       - visual-test-chrome
