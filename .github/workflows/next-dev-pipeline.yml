@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - opentransport-next
+      - feat/automation
   pull_request:
     branches:
       - opentransport-next
+      - feat/automation
 jobs:
   install:
     runs-on: self-hosted
