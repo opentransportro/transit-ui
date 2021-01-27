@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DOCKER_IMAGE="opentransport/transit-ui"
+DOCKER_IMAGE="otrro/transit-ui"
 DOCKER_TAG=${DOCKER_BASE_TAG:-latest}
 
 COMMIT_HASH=$(git rev-parse --short "$GITHUB_SHA")

@@ -2,10 +2,10 @@ name: Process master push or pr
 on:
   push:
     branches:
-      - master
+      - opentransport
   pull_request:
     branches:
-      - master
+      - opentransport
 jobs:
   install:
     runs-on: ubuntu-18.04
