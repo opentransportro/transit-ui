@@ -233,7 +233,7 @@ module.exports = {
       },
     ],
   },
-  devtool: isProduction ? 'source-map' : 'eval',
+  devtool: 'source-map',
   plugins: [
     new webpack.ContextReplacementPlugin(momentExpression, languageExp),
     new webpack.ContextReplacementPlugin(reactIntlExpression, languageExp),
