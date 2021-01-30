@@ -4,16 +4,16 @@ import { matchShape, routerShape } from 'found';
 import debounce from 'lodash/debounce';
 import { connectToStores } from 'fluxible-addons-react';
 // TODO use this again once AB testing is done
-// import Datetimepicker from '@digitransit-component/digitransit-component-datetimepicker';
-import DatetimepickerA from 'datetimepicker-A';
-import DatetimepickerB from 'datetimepicker-B';
+import Datetimepicker from '@digitransit-component/digitransit-component-datetimepicker';
+// import DatetimepickerA from 'datetimepicker-A';
+// import DatetimepickerB from 'datetimepicker-B';
 import { replaceQueryParams } from '../util/queryUtils';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
 
 // placeholder for AB testing
 
-const testVariant = 'A';
-const Datetimepicker = testVariant === 'A' ? DatetimepickerA : DatetimepickerB;
+// const testVariant = 'A';
+// const Datetimepicker = testVariant === 'A' ? DatetimepickerA : DatetimepickerB;
 
 function DatetimepickerContainer(
   { realtime, embedWhenClosed, lang, color },
