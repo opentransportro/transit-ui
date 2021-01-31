@@ -55,6 +55,20 @@ const translations = {
     'departure-now': 'Avgår nu',
     time: 'Tid',
   },
+  ro: {
+    today: 'Astazi',
+    tomorrow: 'Maine',
+    'accessible-close': 'Inchide selectorul',
+    'accessible-closed': 'Slector perioadă inchis',
+    'accessible-open': 'Deschide selector perioadă',
+    'accessible-opened': 'Selector perioadă deschis',
+    'accessible-title': 'Selector perioadă',
+    arrival: 'Sosire',
+    date: 'Data',
+    departure: 'Plecare',
+    'departure-now': 'Planifică acum',
+    time: 'Timp',
+  },
 };
 
 export default translations;
