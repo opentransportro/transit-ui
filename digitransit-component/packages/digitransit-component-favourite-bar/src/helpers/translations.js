@@ -20,6 +20,17 @@ const translations = {
     home: 'Home',
     work: 'Work',
   },
+  ro: {
+    'add-destination': 'Seteaza ca destinație',
+    'add-favourite': 'Adaugă favorit',
+    'add-home': 'Adaugă casă',
+    'add-place': 'Adaugă locatie',
+    'add-work': 'Adaugă birou',
+    edit: 'Editează',
+    'open-favourites': 'Arată favorite',
+    home: 'Acasă',
+    work: 'Birou',
+  },
   fi: {
     'add-destination': 'Aseta määränpääksi',
     'add-favourite': 'Lisää suosikki',
