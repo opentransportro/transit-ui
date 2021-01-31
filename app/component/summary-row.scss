@@ -48,6 +48,14 @@
   border-left: 8px solid transparent;
 }
 
+.desktop .itinerary-summary-row {
+  background-color: #efefef;
+}
+
+.desktop .itinerary-summary-row.passive {
+  background-color: transparent;
+}
+
 .itinerary-summary-row {
   min-height: 50px;
   padding-left: 0.9375em;
