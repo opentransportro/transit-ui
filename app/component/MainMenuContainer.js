@@ -28,7 +28,7 @@ class MainMenuContainer extends Component {
   };
 
   mainMenuModules = {
-    Drawer: () => importLazy(import('material-ui/Drawer')),
+    Drawer: () => importLazy(import('@material-ui/core/SwipeableDrawer')),
     MainMenu: () => importLazy(import('./MainMenu')),
   };
 
@@ -76,10 +76,8 @@ class MainMenuContainer extends Component {
           {({ Drawer, MainMenu }) => (
             <Drawer
               className="offcanvas"
-              disableSwipeToOpen
-              docked={false}
               open={isOpen}
-              openSecondary
+              anchor="right"
               onRequestChange={this.onRequestChange}
               style={{ position: 'absolute' }}
             >

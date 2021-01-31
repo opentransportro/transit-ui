@@ -27,8 +27,7 @@ import { IntlProvider } from 'react-intl';
 import polyfillLibrary from 'polyfill-library';
 import fs from 'fs';
 import path from 'path';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import LRU from 'lru-cache';
 
 // Application
@@ -264,8 +263,8 @@ export default async function (req, res, next) {
             context={context.getComponentContext()}
           >
             <ReactRelayContext.Provider value={{ environment }}>
-              <MuiThemeProvider
-                muiTheme={getMuiTheme(
+              <ThemeProvider
+                theme={createMuiTheme(
                   MUITheme(context.getComponentContext().config),
                   { userAgent: agent },
                 )}
@@ -281,7 +280,7 @@ export default async function (req, res, next) {
                     )}
                   />
                 </React.Fragment>
-              </MuiThemeProvider>
+              </ThemeProvider>
             </ReactRelayContext.Provider>
           </ContextProvider>
         </BreakpointProvider>,

@@ -8,8 +8,8 @@ import makeRouteConfig from 'found/makeRouteConfig';
 import getStoreRenderArgs from 'found/getStoreRenderArgs';
 import { Resolver } from 'found-relay';
 import provideContext from 'fluxible-addons-react/provideContext';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import debug from 'debug';
 import {
   RelayNetworkLayer,
@@ -203,7 +203,9 @@ async function init() {
       oldParamParser(query, config).then(redirectUrl =>
         window.location.replace(redirectUrl),
       );
-    } else if (['/fi/', '/en/', '/sv/', '/ru/', '/slangi/'].includes(path)) {
+    } else if (
+      ['/fi/', '/en/', '/sv/', '/ru/', '/ro/', '/slangi/'].includes(path)
+    ) {
       window.location.replace('/');
     }
   }
@@ -237,8 +239,8 @@ async function init() {
       >
         <ReactRelayContext.Provider value={{ environment }}>
           <ErrorBoundary>
-            <MuiThemeProvider
-              muiTheme={getMuiTheme(MUITheme(config), {
+            <ThemeProvider
+              theme={createMuiTheme(MUITheme(config), {
                 userAgent: navigator.userAgent,
               })}
             >
@@ -253,7 +255,7 @@ async function init() {
                 />
                 <Router resolver={resolver} />
               </React.Fragment>
-            </MuiThemeProvider>
+            </ThemeProvider>
           </ErrorBoundary>
         </ReactRelayContext.Provider>
       </ContextProvider>

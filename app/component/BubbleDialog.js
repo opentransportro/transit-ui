@@ -19,7 +19,7 @@ import withBreakpoint from '../util/withBreakpoint';
 
 class BubbleDialog extends React.Component {
   modules = {
-    Drawer: () => importLazy(import('material-ui/Drawer')),
+    Drawer: () => importLazy(import('@material-ui/core/SwipeableDrawer')),
   };
 
   constructor(props, context) {
