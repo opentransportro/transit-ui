@@ -71,6 +71,10 @@
       }
     }
     background-color: $white;
+
+    &:nth-child(even) {
+      background-color: #efefef;
+    }
     padding: $padding-medium $padding-large $padding-large $padding-large;
     .mobile h1.title {
       font-size: $font-size-large;
