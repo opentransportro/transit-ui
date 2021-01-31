@@ -32,6 +32,7 @@ const keys_from = Object.keys(lang_from).sort();
 const keys_to = Object.keys(lang_to).sort();
 
 const difference = keys_from.filter(x => !keys_to.includes(x));
+const difference_map = difference.map(diff => "\""+diff+"\":\""+lang_from[diff]+"\"");
 
 console.log("The following keys are missing in translation: '" + lang2 + "'");
-console.log(difference);
+console.log(difference_map);
