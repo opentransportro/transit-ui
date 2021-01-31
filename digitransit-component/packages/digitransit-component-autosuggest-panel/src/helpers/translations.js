@@ -28,6 +28,21 @@ const translations = {
     'via-point-index': 'Via point {{index}}',
     'viapoint-slack-amount': 'Stop duration',
   },
+  ro: {
+    'add-via-button-label': 'Adaugă punct intermediar',
+    'add-via-duration-button-label':
+      'Setează durata oprire in punctul intermediar {{index}}',
+    'add-via-duration-button-label-close':
+      'Inchide selectorul de durată pentru punctul intermediar {{index}}',
+    'add-via-duration-button-label-open':
+      'Deschide selectorul de durată pentru punctul intermediar {{index}}',
+    'minute-short': 'min',
+    'remove-via-button-label': 'Sterge punctul intermediar {{index}}',
+    'swap-order-button-label': 'Inversează pleacarea cu destinația',
+    'via-point': 'Punct intermediar',
+    'via-point-index': 'Punct intermediar {{index}}',
+    'viapoint-slack-amount': 'Durata oprire',
+  },
   fi: {
     'add-via-button-label': 'Lisää välipiste',
     'add-via-duration-button-label':
