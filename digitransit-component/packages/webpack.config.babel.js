@@ -48,7 +48,7 @@ module.exports = {
   },
   plugins: [
     // load `moment/locale/fi.js`, `moment/locale/sv.js` and `moment/locale/en.js`
-    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fi|sv|en/),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fi|sv|en|ro/),
   ],
   optimization: {
     minimize: true,
