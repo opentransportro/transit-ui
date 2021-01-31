@@ -5,6 +5,9 @@ const translations = {
   en: {
     'close-modal': 'Close the modal',
   },
+  ro: {
+    'close-modal': 'Inchide fereastra',
+  },
   fi: {
     'close-modal': 'Sulje modaali',
   },
