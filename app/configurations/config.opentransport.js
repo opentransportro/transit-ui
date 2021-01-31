@@ -180,6 +180,9 @@ export default configMerger(walttiConfig, {
 
   textLogo: false,
 
+  showNearYouButtons: true,
+  nearYouModes: ['bus', 'tram', 'subway', 'rail', 'citybike'],
+  
   areaPolygon: [
     [minLon, minLat],
     [minLon, maxLat],
