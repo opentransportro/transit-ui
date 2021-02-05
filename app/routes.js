@@ -269,7 +269,7 @@ export default config => {
         }
       />
       <Route
-        path="/tietoja-palvelusta"
+        path="/about-this-service"
         getComponent={() =>
           import(/* webpackChunkName: "about" */ './component/AboutPage').then(
             getDefault,
