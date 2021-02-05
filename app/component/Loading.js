@@ -1,44 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Lottie from 'react-lottie';
-import loadingAnimationData from '../../static/assets/animations/loading.json';
+import { FormattedMessage } from 'react-intl';
+import ContainerSpinner from '@hsl-fi/container-spinner';
+
+const defaultMessage = (
+  <span className="sr-only" aria-busy="true" aria-live="polite">
+    <FormattedMessage id="loading" defaultMessage="Loading" />
+  </span>
+);
 
 const Loading = props => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingAnimationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
-
   return (
-    <Lottie
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        marginLeft: -(props.width / 2),
-        marginTop: -(props.height / 2),
-      }}
-      options={defaultOptions}
-      width={props.width}
-      height={props.height}
-      isStopped={false}
-      isPaused={false}
-    />
+    <ContainerSpinner visible>
+      {(props && props.children) || defaultMessage}
+    </ContainerSpinner>
   );
 };
 
 Loading.displayName = 'Loading';
 Loading.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  children: PropTypes.node,
 };
 
-Loading.defaultProps = {
-  height: 200,
-  width: 200,
-};
 export default Loading;
