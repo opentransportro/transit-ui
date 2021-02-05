@@ -23,6 +23,7 @@ const SelectFromMapHeaderComponent = (props, { config, intl }) => {
     <React.Fragment>
       <div className="select-from-map-nav-container">
         <button
+          type="button"
           className={`from-map-modal-nav-button ${backBtnCursorPointerClassName}`}
           onClick={props.hideBackBtn ? undefined : props.onBackBtnClick}
           aria-label={intl.formatMessage({
@@ -48,6 +49,7 @@ const SelectFromMapHeaderComponent = (props, { config, intl }) => {
           <span style={props.titleCustomStyle}>{title}</span>
         )}
         <button
+          type="button"
           className={`from-map-modal-nav-button ${closeBtnCursorPointerClassName}`}
           onClick={props.hideCloseBtn ? undefined : props.onCloseBtnClick}
           aria-label={intl.formatMessage({

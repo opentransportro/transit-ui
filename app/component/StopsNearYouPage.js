@@ -220,6 +220,7 @@ class StopsNearYouPage extends React.Component { // eslint-disable-line
                   <div className="nearest-stops-update-container">
                     <FormattedMessage id="nearest-stops-updated-location" />
                     <button
+                      type="button"
                       aria-label={this.context.intl.formatMessage({
                         id: 'show-more-stops-near-you',
                         defaultMessage: 'Load more nearby stops',

@@ -32,6 +32,7 @@ class ToggleButton extends React.Component {
 
     return (
       <button
+        type="button"
         className={cx('cursor-pointer', classes, className)}
         onClick={onBtnClick}
         style={style}

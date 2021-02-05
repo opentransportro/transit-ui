@@ -65,6 +65,7 @@ export default class BackButton extends React.Component {
     return (
       <div className={this.props.className} style={{ display: 'flex' }}>
         <button
+          type="button"
           className="icon-holder noborder cursor-pointer"
           onClick={
             this.props.onBackBtnClick

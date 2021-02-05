@@ -16,6 +16,7 @@ function MainMenu(props, { config, intl }) {
   return (
     <div aria-hidden={!props.visible} className="main-menu no-select">
       <button
+        type="button"
         onClick={props.toggleVisibility}
         className="close-button cursor-pointer"
         aria-label={intl.formatMessage({

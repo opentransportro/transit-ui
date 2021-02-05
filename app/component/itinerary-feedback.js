@@ -42,6 +42,7 @@ export default class ItineraryFeedback extends React.Component {
     return (
       <span className="itinerary-feedback-container">
         <button
+          type="button"
           className={cx('standalone-btn itinerary-feedback-btn', {
             active: this.state.feedbackFormOpen,
           })}

@@ -88,6 +88,7 @@ class MainMenuContainer extends Component {
         {this.context.config.mainMenu.show ? (
           <div className="icon-holder cursor-pointer main-menu-toggle">
             <button
+              type="button"
               aria-label={this.context.intl.formatMessage({
                 id: 'main-menu-label-open',
                 defaultMessage: 'Open the main menu',

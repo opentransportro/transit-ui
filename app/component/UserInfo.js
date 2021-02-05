@@ -42,7 +42,11 @@ class UserInfo extends Component {
 
     return (
       <div className={`userinfo-wrapper ${rightBorder}`}>
-        <button className="noborder" onClick={() => this.toggleList()}>
+        <button
+          type="button"
+          className="noborder"
+          onClick={() => this.toggleList()}
+        >
           <div className="userinfo-header">
             <div className="userinfo-title">
               <Icon
@@ -69,7 +73,7 @@ class UserInfo extends Component {
           <div className={cx('userinfo-list', isMobile ? 'mobile' : '')}>
             {/* eslint-disable jsx-a11y/click-events-have-key-events */}
             {list.map(item => (
-              <button className="noborder" key={item.key}>
+              <button type="button" className="noborder" key={item.key}>
                 <a href={item.href}>
                   <div
                     className={cx(

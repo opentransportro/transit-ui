@@ -266,6 +266,7 @@ class StopsNearYouContainer extends React.Component {
         )}
         {this.props.relay.hasMore() && (
           <button
+            type="button"
             aria-label={this.context.intl.formatMessage({
               id: 'show-more-stops-near-you',
               defaultMessage: 'Load more nearby stops',

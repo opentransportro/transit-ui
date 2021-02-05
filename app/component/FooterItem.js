@@ -15,6 +15,7 @@ const mapToLink = (href, children, onClick) => (
 
 const mapToRoute = (router, route, children, onClick) => (
   <button
+    type="button"
     className="noborder button cursor-pointer"
     onClick={e => {
       router.push(route);

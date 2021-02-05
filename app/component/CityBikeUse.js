@@ -21,6 +21,7 @@ const CityBikeUse = ({ url, type }) => (
     </p>
     <a href={url}>
       <button
+        type="button"
         className="use-bike-button cursor-pointer"
         onClick={() => {
           addAnalyticsEvent({

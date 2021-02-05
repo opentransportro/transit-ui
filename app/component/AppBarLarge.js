@@ -49,6 +49,7 @@ const AppBarLarge = (
     <div>
       <div className="top-bar bp-large flex-horizontal">
         <button
+          type="button"
           className="noborder"
           onClick={e => {
             titleClicked(e);

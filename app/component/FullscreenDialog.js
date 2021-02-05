@@ -76,7 +76,7 @@ class FullscreenDialog extends React.Component {
         >
           {showCloseButton && (
             <div className="close-popup">
-              <button onClick={this.toggle}>
+              <button type="button" onClick={this.toggle}>
                 <Icon className="close" img="icon-icon_close" />
               </button>
             </div>
