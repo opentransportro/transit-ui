@@ -144,7 +144,8 @@ const translations = {
     address: 'Adresă',
     'address-place-or-business': 'Adresă, loc sau activitate',
     'add-via-button-label': 'Adaugă punct intermediar',
-    'add-via-duration-button-label': 'Stabilește durata opririi la punctul intermediar {{index}}',
+    'add-via-duration-button-label':
+      'Stabilește durata opririi la punctul intermediar {{index}}',
     'add-via-duration-button-label-close':
       'Închide selectorul duratei opririi la punctul intermediar {{index}}',
     'add-via-duration-button-label-open':
@@ -187,8 +188,7 @@ const translations = {
     'search-autosuggest-label':
       'Căutare de locație, punct și stație. Navighează prin listă cu săgețile și selectează cu tasta Enter',
     'search-autosuggest-len': 'Există {{count}} sugestie disponibilă',
-    'search-autosuggest-len_plural':
-      'Există {{count}} sugestii disponibile',
+    'search-autosuggest-len_plural': 'Există {{count}} sugestii disponibile',
     'search-current-suggestion': 'Selecția curentă: {{selection}}',
     subway: 'Metrou',
     station: 'Gară',
