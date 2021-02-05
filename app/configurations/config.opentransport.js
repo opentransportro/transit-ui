@@ -26,8 +26,8 @@ export default configMerger(walttiConfig, {
   URL: {
     OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/romania/`,
     MAP: {
-      default: `https://api.mapbox.com/styles/v1/vladvesa/ck9sy09li0awb1ip824j78jc1/tiles/`,
-      token: MAP_TOKEN
+      default: `https://api.maptiler.com/maps/bright/`,
+      token: `?key=pDlOqWuZpLlwttR14N8H`
     },
     STOP_MAP: `${MAP_URL}/map/v1/romania-stop-map/`,
     CITYBIKE_MAP: `${MAP_URL}/map/v1/romania-citybike-map/`,

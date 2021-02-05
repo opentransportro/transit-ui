@@ -241,7 +241,7 @@ export default class Map extends React.Component {
         >
           <TileLayer
             onLoad={this.setLoaded}
-            url={`${mapUrl}{z}/{x}/{y}{size}.png`}
+            url={`${mapUrl}{z}/{x}/{y}{size}.png${config.URL.MAP.token || ''}`}
             tileSize={config.map.tileSize || 256}
             zoomOffset={config.map.zoomOffset || 0}
             updateWhenIdle={false}
