@@ -28,7 +28,7 @@ class MainMenuContainer extends Component {
   };
 
   mainMenuModules = {
-    Drawer: () => importLazy(import('@material-ui/core/SwipeableDrawer')),
+    MenuDrawer: () => importLazy(import('./MenuDrawer')),
     MainMenu: () => importLazy(import('./MainMenu')),
   };
 
@@ -73,14 +73,8 @@ class MainMenuContainer extends Component {
     return (
       <React.Fragment>
         <LazilyLoad modules={this.mainMenuModules}>
-          {({ Drawer, MainMenu }) => (
-            <Drawer
-              className="offcanvas"
-              open={isOpen}
-              anchor="right"
-              onRequestChange={this.onRequestChange}
-              style={{ position: 'absolute' }}
-            >
+          {({ MenuDrawer, MainMenu }) => (
+            <MenuDrawer open={isOpen} onRequestChange={this.toggleOffcanvas}>
               <MainMenu
                 toggleVisibility={this.toggleOffcanvas}
                 showDisruptionInfo={isOpen && !isForcedOpen}
@@ -88,7 +82,7 @@ class MainMenuContainer extends Component {
                 homeUrl={this.props.homeUrl}
                 user={this.props.user}
               />
-            </Drawer>
+            </MenuDrawer>
           )}
         </LazilyLoad>
         {this.context.config.mainMenu.show ? (

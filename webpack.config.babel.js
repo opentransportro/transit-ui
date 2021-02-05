@@ -152,6 +152,13 @@ const productionPlugins = [
         },
         to: path.join(__dirname, '_static/assets/geojson'),
       },
+      {
+        from: path.join(__dirname, 'static/assets/animations'),
+        transform: function minify(content) {
+          return JSON.stringify(JSON.parse(content.toString()));
+        },
+        to: path.join(__dirname, '_static/assets/animations'),
+      },
     ],
   }),
   new StatsPlugin('../stats.json', { chunkModules: true }),
