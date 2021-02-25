@@ -36,6 +36,19 @@ export default configMerger(walttiConfig, {
 
   feedIds: ['Hameenlinna', 'HameenlinnaEly'],
 
+  geoJson: {
+    layers: [
+      {
+        name: {
+          fi: 'Vyöhykkeet',
+          sv: 'Zoner',
+          en: 'Zones',
+        },
+        url: '/assets/geojson/hml_zone_lines_20210222.geojson',
+      },
+    ],
+  },
+
   mapLayers: {
     tooltip: {
       fi: 'Uutta! Saat nyt lähellä olevat bussit kartalle asetuksista.',
@@ -148,6 +161,9 @@ export default configMerger(walttiConfig, {
     7: 'G',
     8: 'H',
     9: 'I',
+  },
+  zoneIdFontSize: {
+    'G/H': '14px',
   },
   stopCard: {
     header: {
