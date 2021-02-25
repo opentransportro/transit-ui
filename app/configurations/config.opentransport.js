@@ -6,7 +6,7 @@ const CONFIG = 'opentransport';
 const APP_TITLE = 'CityRadar - sursa de informatii pentru orasul tau';
 const API_URL = process.env.API_URL || 'https://api.opentransport.ro';
 const MAP_URL = process.env.MAP_URL || 'https://api.opentransport.ro';
-const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoiZ25vbWUtbWFwcyIsImEiOiJjaXF3a3lwbXkwMDJwaTBubmZlaGk4cDZ6In0.8aukTfgjzeqATA8eNItPJA&';
+const MAP_TOKEN = process.env.MAP_TOKEN || 'pk.eyJ1IjoidmxhZHZlc2EiLCJhIjoiY2s3amh4dXd4MDYweDNmcTgxcXoxajNsZiJ9.tQqzxmU5r2rge5QG-XwbKA';
 const APP_DESCRIPTION = 'Planificator rute ce ofera suport pentru organizarea de calatorii folosind transportul public sau bicicleta.';
 
 const walttiConfig = require('./config.waltti').default;
