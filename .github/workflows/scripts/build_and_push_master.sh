@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-DOCKER_IMAGE="opentransport/transit-ui"
-DOCKER_TAG="latest"
+DOCKER_IMAGE="ottro/transit-ui"
+DOCKER_TAG="v1"
 
 COMMIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
 
