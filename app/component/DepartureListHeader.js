@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import ComponentUsageExample from './ComponentUsageExample';
 
-const DepartureListHeader = (props) => (
+const DepartureListHeader = props => (
   <div className="departure-list-header row padding-vertical-small">
     <span className="route-number-header">
       <FormattedMessage id="route" defaultMessage="Route" />
