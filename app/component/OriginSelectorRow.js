@@ -6,7 +6,7 @@ const OriginSelectorRow = ({ icon, label, onClick }) => (
   <li>
     <button
       id="localize-user"
-      className="noborder"
+      className="noborder noborder2"
       style={{ display: 'block' }}
       onClick={onClick}
     >

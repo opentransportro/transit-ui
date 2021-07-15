@@ -61,3 +61,36 @@ button.noborder {
     color: inherit;
   }
 }
+
+button.noborder2 {
+  background: #eceff0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  color: #181c56;
+  border: 1px solid #ddd;
+  align-items: center;
+  font-size: 15px;
+
+  &:focus {
+    background-color: transparent;
+    color: inherit;
+  }
+  &:active {
+    background-color: transparent;
+    color: inherit;
+  }
+  &:hover {
+    background-color: #eaeaea;
+    color: inherit;
+  }
+}
+
+#nolocation-panel ul .icon {
+  margin-top:2px;
+}
+#nolocation-panel ul li {
+  padding-bottom: 0px!important;
+  border-bottom: 0!important;
+
+}
